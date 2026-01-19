@@ -89,6 +89,7 @@
             Name = "OBSM";
             Text = "Form1";
             Load += Form1_Load;
+            DoubleClick += OBSM_DoubleClick;
             KeyPress += Form1_KeyPress;
             ((System.ComponentModel.ISupportInitialize)DataGridView1).EndInit();
             ResumeLayout(false);

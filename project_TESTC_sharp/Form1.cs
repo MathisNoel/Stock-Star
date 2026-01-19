@@ -132,5 +132,11 @@ namespace project_TESTC_sharp
         {
 
         }
+
+        private void OBSM_DoubleClick(object sender, EventArgs e)
+        {
+            //test
+            ///MOI
+        }
     }
 }
