@@ -1,4 +1,4 @@
-namespace project_TESTC_sharp
+namespace Stock_Star
 {
     internal static class Program
     {
@@ -11,7 +11,7 @@ namespace project_TESTC_sharp
             // To customize application configuration such as set high DPI settings or default font,
             // see https://aka.ms/applicationconfiguration.
             ApplicationConfiguration.Initialize();
-            Application.Run(new OBSM());
+            Application.Run(new Form1());
         }
     }
 }
