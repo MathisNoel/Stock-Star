@@ -8,23 +8,23 @@
     "net10.0-windows7.0": []
   },
   "packageFolders": {
-    "C:\\Users\\OBCK\\.nuget\\packages\\": {},
+    "C:\\Users\\Mathis.N\\.nuget\\packages\\": {},
     "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\OBCK\\source\\repos\\Stock&Star\\Stock&Star.csproj",
-      "projectName": "Stock&Star",
-      "projectPath": "C:\\Users\\OBCK\\source\\repos\\Stock&Star\\Stock&Star.csproj",
-      "packagesPath": "C:\\Users\\OBCK\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\OBCK\\source\\repos\\Stock&Star\\obj\\",
+      "projectUniqueName": "C:\\Users\\Mathis.N\\Documents\\GitHub\\Stock-Star\\Stock-Star\\Stock-Star.csproj",
+      "projectName": "Stock-Star",
+      "projectPath": "C:\\Users\\Mathis.N\\Documents\\GitHub\\Stock-Star\\Stock-Star\\Stock-Star.csproj",
+      "packagesPath": "C:\\Users\\Mathis.N\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\Mathis.N\\Documents\\GitHub\\Stock-Star\\Stock-Star\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
       ],
       "configFilePaths": [
-        "C:\\Users\\OBCK\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\Mathis.N\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
