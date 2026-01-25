@@ -39,16 +39,19 @@ namespace Stock_Star
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges6 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges11 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges12 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges13 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges14 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges7 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges8 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges9 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges10 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges13 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges14 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges15 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges16 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             TxtBoxPrice = new Guna.UI2.WinForms.Guna2TextBox();
             TxtBoxObjet = new Guna.UI2.WinForms.Guna2TextBox();
             BtnClose = new Guna.UI2.WinForms.Guna2Button();
             TitleBar = new Guna.UI2.WinForms.Guna2Panel();
+            guna2GradientButton1 = new Guna.UI2.WinForms.Guna2GradientButton();
             BtnCacherFenetre = new Guna.UI2.WinForms.Guna2Button();
             BtnAgrandirFenetre = new Guna.UI2.WinForms.Guna2Button();
             guna2DragControl1 = new Guna.UI2.WinForms.Guna2DragControl(components);
@@ -74,7 +77,7 @@ namespace Stock_Star
             TxtBoxPrice.FocusedState.BorderColor = Color.FromArgb(94, 148, 255);
             TxtBoxPrice.Font = new Font("Segoe UI", 9F);
             TxtBoxPrice.HoverState.BorderColor = Color.FromArgb(94, 148, 255);
-            TxtBoxPrice.Location = new Point(401, 78);
+            TxtBoxPrice.Location = new Point(354, 89);
             TxtBoxPrice.Margin = new Padding(3, 4, 3, 4);
             TxtBoxPrice.Name = "TxtBoxPrice";
             TxtBoxPrice.PlaceholderText = "";
@@ -97,7 +100,7 @@ namespace Stock_Star
             TxtBoxObjet.FocusedState.BorderColor = Color.FromArgb(94, 148, 255);
             TxtBoxObjet.Font = new Font("Segoe UI", 9F);
             TxtBoxObjet.HoverState.BorderColor = Color.FromArgb(94, 148, 255);
-            TxtBoxObjet.Location = new Point(154, 78);
+            TxtBoxObjet.Location = new Point(99, 89);
             TxtBoxObjet.Margin = new Padding(3, 4, 3, 4);
             TxtBoxObjet.Name = "TxtBoxObjet";
             TxtBoxObjet.PlaceholderText = "";
@@ -143,6 +146,26 @@ namespace Stock_Star
             TitleBar.ShadowDecoration.CustomizableEdges = customizableEdges12;
             TitleBar.Size = new Size(866, 22);
             TitleBar.TabIndex = 4;
+            // 
+            // guna2GradientButton1
+            // 
+            guna2GradientButton1.CustomizableEdges = customizableEdges13;
+            guna2GradientButton1.DisabledState.BorderColor = Color.DarkGray;
+            guna2GradientButton1.DisabledState.CustomBorderColor = Color.DarkGray;
+            guna2GradientButton1.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
+            guna2GradientButton1.DisabledState.FillColor2 = Color.FromArgb(169, 169, 169);
+            guna2GradientButton1.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
+            guna2GradientButton1.FillColor = Color.Transparent;
+            guna2GradientButton1.FillColor2 = Color.Transparent;
+            guna2GradientButton1.Font = new Font("Segoe UI", 9F);
+            guna2GradientButton1.ForeColor = Color.White;
+            guna2GradientButton1.Image = (Image)resources.GetObject("guna2GradientButton1.Image");
+            guna2GradientButton1.ImageSize = new Size(150, 100);
+            guna2GradientButton1.Location = new Point(0, 0);
+            guna2GradientButton1.Name = "guna2GradientButton1";
+            guna2GradientButton1.ShadowDecoration.CustomizableEdges = customizableEdges14;
+            guna2GradientButton1.Size = new Size(150, 100);
+            guna2GradientButton1.TabIndex = 6;
             // 
             // BtnCacherFenetre
             // 
@@ -222,18 +245,19 @@ namespace Stock_Star
             // 
             BtnAjouter.Anchor = AnchorStyles.Top;
             BtnAjouter.BorderRadius = 15;
-            BtnAjouter.CustomizableEdges = customizableEdges13;
+            BtnAjouter.CustomizableEdges = customizableEdges15;
             BtnAjouter.DisabledState.BorderColor = Color.DarkGray;
             BtnAjouter.DisabledState.CustomBorderColor = Color.DarkGray;
             BtnAjouter.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
             BtnAjouter.DisabledState.FillColor2 = Color.FromArgb(169, 169, 169);
             BtnAjouter.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
             BtnAjouter.FillColor = Color.FromArgb(184, 150, 62);
+            BtnAjouter.FillColor2 = Color.DarkGoldenrod;
             BtnAjouter.Font = new Font("Segoe UI", 9F);
             BtnAjouter.ForeColor = Color.WhiteSmoke;
-            BtnAjouter.Location = new Point(665, 78);
+            BtnAjouter.Location = new Point(635, 89);
             BtnAjouter.Name = "BtnAjouter";
-            BtnAjouter.ShadowDecoration.CustomizableEdges = customizableEdges14;
+            BtnAjouter.ShadowDecoration.CustomizableEdges = customizableEdges16;
             BtnAjouter.Size = new Size(137, 32);
             BtnAjouter.TabIndex = 5;
             BtnAjouter.Text = "Ajouter";
@@ -242,12 +266,14 @@ namespace Stock_Star
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
+            AutoSize = true;
             BackColor = Color.FromArgb(245, 247, 250);
             ClientSize = new Size(866, 556);
             Controls.Add(BtnAjouter);
             Controls.Add(TxtBoxObjet);
             Controls.Add(TxtBoxPrice);
             Controls.Add(TitleBar);
+            Controls.Add(guna2GradientButton1);
             FormBorderStyle = FormBorderStyle.None;
             Name = "Form1";
             Text = "Page Aceuil Stock&Star";
@@ -268,5 +294,6 @@ namespace Stock_Star
         private Guna.UI2.WinForms.Guna2GradientButton BtnAjouter;
         private Guna.UI2.WinForms.Guna2Button BtnCacherFenetre;
         private Guna.UI2.WinForms.Guna2Button BtnAgrandirFenetre;
+        private Guna.UI2.WinForms.Guna2GradientButton guna2GradientButton1;
     }
 }
