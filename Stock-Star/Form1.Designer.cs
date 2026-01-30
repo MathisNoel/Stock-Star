@@ -39,21 +39,21 @@ namespace Stock_Star
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges6 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges11 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges12 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges13 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges14 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges7 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges8 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges9 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges10 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges13 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges14 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges15 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges16 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             TxtBoxPrice = new Guna.UI2.WinForms.Guna2TextBox();
             TxtBoxObjet = new Guna.UI2.WinForms.Guna2TextBox();
             BtnClose = new Guna.UI2.WinForms.Guna2Button();
             TitleBar = new Guna.UI2.WinForms.Guna2Panel();
-            guna2GradientButton1 = new Guna.UI2.WinForms.Guna2GradientButton();
             BtnCacherFenetre = new Guna.UI2.WinForms.Guna2Button();
             BtnAgrandirFenetre = new Guna.UI2.WinForms.Guna2Button();
+            guna2GradientButton1 = new Guna.UI2.WinForms.Guna2GradientButton();
             guna2DragControl1 = new Guna.UI2.WinForms.Guna2DragControl(components);
             guna2DragControl2 = new Guna.UI2.WinForms.Guna2DragControl(components);
             guna2DragControl3 = new Guna.UI2.WinForms.Guna2DragControl(components);
@@ -147,26 +147,6 @@ namespace Stock_Star
             TitleBar.Size = new Size(866, 22);
             TitleBar.TabIndex = 4;
             // 
-            // guna2GradientButton1
-            // 
-            guna2GradientButton1.CustomizableEdges = customizableEdges13;
-            guna2GradientButton1.DisabledState.BorderColor = Color.DarkGray;
-            guna2GradientButton1.DisabledState.CustomBorderColor = Color.DarkGray;
-            guna2GradientButton1.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
-            guna2GradientButton1.DisabledState.FillColor2 = Color.FromArgb(169, 169, 169);
-            guna2GradientButton1.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
-            guna2GradientButton1.FillColor = Color.Transparent;
-            guna2GradientButton1.FillColor2 = Color.Transparent;
-            guna2GradientButton1.Font = new Font("Segoe UI", 9F);
-            guna2GradientButton1.ForeColor = Color.White;
-            guna2GradientButton1.Image = (Image)resources.GetObject("guna2GradientButton1.Image");
-            guna2GradientButton1.ImageSize = new Size(150, 100);
-            guna2GradientButton1.Location = new Point(0, 0);
-            guna2GradientButton1.Name = "guna2GradientButton1";
-            guna2GradientButton1.ShadowDecoration.CustomizableEdges = customizableEdges14;
-            guna2GradientButton1.Size = new Size(150, 100);
-            guna2GradientButton1.TabIndex = 6;
-            // 
             // BtnCacherFenetre
             // 
             BtnCacherFenetre.Anchor = AnchorStyles.Top | AnchorStyles.Right;
@@ -214,6 +194,26 @@ namespace Stock_Star
             BtnAgrandirFenetre.Size = new Size(15, 15);
             BtnAgrandirFenetre.TabIndex = 6;
             BtnAgrandirFenetre.Click += BtnAgrandirFenetre_Click;
+            // 
+            // guna2GradientButton1
+            // 
+            guna2GradientButton1.CustomizableEdges = customizableEdges13;
+            guna2GradientButton1.DisabledState.BorderColor = Color.DarkGray;
+            guna2GradientButton1.DisabledState.CustomBorderColor = Color.DarkGray;
+            guna2GradientButton1.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
+            guna2GradientButton1.DisabledState.FillColor2 = Color.FromArgb(169, 169, 169);
+            guna2GradientButton1.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
+            guna2GradientButton1.FillColor = Color.Transparent;
+            guna2GradientButton1.FillColor2 = Color.Transparent;
+            guna2GradientButton1.Font = new Font("Segoe UI", 9F);
+            guna2GradientButton1.ForeColor = Color.White;
+            guna2GradientButton1.Image = (Image)resources.GetObject("guna2GradientButton1.Image");
+            guna2GradientButton1.ImageSize = new Size(150, 100);
+            guna2GradientButton1.Location = new Point(0, 0);
+            guna2GradientButton1.Name = "guna2GradientButton1";
+            guna2GradientButton1.ShadowDecoration.CustomizableEdges = customizableEdges14;
+            guna2GradientButton1.Size = new Size(150, 100);
+            guna2GradientButton1.TabIndex = 6;
             // 
             // guna2DragControl1
             // 

@@ -1,8 +1,11 @@
 {
   "version": 2,
-  "dgSpecHash": "hbgM6sR8ihE=",
+  "dgSpecHash": "7qFKhygJAKs=",
   "success": true,
   "projectFilePath": "C:\\Users\\OBCK\\Documents\\GitHub\\Stock-Star\\Stock-Star\\Stock-Star.csproj",
-  "expectedPackageFiles": [],
+  "expectedPackageFiles": [
+    "C:\\Users\\OBCK\\.nuget\\packages\\guna.ui2.winforms\\2.0.4.7\\guna.ui2.winforms.2.0.4.7.nupkg.sha512",
+    "C:\\Users\\OBCK\\.nuget\\packages\\system.management\\7.0.0\\system.management.7.0.0.nupkg.sha512"
+  ],
   "logs": []
 }
