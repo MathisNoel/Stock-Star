@@ -1,15 +1,3 @@
-using System;
-using System.Collections.Generic;
-
-//On inclue la librairie
-using Npgsql;
-using NpgsqlTypes;
-//Fin
-using System.Linq;
-using System.Data;
-using System.Text;
-
-
 namespace Stock_Star
 {
         internal static class Program
