@@ -10,15 +10,5 @@
     "C:\\Users\\Mathis.N\\.nuget\\packages\\npgsql\\10.0.1\\npgsql.10.0.1.nupkg.sha512",
     "C:\\Users\\Mathis.N\\.nuget\\packages\\system.management\\7.0.0\\system.management.7.0.0.nupkg.sha512"
   ],
-  "logs": [
-    {
-      "code": "Undefined",
-      "level": "Warning",
-      "message": "Problème de lecture du fichier cache C:\\Users\\Mathis.N\\Documents\\GitHub\\Stock-Star\\Stock-Star\\obj\\project.nuget.cache\u00A0: '<' is an invalid start of a property name. Expected a '\"'. Path: $ | LineNumber: 2 | BytePositionInLine: 0.",
-      "projectPath": "C:\\Users\\Mathis.N\\Documents\\GitHub\\Stock-Star\\Stock-Star\\Stock-Star.csproj",
-      "warningLevel": 1,
-      "filePath": "C:\\Users\\Mathis.N\\Documents\\GitHub\\Stock-Star\\Stock-Star\\Stock-Star.csproj",
-      "targetGraphs": []
-    }
-  ]
+  "logs": []
 }

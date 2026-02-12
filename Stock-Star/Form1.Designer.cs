@@ -93,13 +93,7 @@ namespace Stock_Star
             guna2DragControl4 = new Guna.UI2.WinForms.Guna2DragControl(components);
             guna2DragControl5 = new Guna.UI2.WinForms.Guna2DragControl(components);
             BtnAjouter = new Guna.UI2.WinForms.Guna2GradientButton();
-<<<<<<< Updated upstream
             TitleBar.SuspendLayout();   
-=======
-            dataGridView1 = new DataGridView();
-            TitleBar.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
->>>>>>> Stashed changes
             SuspendLayout();
             // 
             // TxtBoxPrice
@@ -301,15 +295,6 @@ namespace Stock_Star
             BtnAjouter.TabIndex = 5;
             BtnAjouter.Text = "Ajouter";
             // 
-            // dataGridView1
-            // 
-            dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Location = new Point(24, 178);
-            dataGridView1.Name = "dataGridView1";
-            dataGridView1.RowHeadersWidth = 51;
-            dataGridView1.Size = new Size(816, 350);
-            dataGridView1.TabIndex = 7;
-            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
@@ -317,7 +302,6 @@ namespace Stock_Star
             AutoSize = true;
             BackColor = Color.FromArgb(245, 247, 250);
             ClientSize = new Size(866, 556);
-            Controls.Add(dataGridView1);
             Controls.Add(BtnAjouter);
             Controls.Add(TxtBoxObjet);
             Controls.Add(TxtBoxPrice);
@@ -328,7 +312,6 @@ namespace Stock_Star
             Name = "Form1";
             Text = "Page Accueil Stock&Star";
             TitleBar.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
             ResumeLayout(false);
         }
 
@@ -346,6 +329,5 @@ namespace Stock_Star
         private Guna.UI2.WinForms.Guna2Button BtnCacherFenetre;
         private Guna.UI2.WinForms.Guna2Button BtnAgrandirFenetre;
         private Guna.UI2.WinForms.Guna2GradientButton guna2GradientButton1;
-        private DataGridView dataGridView1;
     }
 }
