@@ -1,5 +1,10 @@
+<<<<<<< Updated upstream
 using System.Data;
 using Npgsql;
+=======
+using Npgsql;
+using System.Data;
+>>>>>>> Stashed changes
 
 namespace Stock_Star
 {
@@ -36,8 +41,11 @@ namespace Stock_Star
         {
             WindowState = FormWindowState.Minimized;
         }
+<<<<<<< Updated upstream
 
         //Charger les données présentes dans la Database
+=======
+>>>>>>> Stashed changes
         private void LoadData()
         {
             //On appelle la classe Connection BDD pour se connecter a celle-ci
@@ -50,7 +58,11 @@ namespace Stock_Star
 
             if (con.State == ConnectionState.Open)
             {
+<<<<<<< Updated upstream
                 //Commande SQL a effectuer pour afficher les données présent dans la table Produits (sauf l'id)
+=======
+                //Commande SQL a effectuer pour afficher les donn�es pr�sent dans la table Produits (sauf l'id)
+>>>>>>> Stashed changes
                 string cmd_sql = "SELECT type,nom,quantite,prix,date FROM produits";
 
                 NpgsqlDataAdapter adapter = new NpgsqlDataAdapter(cmd_sql, con);
@@ -59,6 +71,11 @@ namespace Stock_Star
 
                 adapter.Fill(table);
 
+<<<<<<< Updated upstream
+=======
+                dataGridView1.DataSource = table;
+
+>>>>>>> Stashed changes
                 con.Close();
             }
         }
