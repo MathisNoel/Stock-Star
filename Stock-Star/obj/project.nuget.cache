@@ -1,6 +1,10 @@
 {
   "version": 2,
+<<<<<<< Updated upstream
   "dgSpecHash": "xs0QpTuM/94=",
+=======
+  "dgSpecHash": "5xWLGKcK0Eo=",
+>>>>>>> Stashed changes
   "success": true,
   "projectFilePath": "C:\\Users\\Mathis.N\\Documents\\GitHub\\Stock-Star\\Stock-Star\\Stock-Star.csproj",
   "expectedPackageFiles": [
