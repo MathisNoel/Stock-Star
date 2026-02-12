@@ -1,3 +1,6 @@
+using System.Data;
+using Npgsql;
+
 namespace Stock_Star
 {
     public partial class Form1 : Form
@@ -6,6 +9,8 @@ namespace Stock_Star
         public Form1()
         {
             InitializeComponent();
+
+            LoadData();
         }
 
 
@@ -30,6 +35,33 @@ namespace Stock_Star
         private void BtnCacherFenetre_Click(object sender, EventArgs e)
         {
             WindowState = FormWindowState.Minimized;
+        }
+        //Charger les données présents dans la Database
+        private void LoadData()
+        {
+            //On appelle la classe Connection BDD pour se connecter a celle-ci
+            ConnectionBDD bdd = new ConnectionBDD();
+
+            NpgsqlConnection con = bdd.GetConnection();
+
+            //On ouvre la Database  
+            con.Open();
+
+            if (con.State == ConnectionState.Open)
+            {
+                //Commande SQL a effectuer pour afficher les données présent dans la table Produits (sauf l'id)
+                string cmd_sql = "SELECT type,nom,quantite,prix,date FROM produits";
+
+                NpgsqlDataAdapter adapter = new NpgsqlDataAdapter(cmd_sql, con);
+
+                DataTable table = new DataTable();
+
+                adapter.Fill(table);
+
+                dataGridView1.DataSource = table;
+
+                con.Close();
+            }
         }
     }
 }
