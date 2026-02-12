@@ -1,81 +1,33 @@
-<<<<<<< Updated upstream
+using System;
 using System.Data;
+using System.Windows.Forms;
 using Npgsql;
-=======
-using Npgsql;
-using System.Data;
->>>>>>> Stashed changes
 
 namespace Stock_Star
 {
     public partial class Form1 : Form
     {
-
         public Form1()
         {
             InitializeComponent();
-
             LoadData();
         }
-
-
-        private void BtnClose_Click(object sender, EventArgs e)
-        {
-            Application.Exit();
-        }
-
-        private void BtnAgrandirFenetre_Click(object sender, EventArgs e)
-        {
-            if (WindowState == FormWindowState.Maximized)
-            {
-                WindowState = FormWindowState.Normal;
-
-            }
-            else
-            {
-                WindowState = FormWindowState.Maximized;
-            }
-        }
-
-        private void BtnCacherFenetre_Click(object sender, EventArgs e)
-        {
-            WindowState = FormWindowState.Minimized;
-        }
-<<<<<<< Updated upstream
-
-        //Charger les donnÃ©es prÃ©sentes dans la Database
-=======
->>>>>>> Stashed changes
         private void LoadData()
         {
-            //On appelle la classe Connection BDD pour se connecter a celle-ci
             ConnectionBDD bdd = new ConnectionBDD();
-
             NpgsqlConnection con = bdd.GetConnection();
-
-            //On ouvre la Database  
             con.Open();
 
             if (con.State == ConnectionState.Open)
             {
-<<<<<<< Updated upstream
-                //Commande SQL a effectuer pour afficher les donnÃ©es prÃ©sent dans la table Produits (sauf l'id)
-=======
-                //Commande SQL a effectuer pour afficher les données présent dans la table Produits (sauf l'id)
->>>>>>> Stashed changes
                 string cmd_sql = "SELECT type,nom,quantite,prix,date FROM produits";
-
                 NpgsqlDataAdapter adapter = new NpgsqlDataAdapter(cmd_sql, con);
-
                 DataTable table = new DataTable();
-
                 adapter.Fill(table);
 
-<<<<<<< Updated upstream
-=======
+                // On lie les données au DataGridView standard
                 dataGridView1.DataSource = table;
 
->>>>>>> Stashed changes
                 con.Close();
             }
         }
