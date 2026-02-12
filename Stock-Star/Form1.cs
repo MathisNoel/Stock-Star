@@ -59,8 +59,6 @@ namespace Stock_Star
 
                 adapter.Fill(table);
 
-                dataGridView1.DataSource = table;
-
                 con.Close();
             }
         }

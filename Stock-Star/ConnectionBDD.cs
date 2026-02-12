@@ -10,10 +10,6 @@ namespace Stock_Star
         string connString = "Server=localhost;Port=5432;Database=Stock-Star;User Id=user;Password=user;";
         public NpgsqlConnection GetConnection() {
             return new NpgsqlConnection(connString);
-        }
-        /*
-        NpgsqlConnection myConnection = new NpgsqlConnection(connString);
-        myConnection.Open();
-        */  
+        }       
     }
 }
