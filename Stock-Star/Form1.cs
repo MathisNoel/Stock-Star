@@ -36,7 +36,8 @@ namespace Stock_Star
         {
             WindowState = FormWindowState.Minimized;
         }
-        //Charger les données présents dans la Database
+
+        //Charger les données présentes dans la Database
         private void LoadData()
         {
             //On appelle la classe Connection BDD pour se connecter a celle-ci
