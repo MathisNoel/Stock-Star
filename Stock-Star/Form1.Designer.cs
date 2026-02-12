@@ -94,13 +94,7 @@ namespace Stock_Star
             guna2DragControl5 = new Guna.UI2.WinForms.Guna2DragControl(components);
             BtnAjouter = new Guna.UI2.WinForms.Guna2GradientButton();
 <<<<<<< Updated upstream
-<<<<<<< Updated upstream
             TitleBar.SuspendLayout();   
-=======
-            dataGridView1 = new DataGridView();
-            TitleBar.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
->>>>>>> Stashed changes
 =======
             dataGridView1 = new DataGridView();
             TitleBar.SuspendLayout();

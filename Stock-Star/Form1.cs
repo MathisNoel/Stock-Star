@@ -1,11 +1,6 @@
 <<<<<<< Updated upstream
-<<<<<<< Updated upstream
 using System.Data;
 using Npgsql;
-=======
-using Npgsql;
-using System.Data;
->>>>>>> Stashed changes
 =======
 using Npgsql;
 using System.Data;
@@ -47,11 +42,8 @@ namespace Stock_Star
             WindowState = FormWindowState.Minimized;
         }
 <<<<<<< Updated upstream
-<<<<<<< Updated upstream
 
         //Charger les donnÃ©es prÃ©sentes dans la Database
-=======
->>>>>>> Stashed changes
 =======
 >>>>>>> Stashed changes
         private void LoadData()
@@ -67,11 +59,7 @@ namespace Stock_Star
             if (con.State == ConnectionState.Open)
             {
 <<<<<<< Updated upstream
-<<<<<<< Updated upstream
                 //Commande SQL a effectuer pour afficher les donnÃ©es prÃ©sent dans la table Produits (sauf l'id)
-=======
-                //Commande SQL a effectuer pour afficher les données présent dans la table Produits (sauf l'id)
->>>>>>> Stashed changes
 =======
                 //Commande SQL a effectuer pour afficher les données présent dans la table Produits (sauf l'id)
 >>>>>>> Stashed changes
@@ -84,11 +72,6 @@ namespace Stock_Star
                 adapter.Fill(table);
 
 <<<<<<< Updated upstream
-<<<<<<< Updated upstream
-=======
-                dataGridView1.DataSource = table;
-
->>>>>>> Stashed changes
 =======
                 dataGridView1.DataSource = table;
 
