@@ -19,7 +19,7 @@
       "filePath": "C:\\Users\\OBCK\\Documents\\GitHub\\Stock-Star\\Stock-Star\\Stock-Star.csproj",
       "libraryId": "Siticone.Desktop.UI",
       "targetGraphs": [
-        "net10.0-windows7.0"
+        "net10.0-windows"
       ]
     }
   ]
