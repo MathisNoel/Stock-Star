@@ -49,7 +49,11 @@ namespace Stock_Star
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges16 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle7 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle4 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle5 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle6 = new DataGridViewCellStyle();
             TxtBoxPrice = new Guna.UI2.WinForms.Guna2TextBox();
             TxtBoxObjet = new Guna.UI2.WinForms.Guna2TextBox();
             BtnClose = new Guna.UI2.WinForms.Guna2Button();
@@ -281,7 +285,7 @@ namespace Stock_Star
             guna2DataGridView1.AllowUserToOrderColumns = true;
             dataGridViewCellStyle1.BackColor = Color.White;
             guna2DataGridView1.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
-            guna2DataGridView1.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            guna2DataGridView1.Anchor = AnchorStyles.Top;
             guna2DataGridView1.BackgroundColor = Color.WhiteSmoke;
             dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle2.BackColor = Color.FromArgb(201, 162, 39);
@@ -294,14 +298,14 @@ namespace Stock_Star
             guna2DataGridView1.ColumnHeadersHeight = 22;
             guna2DataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.EnableResizing;
             guna2DataGridView1.Columns.AddRange(new DataGridViewColumn[] { ColonneDataGridView_Nom, ColonneDataGridView_PrixAchat, ColonneDataGridView_PrixVente, ColonneDataGridView_Benefice });
-            dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = Color.White;
-            dataGridViewCellStyle3.Font = new Font("Segoe UI", 9F);
-            dataGridViewCellStyle3.ForeColor = Color.FromArgb(71, 69, 94);
-            dataGridViewCellStyle3.SelectionBackColor = Color.FromArgb(231, 229, 255);
-            dataGridViewCellStyle3.SelectionForeColor = Color.FromArgb(71, 69, 94);
-            dataGridViewCellStyle3.WrapMode = DataGridViewTriState.False;
-            guna2DataGridView1.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle7.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle7.BackColor = Color.White;
+            dataGridViewCellStyle7.Font = new Font("Segoe UI", 9F);
+            dataGridViewCellStyle7.ForeColor = Color.FromArgb(71, 69, 94);
+            dataGridViewCellStyle7.SelectionBackColor = Color.FromArgb(231, 229, 255);
+            dataGridViewCellStyle7.SelectionForeColor = Color.FromArgb(71, 69, 94);
+            dataGridViewCellStyle7.WrapMode = DataGridViewTriState.False;
+            guna2DataGridView1.DefaultCellStyle = dataGridViewCellStyle7;
             guna2DataGridView1.GridColor = Color.FromArgb(231, 229, 255);
             guna2DataGridView1.Location = new Point(12, 161);
             guna2DataGridView1.Name = "guna2DataGridView1";
@@ -334,24 +338,37 @@ namespace Stock_Star
             // 
             // ColonneDataGridView_Nom
             // 
+            ColonneDataGridView_Nom.DataPropertyName = "Nom";
+            dataGridViewCellStyle3.Format = "C2";
+            dataGridViewCellStyle3.NullValue = null;
+            ColonneDataGridView_Nom.DefaultCellStyle = dataGridViewCellStyle3;
             ColonneDataGridView_Nom.HeaderText = "Nom";
             ColonneDataGridView_Nom.MinimumWidth = 6;
             ColonneDataGridView_Nom.Name = "ColonneDataGridView_Nom";
             // 
             // ColonneDataGridView_PrixAchat
             // 
+            ColonneDataGridView_PrixAchat.DataPropertyName = "PrixAchat";
+            dataGridViewCellStyle4.Format = "C2";
+            ColonneDataGridView_PrixAchat.DefaultCellStyle = dataGridViewCellStyle4;
             ColonneDataGridView_PrixAchat.HeaderText = "Prix d'achat";
             ColonneDataGridView_PrixAchat.MinimumWidth = 6;
             ColonneDataGridView_PrixAchat.Name = "ColonneDataGridView_PrixAchat";
             // 
             // ColonneDataGridView_PrixVente
             // 
+            ColonneDataGridView_PrixVente.DataPropertyName = "PrixVente";
+            dataGridViewCellStyle5.Format = "C2";
+            ColonneDataGridView_PrixVente.DefaultCellStyle = dataGridViewCellStyle5;
             ColonneDataGridView_PrixVente.HeaderText = "Prix Vente";
             ColonneDataGridView_PrixVente.MinimumWidth = 6;
             ColonneDataGridView_PrixVente.Name = "ColonneDataGridView_PrixVente";
             // 
             // ColonneDataGridView_Benefice
             // 
+            ColonneDataGridView_Benefice.DataPropertyName = "Benefice";
+            dataGridViewCellStyle6.Format = "C2";
+            ColonneDataGridView_Benefice.DefaultCellStyle = dataGridViewCellStyle6;
             ColonneDataGridView_Benefice.HeaderText = "Benefice";
             ColonneDataGridView_Benefice.MinimumWidth = 6;
             ColonneDataGridView_Benefice.Name = "ColonneDataGridView_Benefice";
@@ -373,6 +390,7 @@ namespace Stock_Star
             FormBorderStyle = FormBorderStyle.None;
             Name = "Form1";
             Text = "Page Aceuil Stock&Star";
+            Load += Form1_Load;
             TitleBar.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)guna2DataGridView1).EndInit();
             ResumeLayout(false);
