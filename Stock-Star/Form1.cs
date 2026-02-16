@@ -207,5 +207,38 @@ namespace Stock_Star
                 guna2DataGridView1.DataSource = stock;
             }
         }
+
+        private void BtnSupprimer_Click(object sender, EventArgs e)
+        {
+            if (guna2DataGridView1.CurrentRow == null)
+            {
+                MessageBox.Show("Sélectionnez une ligne à supprimer.");
+                return;
+            }
+
+            if (guna2DataGridView1.CurrentRow.DataBoundItem is Produit produit)
+            {
+                stock.Remove(produit);
+            }
+
+        }
+
+        private void guna2DataGridView1_KeyDown(object sender, KeyEventArgs e) //Si on appuye su le Btn suprimmer on supprime la ligne selectionner dans le DataGridView
+        {
+            if (e.KeyCode == Keys.Delete)
+            {
+                BtnSupprimer_Click(sender, e);
+            }
+        }
+
+        private void TxtBoxPrice_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                BtnAjouter_Click(sender, e);
+                e.Handled = true; //Cette ligne empêche le "ding" sonore lorsque vous appuyez sur Entrée
+                //Le bip provient seulment avec la touche entrée, les autres touche ne font pas de bruit car windows ne les considère pas comme des actions de validation c'est pour ça qu'on à pas ce parametre sur le suprimmer juste au dessus.
+            }
+        }
     }
 }

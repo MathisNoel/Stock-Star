@@ -54,6 +54,8 @@ namespace Stock_Star
             DataGridViewCellStyle dataGridViewCellStyle4 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle5 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle6 = new DataGridViewCellStyle();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges17 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges18 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             TxtBoxPrice = new Guna.UI2.WinForms.Guna2TextBox();
             TxtBoxObjet = new Guna.UI2.WinForms.Guna2TextBox();
             BtnClose = new Guna.UI2.WinForms.Guna2Button();
@@ -72,6 +74,7 @@ namespace Stock_Star
             ColonneDataGridView_PrixAchat = new DataGridViewTextBoxColumn();
             ColonneDataGridView_PrixVente = new DataGridViewTextBoxColumn();
             ColonneDataGridView_Benefice = new DataGridViewTextBoxColumn();
+            BtnSupprimer = new Guna.UI2.WinForms.Guna2GradientButton();
             TitleBar.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)guna2DataGridView1).BeginInit();
             SuspendLayout();
@@ -90,7 +93,7 @@ namespace Stock_Star
             TxtBoxPrice.FocusedState.BorderColor = Color.FromArgb(94, 148, 255);
             TxtBoxPrice.Font = new Font("Segoe UI", 9F);
             TxtBoxPrice.HoverState.BorderColor = Color.FromArgb(94, 148, 255);
-            TxtBoxPrice.Location = new Point(354, 89);
+            TxtBoxPrice.Location = new Point(295, 89);
             TxtBoxPrice.Margin = new Padding(3, 4, 3, 4);
             TxtBoxPrice.Name = "TxtBoxPrice";
             TxtBoxPrice.PlaceholderText = "";
@@ -99,6 +102,7 @@ namespace Stock_Star
             TxtBoxPrice.Size = new Size(222, 32);
             TxtBoxPrice.TabIndex = 1;
             TxtBoxPrice.Enter += TxtBoxPrice_Enter;
+            TxtBoxPrice.KeyDown += TxtBoxPrice_KeyDown;
             TxtBoxPrice.Leave += TxtBoxPrice_Leave;
             // 
             // TxtBoxObjet
@@ -115,7 +119,7 @@ namespace Stock_Star
             TxtBoxObjet.FocusedState.BorderColor = Color.FromArgb(94, 148, 255);
             TxtBoxObjet.Font = new Font("Segoe UI", 9F);
             TxtBoxObjet.HoverState.BorderColor = Color.FromArgb(94, 148, 255);
-            TxtBoxObjet.Location = new Point(99, 89);
+            TxtBoxObjet.Location = new Point(44, 89);
             TxtBoxObjet.Margin = new Padding(3, 4, 3, 4);
             TxtBoxObjet.Name = "TxtBoxObjet";
             TxtBoxObjet.PlaceholderText = "";
@@ -272,7 +276,7 @@ namespace Stock_Star
             BtnAjouter.FillColor2 = Color.DarkGoldenrod;
             BtnAjouter.Font = new Font("Segoe UI", 9F);
             BtnAjouter.ForeColor = Color.WhiteSmoke;
-            BtnAjouter.Location = new Point(635, 89);
+            BtnAjouter.Location = new Point(547, 89);
             BtnAjouter.Name = "BtnAjouter";
             BtnAjouter.ShadowDecoration.CustomizableEdges = customizableEdges16;
             BtnAjouter.Size = new Size(137, 32);
@@ -335,6 +339,7 @@ namespace Stock_Star
             guna2DataGridView1.ThemeStyle.RowsStyle.SelectionBackColor = Color.FromArgb(231, 229, 255);
             guna2DataGridView1.ThemeStyle.RowsStyle.SelectionForeColor = Color.FromArgb(71, 69, 94);
             guna2DataGridView1.CellContentClick += guna2DataGridView1_CellContentClick;
+            guna2DataGridView1.KeyDown += guna2DataGridView1_KeyDown;
             // 
             // ColonneDataGridView_Nom
             // 
@@ -373,6 +378,28 @@ namespace Stock_Star
             ColonneDataGridView_Benefice.MinimumWidth = 6;
             ColonneDataGridView_Benefice.Name = "ColonneDataGridView_Benefice";
             // 
+            // BtnSupprimer
+            // 
+            BtnSupprimer.Anchor = AnchorStyles.Top;
+            BtnSupprimer.BorderRadius = 15;
+            BtnSupprimer.CustomizableEdges = customizableEdges17;
+            BtnSupprimer.DisabledState.BorderColor = Color.DarkGray;
+            BtnSupprimer.DisabledState.CustomBorderColor = Color.DarkGray;
+            BtnSupprimer.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
+            BtnSupprimer.DisabledState.FillColor2 = Color.FromArgb(169, 169, 169);
+            BtnSupprimer.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
+            BtnSupprimer.FillColor = Color.FromArgb(184, 150, 62);
+            BtnSupprimer.FillColor2 = Color.DarkGoldenrod;
+            BtnSupprimer.Font = new Font("Segoe UI", 9F);
+            BtnSupprimer.ForeColor = Color.WhiteSmoke;
+            BtnSupprimer.Location = new Point(696, 89);
+            BtnSupprimer.Name = "BtnSupprimer";
+            BtnSupprimer.ShadowDecoration.CustomizableEdges = customizableEdges18;
+            BtnSupprimer.Size = new Size(137, 32);
+            BtnSupprimer.TabIndex = 8;
+            BtnSupprimer.Text = "Supprimer";
+            BtnSupprimer.Click += BtnSupprimer_Click;
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
@@ -381,6 +408,7 @@ namespace Stock_Star
             AutoSize = true;
             BackColor = Color.FromArgb(245, 247, 250);
             ClientSize = new Size(866, 556);
+            Controls.Add(BtnSupprimer);
             Controls.Add(guna2DataGridView1);
             Controls.Add(BtnAjouter);
             Controls.Add(TxtBoxObjet);
@@ -415,5 +443,6 @@ namespace Stock_Star
         private DataGridViewTextBoxColumn ColonneDataGridView_PrixAchat;
         private DataGridViewTextBoxColumn ColonneDataGridView_PrixVente;
         private DataGridViewTextBoxColumn ColonneDataGridView_Benefice;
+        private Guna.UI2.WinForms.Guna2GradientButton BtnSupprimer;
     }
 }
