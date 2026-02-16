@@ -17,15 +17,6 @@
           "Microsoft.WindowsDesktop.App.WindowsForms"
         ]
       },
-      "Siticone.Desktop.UI/2.1.1": {
-        "type": "package",
-        "compile": {
-          "lib/net40/Siticone.Desktop.UI.dll": {}
-        },
-        "runtime": {
-          "lib/net40/Siticone.Desktop.UI.dll": {}
-        }
-      },
       "System.Management/7.0.0": {
         "type": "package",
         "compile": {
@@ -47,21 +38,6 @@
             "rid": "win"
           }
         }
-      },
-      "Ububox.G2Crack/2.0.4.6": {
-        "type": "package",
-        "dependencies": {
-          "System.Management": "7.0.0"
-        },
-        "compile": {
-          "lib/net7.0-windows7.0/Guna.UI.dll": {}
-        },
-        "runtime": {
-          "lib/net7.0-windows7.0/Guna.UI.dll": {}
-        },
-        "frameworkReferences": [
-          "Microsoft.WindowsDesktop.App.WindowsForms"
-        ]
       }
     }
   },
@@ -86,20 +62,6 @@
         "lib/net6.0-windows7.0/Guna.UI2.dll",
         "lib/net7.0-windows7.0/Guna.UI2.dll",
         "lib/netcoreapp3.1/Guna.UI2.dll"
-      ]
-    },
-    "Siticone.Desktop.UI/2.1.1": {
-      "sha512": "Ra7IVuwB11Q2yCo541FcPFmcxDyY7TSUmGg2ddbf+rNN18NrPXJ2CKMY0ZbuL+JRIig/jrJcU7ymJHfxKnEWvw==",
-      "type": "package",
-      "path": "siticone.desktop.ui/2.1.1",
-      "files": [
-        ".nupkg.metadata",
-        ".signature.p7s",
-        "LICENSE.txt",
-        "icon.png",
-        "lib/net40/Siticone.Desktop.UI.dll",
-        "siticone.desktop.ui.2.1.1.nupkg.sha512",
-        "siticone.desktop.ui.nuspec"
       ]
     },
     "System.Management/7.0.0": {
@@ -129,35 +91,11 @@
         "system.management.nuspec",
         "useSharedDesignerContext.txt"
       ]
-    },
-    "Ububox.G2Crack/2.0.4.6": {
-      "sha512": "upXsCDfy0nNpuiDGC72tVllnLPlZxL3hkYUCdyUtGSyikP5dgrwDUs7Wo2ZMvAY+j2UpvF4S8sh6EDnoCixz4A==",
-      "type": "package",
-      "path": "ububox.g2crack/2.0.4.6",
-      "files": [
-        ".nupkg.metadata",
-        ".signature.p7s",
-        "LICENSE.txt",
-        "README.md",
-        "icon.png",
-        "lib/net40/Guna.UI2.dll",
-        "lib/net45/Guna.UI2.dll",
-        "lib/net461/Guna.UI2.dll",
-        "lib/net472/Guna.UI2.dll",
-        "lib/net48/Guna.UI2.dll",
-        "lib/net6.0-windows7.0/Guna.UI2.dll",
-        "lib/net7.0-windows7.0/Guna.UI.dll",
-        "lib/netcoreapp3.1/Guna.UI2.dll",
-        "ububox.g2crack.2.0.4.6.nupkg.sha512",
-        "ububox.g2crack.nuspec"
-      ]
     }
   },
   "projectFileDependencyGroups": {
     "net10.0-windows7.0": [
-      "Guna.UI2.WinForms >= 2.0.4.7",
-      "Siticone.Desktop.UI >= 2.1.1",
-      "Ububox.G2Crack >= 2.0.4.6"
+      "Guna.UI2.WinForms >= 2.0.4.7"
     ]
   },
   "packageFolders": {
@@ -213,14 +151,6 @@
           "Guna.UI2.WinForms": {
             "target": "Package",
             "version": "[2.0.4.7, )"
-          },
-          "Siticone.Desktop.UI": {
-            "target": "Package",
-            "version": "[2.1.1, )"
-          },
-          "Ububox.G2Crack": {
-            "target": "Package",
-            "version": "[2.0.4.6, )"
           }
         },
         "imports": [
@@ -535,17 +465,5 @@
         }
       }
     }
-  },
-  "logs": [
-    {
-      "code": "NU1701",
-      "level": "Warning",
-      "warningLevel": 1,
-      "message": "Le package 'Siticone.Desktop.UI 2.1.1' a été restauré en utilisant '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8, .NETFramework,Version=v4.8.1' au lieu du framework cible du projet 'net10.0-windows7.0'. Ce package n'est peut-être pas totalement compatible avec votre projet.",
-      "libraryId": "Siticone.Desktop.UI",
-      "targetGraphs": [
-        "net10.0-windows"
-      ]
-    }
-  ]
+  }
 }

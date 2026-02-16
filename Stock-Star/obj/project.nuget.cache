@@ -1,26 +1,11 @@
 {
   "version": 2,
-  "dgSpecHash": "TboYb9qg7l4=",
+  "dgSpecHash": "n5Vhom6WMuc=",
   "success": true,
   "projectFilePath": "C:\\Users\\OBCK\\Documents\\GitHub\\Stock-Star\\Stock-Star\\Stock-Star.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\OBCK\\.nuget\\packages\\guna.ui2.winforms\\2.0.4.7\\guna.ui2.winforms.2.0.4.7.nupkg.sha512",
-    "C:\\Users\\OBCK\\.nuget\\packages\\siticone.desktop.ui\\2.1.1\\siticone.desktop.ui.2.1.1.nupkg.sha512",
-    "C:\\Users\\OBCK\\.nuget\\packages\\system.management\\7.0.0\\system.management.7.0.0.nupkg.sha512",
-    "C:\\Users\\OBCK\\.nuget\\packages\\ububox.g2crack\\2.0.4.6\\ububox.g2crack.2.0.4.6.nupkg.sha512"
+    "C:\\Users\\OBCK\\.nuget\\packages\\system.management\\7.0.0\\system.management.7.0.0.nupkg.sha512"
   ],
-  "logs": [
-    {
-      "code": "NU1701",
-      "level": "Warning",
-      "message": "Le package 'Siticone.Desktop.UI 2.1.1' a été restauré en utilisant '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8, .NETFramework,Version=v4.8.1' au lieu du framework cible du projet 'net10.0-windows7.0'. Ce package n'est peut-être pas totalement compatible avec votre projet.",
-      "projectPath": "C:\\Users\\OBCK\\Documents\\GitHub\\Stock-Star\\Stock-Star\\Stock-Star.csproj",
-      "warningLevel": 1,
-      "filePath": "C:\\Users\\OBCK\\Documents\\GitHub\\Stock-Star\\Stock-Star\\Stock-Star.csproj",
-      "libraryId": "Siticone.Desktop.UI",
-      "targetGraphs": [
-        "net10.0-windows"
-      ]
-    }
-  ]
+  "logs": []
 }
