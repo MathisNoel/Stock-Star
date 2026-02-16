@@ -1,6 +1,4 @@
 <Solution>
-  <Folder Name="/Éléments de solution/">
-    <File Path="Class2.cs" />
-  </Folder>
+  <Folder Name="/Éléments de solution/" />
   <Project Path="Stock-Star/Stock-Star.csproj" />
 </Solution>
