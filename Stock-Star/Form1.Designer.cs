@@ -47,6 +47,9 @@ namespace Stock_Star
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges14 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges15 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges16 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
             TxtBoxPrice = new Guna.UI2.WinForms.Guna2TextBox();
             TxtBoxObjet = new Guna.UI2.WinForms.Guna2TextBox();
             BtnClose = new Guna.UI2.WinForms.Guna2Button();
@@ -60,7 +63,13 @@ namespace Stock_Star
             guna2DragControl4 = new Guna.UI2.WinForms.Guna2DragControl(components);
             guna2DragControl5 = new Guna.UI2.WinForms.Guna2DragControl(components);
             BtnAjouter = new Guna.UI2.WinForms.Guna2GradientButton();
+            guna2DataGridView1 = new Guna.UI2.WinForms.Guna2DataGridView();
+            ColonneDataGridView_Nom = new DataGridViewTextBoxColumn();
+            ColonneDataGridView_PrixAchat = new DataGridViewTextBoxColumn();
+            ColonneDataGridView_PrixVente = new DataGridViewTextBoxColumn();
+            ColonneDataGridView_Benefice = new DataGridViewTextBoxColumn();
             TitleBar.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)guna2DataGridView1).BeginInit();
             SuspendLayout();
             // 
             // TxtBoxPrice
@@ -85,6 +94,8 @@ namespace Stock_Star
             TxtBoxPrice.ShadowDecoration.CustomizableEdges = customizableEdges2;
             TxtBoxPrice.Size = new Size(222, 32);
             TxtBoxPrice.TabIndex = 1;
+            TxtBoxPrice.Enter += TxtBoxPrice_Enter;
+            TxtBoxPrice.Leave += TxtBoxPrice_Leave;
             // 
             // TxtBoxObjet
             // 
@@ -108,6 +119,8 @@ namespace Stock_Star
             TxtBoxObjet.ShadowDecoration.CustomizableEdges = customizableEdges4;
             TxtBoxObjet.Size = new Size(222, 32);
             TxtBoxObjet.TabIndex = 2;
+            TxtBoxObjet.Enter += TxtBoxObjet_Enter;
+            TxtBoxObjet.Leave += TxtBoxObjet_Leave;
             // 
             // BtnClose
             // 
@@ -261,14 +274,97 @@ namespace Stock_Star
             BtnAjouter.Size = new Size(137, 32);
             BtnAjouter.TabIndex = 5;
             BtnAjouter.Text = "Ajouter";
+            BtnAjouter.Click += BtnAjouter_Click;
+            // 
+            // guna2DataGridView1
+            // 
+            guna2DataGridView1.AllowUserToOrderColumns = true;
+            dataGridViewCellStyle1.BackColor = Color.White;
+            guna2DataGridView1.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            guna2DataGridView1.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            guna2DataGridView1.BackgroundColor = Color.WhiteSmoke;
+            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = Color.FromArgb(201, 162, 39);
+            dataGridViewCellStyle2.Font = new Font("Segoe UI", 9F);
+            dataGridViewCellStyle2.ForeColor = Color.White;
+            dataGridViewCellStyle2.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.True;
+            guna2DataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            guna2DataGridView1.ColumnHeadersHeight = 22;
+            guna2DataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.EnableResizing;
+            guna2DataGridView1.Columns.AddRange(new DataGridViewColumn[] { ColonneDataGridView_Nom, ColonneDataGridView_PrixAchat, ColonneDataGridView_PrixVente, ColonneDataGridView_Benefice });
+            dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = Color.White;
+            dataGridViewCellStyle3.Font = new Font("Segoe UI", 9F);
+            dataGridViewCellStyle3.ForeColor = Color.FromArgb(71, 69, 94);
+            dataGridViewCellStyle3.SelectionBackColor = Color.FromArgb(231, 229, 255);
+            dataGridViewCellStyle3.SelectionForeColor = Color.FromArgb(71, 69, 94);
+            dataGridViewCellStyle3.WrapMode = DataGridViewTriState.False;
+            guna2DataGridView1.DefaultCellStyle = dataGridViewCellStyle3;
+            guna2DataGridView1.GridColor = Color.FromArgb(231, 229, 255);
+            guna2DataGridView1.Location = new Point(12, 161);
+            guna2DataGridView1.Name = "guna2DataGridView1";
+            guna2DataGridView1.RowHeadersVisible = false;
+            guna2DataGridView1.RowHeadersWidth = 51;
+            guna2DataGridView1.Size = new Size(842, 383);
+            guna2DataGridView1.TabIndex = 7;
+            guna2DataGridView1.ThemeStyle.AlternatingRowsStyle.BackColor = Color.White;
+            guna2DataGridView1.ThemeStyle.AlternatingRowsStyle.Font = null;
+            guna2DataGridView1.ThemeStyle.AlternatingRowsStyle.ForeColor = Color.Empty;
+            guna2DataGridView1.ThemeStyle.AlternatingRowsStyle.SelectionBackColor = Color.Empty;
+            guna2DataGridView1.ThemeStyle.AlternatingRowsStyle.SelectionForeColor = Color.Empty;
+            guna2DataGridView1.ThemeStyle.BackColor = Color.WhiteSmoke;
+            guna2DataGridView1.ThemeStyle.GridColor = Color.FromArgb(231, 229, 255);
+            guna2DataGridView1.ThemeStyle.HeaderStyle.BackColor = Color.FromArgb(100, 88, 255);
+            guna2DataGridView1.ThemeStyle.HeaderStyle.BorderStyle = DataGridViewHeaderBorderStyle.None;
+            guna2DataGridView1.ThemeStyle.HeaderStyle.Font = new Font("Segoe UI", 9F);
+            guna2DataGridView1.ThemeStyle.HeaderStyle.ForeColor = Color.White;
+            guna2DataGridView1.ThemeStyle.HeaderStyle.HeaightSizeMode = DataGridViewColumnHeadersHeightSizeMode.EnableResizing;
+            guna2DataGridView1.ThemeStyle.HeaderStyle.Height = 22;
+            guna2DataGridView1.ThemeStyle.ReadOnly = false;
+            guna2DataGridView1.ThemeStyle.RowsStyle.BackColor = Color.White;
+            guna2DataGridView1.ThemeStyle.RowsStyle.BorderStyle = DataGridViewCellBorderStyle.SingleHorizontal;
+            guna2DataGridView1.ThemeStyle.RowsStyle.Font = new Font("Segoe UI", 9F);
+            guna2DataGridView1.ThemeStyle.RowsStyle.ForeColor = Color.FromArgb(71, 69, 94);
+            guna2DataGridView1.ThemeStyle.RowsStyle.Height = 29;
+            guna2DataGridView1.ThemeStyle.RowsStyle.SelectionBackColor = Color.FromArgb(231, 229, 255);
+            guna2DataGridView1.ThemeStyle.RowsStyle.SelectionForeColor = Color.FromArgb(71, 69, 94);
+            guna2DataGridView1.CellContentClick += guna2DataGridView1_CellContentClick;
+            // 
+            // ColonneDataGridView_Nom
+            // 
+            ColonneDataGridView_Nom.HeaderText = "Nom";
+            ColonneDataGridView_Nom.MinimumWidth = 6;
+            ColonneDataGridView_Nom.Name = "ColonneDataGridView_Nom";
+            // 
+            // ColonneDataGridView_PrixAchat
+            // 
+            ColonneDataGridView_PrixAchat.HeaderText = "Prix d'achat";
+            ColonneDataGridView_PrixAchat.MinimumWidth = 6;
+            ColonneDataGridView_PrixAchat.Name = "ColonneDataGridView_PrixAchat";
+            // 
+            // ColonneDataGridView_PrixVente
+            // 
+            ColonneDataGridView_PrixVente.HeaderText = "Prix Vente";
+            ColonneDataGridView_PrixVente.MinimumWidth = 6;
+            ColonneDataGridView_PrixVente.Name = "ColonneDataGridView_PrixVente";
+            // 
+            // ColonneDataGridView_Benefice
+            // 
+            ColonneDataGridView_Benefice.HeaderText = "Benefice";
+            ColonneDataGridView_Benefice.MinimumWidth = 6;
+            ColonneDataGridView_Benefice.Name = "ColonneDataGridView_Benefice";
             // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
+            AutoScroll = true;
             AutoSize = true;
             BackColor = Color.FromArgb(245, 247, 250);
             ClientSize = new Size(866, 556);
+            Controls.Add(guna2DataGridView1);
             Controls.Add(BtnAjouter);
             Controls.Add(TxtBoxObjet);
             Controls.Add(TxtBoxPrice);
@@ -278,6 +374,7 @@ namespace Stock_Star
             Name = "Form1";
             Text = "Page Aceuil Stock&Star";
             TitleBar.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)guna2DataGridView1).EndInit();
             ResumeLayout(false);
         }
 
@@ -295,5 +392,10 @@ namespace Stock_Star
         private Guna.UI2.WinForms.Guna2Button BtnCacherFenetre;
         private Guna.UI2.WinForms.Guna2Button BtnAgrandirFenetre;
         private Guna.UI2.WinForms.Guna2GradientButton guna2GradientButton1;
+        private Guna.UI2.WinForms.Guna2DataGridView guna2DataGridView1;
+        private DataGridViewTextBoxColumn ColonneDataGridView_Nom;
+        private DataGridViewTextBoxColumn ColonneDataGridView_PrixAchat;
+        private DataGridViewTextBoxColumn ColonneDataGridView_PrixVente;
+        private DataGridViewTextBoxColumn ColonneDataGridView_Benefice;
     }
 }

@@ -7,6 +7,44 @@ namespace Stock_Star
             InitializeComponent();
         }
 
+        string StringTxtBoxPrix = "Entrez un prix";
+        string StringTxtBoxProduit = "Entrez un produit";
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+            TxtBoxPrice.Text = StringTxtBoxPrix; // Au démarage on vient charger "Entrez un prix"
+            TxtBoxPrice.ForeColor = Color.Gray; //Couleur du texte en gris
+
+            TxtBoxObjet.Text = StringTxtBoxProduit;
+            TxtBoxObjet.ForeColor = Color.Gray;
+        }
+
+        const int WM_NCHITTEST = 0x84; // Parametre pour changer la taille de la fenetre ne pas toucher
+        const int HTCLIENT = 0x1;       // Parametre pour changer la taille de la fenetre ne pas toucher
+        const int HTCAPTION = 0x2;      //parametre pour changer la taille de la fenetre ne pas toucher
+
+        protected override void WndProc(ref Message m) // parametre pour changer la taille de la fenetre ne pas toucher 
+        {
+            base.WndProc(ref m);
+            if (m.Msg == WM_NCHITTEST)
+            {
+                if ((int)m.Result == HTCLIENT)
+                {
+                    m.Result = (IntPtr)HTCAPTION;
+                }
+            }
+        }
+
+        protected override CreateParams CreateParams
+        { // Parametre pour changer la taille de la fenetre ne pas toucher
+            get
+            {
+                CreateParams cp = base.CreateParams;
+                cp.Style |= 0x20000; // WS_MINIMIZEBOX
+                cp.Style |= 0x40000; // WS_MAXIMIZEBOX
+                return cp;
+            }
+        }
 
         private void BtnClose_Click(object sender, EventArgs e)
         {
@@ -26,9 +64,62 @@ namespace Stock_Star
             }
         }
 
+        private void form1_Load(object sender, EventArgs e) // demander des explication à chatGPT for this part
+        {
+            this.FormBorderStyle = FormBorderStyle.None;
+        }
+
         private void BtnCacherFenetre_Click(object sender, EventArgs e)
         {
             WindowState = FormWindowState.Minimized;
+        }
+
+        private void BtnAjouter_Click(object sender, EventArgs e)
+        {
+            string Prix = TxtBoxPrice.Text;
+            string Nom = TxtBoxObjet.Text;
+        }
+
+        private void guna2DataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void TxtBoxPrice_Leave(object sender, EventArgs e)
+        {
+            if (TxtBoxPrice.Text == "")
+            {
+                TxtBoxPrice.Text = StringTxtBoxPrix;
+                TxtBoxPrice.ForeColor = Color.Gray;
+            }
+        }
+
+        private void TxtBoxPrice_Enter(object sender, EventArgs e)
+        {
+            if (TxtBoxPrice.Text == StringTxtBoxPrix)
+            {
+                TxtBoxPrice.Text = "";
+                TxtBoxPrice.ForeColor = Color.Black;
+            }
+        }
+
+        private void TxtBoxObjet_Leave(object sender, EventArgs e)
+        {
+            if (TxtBoxObjet.Text == "")
+            {
+                TxtBoxObjet.Text = StringTxtBoxProduit;
+                TxtBoxObjet.ForeColor = Color.Gray;
+            }
+
+        }
+
+        private void TxtBoxObjet_Enter(object sender, EventArgs e)
+        {
+            if (TxtBoxObjet.Text == StringTxtBoxProduit)
+            {   
+                TxtBoxObjet.Text = "";
+                TxtBoxObjet.ForeColor = Color.Black;
+            }
         }
     }
 }
