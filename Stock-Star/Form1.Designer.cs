@@ -56,6 +56,16 @@ namespace Stock_Star
             DataGridViewCellStyle dataGridViewCellStyle6 = new DataGridViewCellStyle();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges17 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges18 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges21 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges22 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges19 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges20 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges27 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges28 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges23 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges24 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges25 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges26 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             TxtBoxPrice = new Guna.UI2.WinForms.Guna2TextBox();
             TxtBoxObjet = new Guna.UI2.WinForms.Guna2TextBox();
             BtnClose = new Guna.UI2.WinForms.Guna2Button();
@@ -75,8 +85,17 @@ namespace Stock_Star
             ColonneDataGridView_PrixVente = new DataGridViewTextBoxColumn();
             ColonneDataGridView_Benefice = new DataGridViewTextBoxColumn();
             BtnSupprimer = new Guna.UI2.WinForms.Guna2GradientButton();
+            Panel_Menu = new Guna.UI2.WinForms.Guna2CustomGradientPanel();
+            BtnMenuGraphique = new Guna.UI2.WinForms.Guna2GradientButton();
+            Panel_Main = new Guna.UI2.WinForms.Guna2Panel();
+            PanelPourLeDataGridView = new Guna.UI2.WinForms.Guna2Panel();
+            Panel_Top = new Guna.UI2.WinForms.Guna2Panel();
             TitleBar.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)guna2DataGridView1).BeginInit();
+            Panel_Menu.SuspendLayout();
+            Panel_Main.SuspendLayout();
+            PanelPourLeDataGridView.SuspendLayout();
+            Panel_Top.SuspendLayout();
             SuspendLayout();
             // 
             // TxtBoxPrice
@@ -93,7 +112,7 @@ namespace Stock_Star
             TxtBoxPrice.FocusedState.BorderColor = Color.FromArgb(94, 148, 255);
             TxtBoxPrice.Font = new Font("Segoe UI", 9F);
             TxtBoxPrice.HoverState.BorderColor = Color.FromArgb(94, 148, 255);
-            TxtBoxPrice.Location = new Point(295, 89);
+            TxtBoxPrice.Location = new Point(265, 81);
             TxtBoxPrice.Margin = new Padding(3, 4, 3, 4);
             TxtBoxPrice.Name = "TxtBoxPrice";
             TxtBoxPrice.PlaceholderText = "";
@@ -119,7 +138,7 @@ namespace Stock_Star
             TxtBoxObjet.FocusedState.BorderColor = Color.FromArgb(94, 148, 255);
             TxtBoxObjet.Font = new Font("Segoe UI", 9F);
             TxtBoxObjet.HoverState.BorderColor = Color.FromArgb(94, 148, 255);
-            TxtBoxObjet.Location = new Point(44, 89);
+            TxtBoxObjet.Location = new Point(16, 81);
             TxtBoxObjet.Margin = new Padding(3, 4, 3, 4);
             TxtBoxObjet.Name = "TxtBoxObjet";
             TxtBoxObjet.PlaceholderText = "";
@@ -230,10 +249,10 @@ namespace Stock_Star
             guna2GradientButton1.ForeColor = Color.White;
             guna2GradientButton1.Image = (Image)resources.GetObject("guna2GradientButton1.Image");
             guna2GradientButton1.ImageSize = new Size(150, 100);
-            guna2GradientButton1.Location = new Point(0, 0);
+            guna2GradientButton1.Location = new Point(4, 3);
             guna2GradientButton1.Name = "guna2GradientButton1";
             guna2GradientButton1.ShadowDecoration.CustomizableEdges = customizableEdges14;
-            guna2GradientButton1.Size = new Size(150, 100);
+            guna2GradientButton1.Size = new Size(148, 74);
             guna2GradientButton1.TabIndex = 6;
             // 
             // guna2DragControl1
@@ -276,7 +295,7 @@ namespace Stock_Star
             BtnAjouter.FillColor2 = Color.DarkGoldenrod;
             BtnAjouter.Font = new Font("Segoe UI", 9F);
             BtnAjouter.ForeColor = Color.WhiteSmoke;
-            BtnAjouter.Location = new Point(547, 89);
+            BtnAjouter.Location = new Point(507, 81);
             BtnAjouter.Name = "BtnAjouter";
             BtnAjouter.ShadowDecoration.CustomizableEdges = customizableEdges16;
             BtnAjouter.Size = new Size(137, 32);
@@ -289,7 +308,6 @@ namespace Stock_Star
             guna2DataGridView1.AllowUserToOrderColumns = true;
             dataGridViewCellStyle1.BackColor = Color.White;
             guna2DataGridView1.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
-            guna2DataGridView1.Anchor = AnchorStyles.Top;
             guna2DataGridView1.BackgroundColor = Color.WhiteSmoke;
             dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle2.BackColor = Color.FromArgb(201, 162, 39);
@@ -310,12 +328,13 @@ namespace Stock_Star
             dataGridViewCellStyle7.SelectionForeColor = Color.FromArgb(71, 69, 94);
             dataGridViewCellStyle7.WrapMode = DataGridViewTriState.False;
             guna2DataGridView1.DefaultCellStyle = dataGridViewCellStyle7;
+            guna2DataGridView1.Dock = DockStyle.Fill;
             guna2DataGridView1.GridColor = Color.FromArgb(231, 229, 255);
-            guna2DataGridView1.Location = new Point(12, 161);
+            guna2DataGridView1.Location = new Point(15, 10);
             guna2DataGridView1.Name = "guna2DataGridView1";
             guna2DataGridView1.RowHeadersVisible = false;
             guna2DataGridView1.RowHeadersWidth = 51;
-            guna2DataGridView1.Size = new Size(842, 383);
+            guna2DataGridView1.Size = new Size(781, 389);
             guna2DataGridView1.TabIndex = 7;
             guna2DataGridView1.ThemeStyle.AlternatingRowsStyle.BackColor = Color.White;
             guna2DataGridView1.ThemeStyle.AlternatingRowsStyle.Font = null;
@@ -392,13 +411,91 @@ namespace Stock_Star
             BtnSupprimer.FillColor2 = Color.DarkGoldenrod;
             BtnSupprimer.Font = new Font("Segoe UI", 9F);
             BtnSupprimer.ForeColor = Color.WhiteSmoke;
-            BtnSupprimer.Location = new Point(696, 89);
+            BtnSupprimer.Location = new Point(659, 81);
             BtnSupprimer.Name = "BtnSupprimer";
             BtnSupprimer.ShadowDecoration.CustomizableEdges = customizableEdges18;
             BtnSupprimer.Size = new Size(137, 32);
             BtnSupprimer.TabIndex = 8;
             BtnSupprimer.Text = "Supprimer";
             BtnSupprimer.Click += BtnSupprimer_Click;
+            // 
+            // Panel_Menu
+            // 
+            Panel_Menu.AutoSizeMode = AutoSizeMode.GrowAndShrink;
+            Panel_Menu.BorderRadius = 10;
+            Panel_Menu.Controls.Add(BtnMenuGraphique);
+            Panel_Menu.CustomizableEdges = customizableEdges21;
+            Panel_Menu.Dock = DockStyle.Left;
+            Panel_Menu.FillColor = Color.FromArgb(184, 150, 62);
+            Panel_Menu.FillColor2 = Color.FromArgb(184, 150, 62);
+            Panel_Menu.FillColor3 = Color.DarkGoldenrod;
+            Panel_Menu.FillColor4 = Color.DarkGoldenrod;
+            Panel_Menu.Location = new Point(0, 22);
+            Panel_Menu.Name = "Panel_Menu";
+            Panel_Menu.ShadowDecoration.CustomizableEdges = customizableEdges22;
+            Panel_Menu.Size = new Size(55, 534);
+            Panel_Menu.TabIndex = 9;
+            // 
+            // BtnMenuGraphique
+            // 
+            BtnMenuGraphique.BackColor = Color.Transparent;
+            BtnMenuGraphique.BorderRadius = 15;
+            BtnMenuGraphique.CustomizableEdges = customizableEdges19;
+            BtnMenuGraphique.DisabledState.BorderColor = Color.DarkGray;
+            BtnMenuGraphique.DisabledState.CustomBorderColor = Color.DarkGray;
+            BtnMenuGraphique.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
+            BtnMenuGraphique.DisabledState.FillColor2 = Color.FromArgb(169, 169, 169);
+            BtnMenuGraphique.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
+            BtnMenuGraphique.FillColor = Color.RoyalBlue;
+            BtnMenuGraphique.FillColor2 = Color.Navy;
+            BtnMenuGraphique.Font = new Font("Segoe UI", 9F);
+            BtnMenuGraphique.ForeColor = Color.White;
+            BtnMenuGraphique.Image = (Image)resources.GetObject("BtnMenuGraphique.Image");
+            BtnMenuGraphique.ImageSize = new Size(50, 50);
+            BtnMenuGraphique.Location = new Point(3, 6);
+            BtnMenuGraphique.Name = "BtnMenuGraphique";
+            BtnMenuGraphique.ShadowDecoration.CustomizableEdges = customizableEdges20;
+            BtnMenuGraphique.Size = new Size(47, 31);
+            BtnMenuGraphique.TabIndex = 10;
+            // 
+            // Panel_Main
+            // 
+            Panel_Main.Controls.Add(PanelPourLeDataGridView);
+            Panel_Main.Controls.Add(Panel_Top);
+            Panel_Main.CustomizableEdges = customizableEdges27;
+            Panel_Main.Dock = DockStyle.Fill;
+            Panel_Main.Location = new Point(55, 22);
+            Panel_Main.Name = "Panel_Main";
+            Panel_Main.ShadowDecoration.CustomizableEdges = customizableEdges28;
+            Panel_Main.Size = new Size(811, 534);
+            Panel_Main.TabIndex = 10;
+            // 
+            // PanelPourLeDataGridView
+            // 
+            PanelPourLeDataGridView.Controls.Add(guna2DataGridView1);
+            PanelPourLeDataGridView.CustomizableEdges = customizableEdges23;
+            PanelPourLeDataGridView.Dock = DockStyle.Fill;
+            PanelPourLeDataGridView.Location = new Point(0, 120);
+            PanelPourLeDataGridView.Name = "PanelPourLeDataGridView";
+            PanelPourLeDataGridView.Padding = new Padding(15, 10, 15, 15);
+            PanelPourLeDataGridView.ShadowDecoration.CustomizableEdges = customizableEdges24;
+            PanelPourLeDataGridView.Size = new Size(811, 414);
+            PanelPourLeDataGridView.TabIndex = 10;
+            // 
+            // Panel_Top
+            // 
+            Panel_Top.Controls.Add(BtnSupprimer);
+            Panel_Top.Controls.Add(BtnAjouter);
+            Panel_Top.Controls.Add(TxtBoxObjet);
+            Panel_Top.Controls.Add(TxtBoxPrice);
+            Panel_Top.Controls.Add(guna2GradientButton1);
+            Panel_Top.CustomizableEdges = customizableEdges25;
+            Panel_Top.Dock = DockStyle.Top;
+            Panel_Top.Location = new Point(0, 0);
+            Panel_Top.Name = "Panel_Top";
+            Panel_Top.ShadowDecoration.CustomizableEdges = customizableEdges26;
+            Panel_Top.Size = new Size(811, 120);
+            Panel_Top.TabIndex = 9;
             // 
             // Form1
             // 
@@ -408,19 +505,19 @@ namespace Stock_Star
             AutoSize = true;
             BackColor = Color.FromArgb(245, 247, 250);
             ClientSize = new Size(866, 556);
-            Controls.Add(BtnSupprimer);
-            Controls.Add(guna2DataGridView1);
-            Controls.Add(BtnAjouter);
-            Controls.Add(TxtBoxObjet);
-            Controls.Add(TxtBoxPrice);
+            Controls.Add(Panel_Main);
+            Controls.Add(Panel_Menu);
             Controls.Add(TitleBar);
-            Controls.Add(guna2GradientButton1);
             FormBorderStyle = FormBorderStyle.None;
             Name = "Form1";
             Text = "Page Aceuil Stock&Star";
             Load += Form1_Load;
             TitleBar.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)guna2DataGridView1).EndInit();
+            Panel_Menu.ResumeLayout(false);
+            Panel_Main.ResumeLayout(false);
+            PanelPourLeDataGridView.ResumeLayout(false);
+            Panel_Top.ResumeLayout(false);
             ResumeLayout(false);
         }
 
@@ -444,5 +541,10 @@ namespace Stock_Star
         private DataGridViewTextBoxColumn ColonneDataGridView_PrixVente;
         private DataGridViewTextBoxColumn ColonneDataGridView_Benefice;
         private Guna.UI2.WinForms.Guna2GradientButton BtnSupprimer;
+        private Guna.UI2.WinForms.Guna2CustomGradientPanel Panel_Menu;
+        private Guna.UI2.WinForms.Guna2GradientButton BtnMenuGraphique;
+        private Guna.UI2.WinForms.Guna2Panel Panel_Main;
+        private Guna.UI2.WinForms.Guna2Panel Panel_Top;
+        private Guna.UI2.WinForms.Guna2Panel PanelPourLeDataGridView;
     }
 }

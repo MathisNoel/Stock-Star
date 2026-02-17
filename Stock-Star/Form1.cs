@@ -16,7 +16,7 @@ namespace Stock_Star
 {
     public partial class Form1 : Form
     {
-        BindingList<Produit> stock = new BindingList<Produit>();
+        BindingList<Produit> stock = new BindingList<Produit>(); //création d'une liste de produit qui va nous permettre de stocker les produits que l'on ajoute dans le DataGridView
 
 
         public Form1()
@@ -75,12 +75,12 @@ namespace Stock_Star
             }
         }
 
-        private void BtnClose_Click(object sender, EventArgs e)
+        private void BtnClose_Click(object sender, EventArgs e)                                         // Permet de fermer la fentre lorsque on clique sur le bouton fermer
         {
             Application.Exit();
         }
 
-        private void BtnAgrandirFenetre_Click(object sender, EventArgs e)
+        private void BtnAgrandirFenetre_Click(object sender, EventArgs e)                               //Permet d'agrandir la fentre lorsque on clique sur le bouton agrandir, et de la remettre à sa taille normal lorsque l'on reclique dessus
         {
             if (WindowState == FormWindowState.Maximized)
             {
@@ -109,30 +109,30 @@ namespace Stock_Star
             string Nom = TxtBoxObjet.Text;
 
 
-            /*if (!decimal.TryParse(TxtBoxPrice.Text, out decimal prix))
+                                                                                                            /*if (!decimal.TryParse(TxtBoxPrice.Text, out decimal prix))
+                                                                                                            {
+                                                                                                                MessageBox.Show("Prix invalide");
+                                                                                                                return;
+                                                                                                            }
+
+                                                                                                            guna2DataGridView1.Rows.Add
+                                                                                                            (
+                                                                                                            TxtBoxObjet.Text,  // Nom
+                                                                                                            Prix,              // Prix Achat
+                                                                                                            null,              // Prix Vente
+                                                                                                            null               // Benefice
+                                                                                                            );
+
+                                                                                                            TxtBoxObjet.Clear();
+                                                                                                            TxtBoxPrice.Clear();*/
+
+            if (!decimal.TryParse(TxtBoxPrice.Text, out decimal prix))                                      // On vérifie que le prix entré est bien un nombre décimal, sinon on affiche un message d'erreur et on arrête l'exécution de la fonction
             {
                 MessageBox.Show("Prix invalide");
                 return;
             }
 
-            guna2DataGridView1.Rows.Add
-            (
-            TxtBoxObjet.Text,  // Nom
-            Prix,              // Prix Achat
-            null,              // Prix Vente
-            null               // Benefice
-            );
-
-            TxtBoxObjet.Clear();
-            TxtBoxPrice.Clear();*/
-
-            if (!decimal.TryParse(TxtBoxPrice.Text, out decimal prix))
-            {
-                MessageBox.Show("Prix invalide");
-                return;
-            }
-
-            stock.Add(new Produit
+            stock.Add(new Produit                                                                           // On ajoute un nouveau produit à la liste de stock
             {
                 Nom = TxtBoxObjet.Text,
                 PrixAchat = prix,
@@ -148,7 +148,7 @@ namespace Stock_Star
 
         }
 
-        private void TxtBoxPrice_Leave(object sender, EventArgs e)
+        private void TxtBoxPrice_Leave(object sender, EventArgs e)                                          // Les 4 fonction suivant sert à changer la couleur dans le text box pour indiquer à l'utilisateur qu'il doit entrer un prix et un produit, et aussi pour remettre le text "Entrez un prix" et "Entrez un produit"
         {
             if (TxtBoxPrice.Text == "")
             {
@@ -238,6 +238,7 @@ namespace Stock_Star
                 BtnAjouter_Click(sender, e);
                 e.Handled = true; //Cette ligne empêche le "ding" sonore lorsque vous appuyez sur Entrée
                 //Le bip provient seulment avec la touche entrée, les autres touche ne font pas de bruit car windows ne les considère pas comme des actions de validation c'est pour ça qu'on à pas ce parametre sur le suprimmer juste au dessus.
+                e.SuppressKeyPress = true;
             }
         }
     }
