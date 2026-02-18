@@ -4,13 +4,16 @@ using System.Drawing;
 using System.Windows.Forms;
 
 // Remarques :
-// - Le prÈprocesseur C# n'a pas d'instruction `#include`. La ligne `#include "Class2.cs"` provoque l'erreur CS1024.
-// - Pour inclure `Class2.cs`, ajoutez simplement le fichier au projet (Visual Studio > Ajouter > …lÈment existant) ; il sera compilÈ avec les autres fichiers.
+// - Le pr√©processeur C# n'a pas d'instruction `#include`. La ligne `#include "Class2.cs"` provoque l'erreur CS1024.
+// - Pour inclure `Class2.cs`, ajoutez simplement le fichier au projet (Visual Studio > Ajouter > √âl√©ment existant) ; il sera compil√© avec les autres fichiers.
 // - Ici, on retire la directive invalide et on conserve le reste du fichier intact.
 
 
     
 
+using System.Data;
+using System.Windows.Forms;
+using Npgsql;
 
 namespace Stock_Star
 {
@@ -34,7 +37,7 @@ namespace Stock_Star
         }
 
         protected override CreateParams CreateParams
-        { // Parametre pour changer la taille et crÈe des bord pour notre form de la fenetre ne pas toucher
+        { // Parametre pour changer la taille et cr√©e des bord pour notre form de la fenetre ne pas toucher
             get
             {
                 CreateParams cp = base.CreateParams;
@@ -44,49 +47,33 @@ namespace Stock_Star
             }
         }
 
-        private PageStock pageStock; // CrÈation d'une instance de la classe PageStock pour pouvoir l'utiliser dans le Form1
-        private PageGraphique pageGraphique; // CrÈation d'une instance de la classe PageGraphique pour pouvoir l'utiliser dans le Form1
+        private PageStock pageStock; // Cr√©ation d'une instance de la classe PageStock pour pouvoir l'utiliser dans le Form1
+        private PageGraphique pageGraphique; // Cr√©ation d'une instance de la classe PageGraphique pour pouvoir l'utiliser dans le Form1
         string StringTxtBoxPrix = "Entrez un prix";
         string StringTxtBoxProduit = "Entrez un produit";
         public Form1()
         {
             InitializeComponent();
-            pageStock = new PageStock();// Initialisation de l'instance de PageStock
-            pageGraphique = new PageGraphique();// Initialisation de l'instance de PageGraphique
-            LoadPage(pageStock); // Chargement de la page PageStock dans le Form1 Page par default
-
+            LoadData();
         }
-
-        private void LoadPage(UserControl page)
+        private void LoadData()
         {
-            Panel_Main.Controls.Clear();
-            page.Dock = DockStyle.Fill;
-            Panel_Main.Controls.Add(page);
-        }
+            ConnectionBDD bdd = new ConnectionBDD();
+            NpgsqlConnection con = bdd.GetConnection();
+            con.Open();
 
-
-        private void BtnClose_Click(object sender, EventArgs e)                                         // Permet de fermer la fentre lorsque on clique sur le bouton fermer
-        {
-            Application.Exit();
-        }
-
-        private void BtnAgrandirFenetre_Click(object sender, EventArgs e)                               //Permet d'agrandir la fentre lorsque on clique sur le bouton agrandir, et de la remettre ‡ sa taille normal lorsque l'on reclique dessus
-        {
-            if (WindowState == FormWindowState.Maximized)
+            if (con.State == ConnectionState.Open)
             {
-                WindowState = FormWindowState.Normal;
+                string cmd_sql = "SELECT type,nom,quantite,prix,date FROM produits";
+                NpgsqlDataAdapter adapter = new NpgsqlDataAdapter(cmd_sql, con);
+                DataTable table = new DataTable();
+                adapter.Fill(table);
 
+                // On lie les donn√©es au DataGridView standard
+                dataGridView1.DataSource = table;
+
+                con.Close();
             }
-            else
-            {
-                WindowState = FormWindowState.Maximized;
-            }
-        }
-
-
-        private void BtnCacherFenetre_Click(object sender, EventArgs e)
-        {
-            WindowState = FormWindowState.Minimized;
         }
 
         private void BtnMenuGraphique_Click(object sender, EventArgs e)
