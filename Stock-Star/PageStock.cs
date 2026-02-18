@@ -147,5 +147,13 @@ namespace Stock_Star
                 e.SuppressKeyPress = true;
             }
         }
+
+        private void PageStock_Load_1(object sender, EventArgs e)
+        {
+            this.BeginInvoke(new Action(() =>
+            {
+                TxtBoxObjet.Focus();
+            }));
+        }
     }
 }

@@ -111,7 +111,7 @@
             guna2DataGridView1.RowHeadersVisible = false;
             guna2DataGridView1.RowHeadersWidth = 51;
             guna2DataGridView1.Size = new Size(871, 434);
-            guna2DataGridView1.TabIndex = 7;
+            guna2DataGridView1.TabIndex = 0;
             guna2DataGridView1.ThemeStyle.AlternatingRowsStyle.BackColor = Color.White;
             guna2DataGridView1.ThemeStyle.AlternatingRowsStyle.Font = null;
             guna2DataGridView1.ThemeStyle.AlternatingRowsStyle.ForeColor = Color.Empty;
@@ -204,8 +204,9 @@
             BtnSupprimer.Name = "BtnSupprimer";
             BtnSupprimer.ShadowDecoration.CustomizableEdges = customizableEdges4;
             BtnSupprimer.Size = new Size(137, 32);
-            BtnSupprimer.TabIndex = 8;
+            BtnSupprimer.TabIndex = 3;
             BtnSupprimer.Text = "Supprimer";
+            BtnSupprimer.Click += BtnSupprimer_Click;
             // 
             // BtnAjouter
             // 
@@ -225,8 +226,9 @@
             BtnAjouter.Name = "BtnAjouter";
             BtnAjouter.ShadowDecoration.CustomizableEdges = customizableEdges6;
             BtnAjouter.Size = new Size(137, 32);
-            BtnAjouter.TabIndex = 5;
+            BtnAjouter.TabIndex = 2;
             BtnAjouter.Text = "Ajouter";
+            BtnAjouter.Click += BtnAjouter_Click;
             // 
             // TxtBoxObjet
             // 
@@ -249,7 +251,9 @@
             TxtBoxObjet.SelectedText = "";
             TxtBoxObjet.ShadowDecoration.CustomizableEdges = customizableEdges8;
             TxtBoxObjet.Size = new Size(222, 32);
-            TxtBoxObjet.TabIndex = 2;
+            TxtBoxObjet.TabIndex = 0;
+            TxtBoxObjet.Enter += TxtBoxObjet_Enter;
+            TxtBoxObjet.Leave += TxtBoxObjet_Leave;
             // 
             // TxtBoxPrice
             // 
@@ -273,6 +277,8 @@
             TxtBoxPrice.ShadowDecoration.CustomizableEdges = customizableEdges10;
             TxtBoxPrice.Size = new Size(222, 32);
             TxtBoxPrice.TabIndex = 1;
+            TxtBoxPrice.Enter += TxtBoxPrice_Enter;
+            TxtBoxPrice.Leave += TxtBoxPrice_Leave;
             // 
             // guna2GradientButton1
             // 
@@ -302,6 +308,7 @@
             Controls.Add(Panel_Top);
             Name = "PageStock";
             Size = new Size(901, 579);
+            Load += PageStock_Load_1;
             PanelPourLeDataGridView.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)guna2DataGridView1).EndInit();
             Panel_Top.ResumeLayout(false);
