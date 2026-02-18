@@ -59,15 +59,5 @@ namespace Stock_Star.Properties {
                 resourceCulture = value;
             }
         }
-        
-        /// <summary>
-        ///   Recherche une ressource localisée de type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap CloseIconeBleu {
-            get {
-                object obj = ResourceManager.GetObject("CloseIconeBleu", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
     }
 }
