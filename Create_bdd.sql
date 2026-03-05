@@ -13,14 +13,37 @@ CREATE DATABASE "Stock-Star"
     CONNECTION LIMIT = -1
     IS_TEMPLATE = False;	
 
-	--Création table Objets
+	--Création table categories
+	CREATE TABLE categories (
+		id_categorie SERIAL PRIMARY KEY NOT NULL,
+		nom_categorie TEXT NOT NULL,
+	);
+	
+	--Création table produits
 	CREATE TABLE produits (
 		id_produit SERIAL PRIMARY KEY NOT NULL,
-		type TEXT,
-		nom TEXT,
-		quantite INT,
-		date DATE
-	);
+		nom_produit TEXT NOT NULL,
+		id_categorie INT REFERENCES categories(id_categorie), --Lié avec la table categorie
+		description TEXT
+	)
+
+	--Création table achats
+	CREATE TABLE achats (
+		id_achat SERIAL PRIMARY KEY NOT NULL,
+		id_produit INT REFERENCES produits(id_produit),
+		quantite_achetee INT NOT NULL,
+		prix_achat_unitaire DECIMAL(7,2) NOT NULL, --DECIMAL(7,2) implique deux chiffre après la virgule et 7 chiffres au total soit chiffre max 99999,99€
+		date_achat DATE DEFAULT CURRENT_DATE
+	)
+	--Création table ventes
+	CREATE TABLE ventes (
+		id_vente SERIAL PRIMARY KEY NOT NULL,
+		id_produit INT REFERENCES produits(id_produit),
+		quantite_vendue INT NOT NULL,
+		prix_vente_reel DECIMAL(7,2) NOT NULL,
+		date_vente DATE DEFAULT CURRENT_DATE
+	)
+	
 	--Ajout d'une colonne a la table Produits
 	ALTER TABLE produits
 	ADD COLUMN achat real
