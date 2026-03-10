@@ -16,8 +16,8 @@ CREATE DATABASE "Stock-Star"
 	--Création table categories
 	CREATE TABLE categories (
 		id_categorie SERIAL PRIMARY KEY NOT NULL,
-		nom_categorie TEXT NOT NULL,
-	);
+		nom_categorie TEXT NOT NULL
+	)
 	
 	--Création table produits
 	CREATE TABLE produits (
@@ -35,6 +35,7 @@ CREATE DATABASE "Stock-Star"
 		prix_achat_unitaire DECIMAL(7,2) NOT NULL, --DECIMAL(7,2) implique deux chiffre après la virgule et 7 chiffres au total soit chiffre max 99999,99€
 		date_achat DATE DEFAULT CURRENT_DATE
 	)
+	
 	--Création table ventes
 	CREATE TABLE ventes (
 		id_vente SERIAL PRIMARY KEY NOT NULL,
@@ -43,6 +44,11 @@ CREATE DATABASE "Stock-Star"
 		prix_vente_reel DECIMAL(7,2) NOT NULL,
 		date_vente DATE DEFAULT CURRENT_DATE
 	)
+	-- Afficher les tables
+	SELECT * FROM categories
+	SELECT * FROM produits
+	SELECT * FROM achats
+	SELECT * FROM ventes
 	
 	--Ajout d'une colonne a la table Produits
 	ALTER TABLE produits
