@@ -16,12 +16,15 @@ namespace Stock_Star
     public partial class PageStock : UserControl
     {
         BindingList<Produit> stock = new BindingList<Produit>(); //création d'une liste de produit qui va nous permettre de stocker les produits que l'on ajoute dans le DataGridView
-
+        // On crée l'objet Gestion Produit
+        GestionProduits gestion = new GestionProduits();
         public PageStock()
         {
             InitializeComponent();
             guna2DataGridView1.AutoGenerateColumns = true;
-            guna2DataGridView1.DataSource = stock;
+            
+            // On remplie le DataGridView avec la méthode ChargerStock
+            guna2DataGridView1.DataSource = gestion.ChargerStock();
 
             stock.Add(new Produit
             {
