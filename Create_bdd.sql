@@ -51,9 +51,18 @@ CREATE DATABASE "Stock-Star"
 	INSERT INTO produits (nom_produit,id_categorie,description)
 	VALUES ('Nike AirForce 1',1,'Chassures de la marque Nike')
 
+	--On achète deux fois a des prix différents
 	INSERT INTO achats (id_produit,quantite_achetee,prix_achat_unitaire)
 	VALUES (1,50,20.5)
 	
+	INSERT INTO achats (id_produit,quantite_achetee,prix_achat_unitaire)
+	VALUES (1,20,18)
+	--On vend deux fois a des prix différents
+	INSERT INTO ventes (id_produit,quantite_vendue,prix_vente_reel)
+	VALUES (1,20,20.5)
+
+	INSERT INTO ventes (id_produit,quantite_vendue,prix_vente_reel)
+	VALUES (1,30,19.5)
 	
 	-- Afficher les tables
 	SELECT * FROM categories
@@ -61,11 +70,28 @@ CREATE DATABASE "Stock-Star"
 	SELECT * FROM achats
 	SELECT * FROM ventes
 
-
+	-- Test d'affichage des stocks (Méthode ChargerStock) --
+	SELECT
+    	c.nom_categorie AS categorie,
+		p.nom_produit AS nom,
+		--Stock actuel (Somme achat - Somme vente)
+		(SUM(DISTINCT a.quantite_achetee) - COALESCE(SUM(v.quantite_vendue), 0)) AS quantite,
+		-- Prix d'achat de revient (Somme (prix * qte)/ Somme (qte)
+		ROUND(SUM(a.prix_achat_unitaire * a.quantite_achetee) / SUM(a.quantite_achetee), 2) AS "Prix achat",
+		-- Prix de vente de revient (si on l'a vendu)
+		ROUND(SUM(v.prix_vente_reel * v.quantite_vendue) / SUM(v.quantite_vendue), 2) AS "Prix de vente",
+		p.emplacement AS emplacement, 
+		p.description AS description
+		FROM produits p
+		INNER JOIN categories c ON p.id_categorie=c.id_categorie 
+		LEFT JOIN achats a ON p.id_produit = a.id_produit 
+		LEFT JOIN ventes v ON p.id_produit = v.id_produit 
+		GROUP BY p.id_produit, p.nom_produit, p.description, c.nom_categorie;
+	
 	---- COMMANDE DE BASE ----
 	--Ajout d'une colonne a la table Produits
 	ALTER TABLE produits
-	ADD COLUMN achat real
+	ADD COLUMN emplacement TEXT
 
 	--Replacer la colonne date tout a la fin
 	ALTER TABLE produits ADD COLUMN date_new date;
