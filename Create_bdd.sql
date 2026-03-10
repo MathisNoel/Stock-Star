@@ -44,12 +44,25 @@ CREATE DATABASE "Stock-Star"
 		prix_vente_reel DECIMAL(7,2) NOT NULL,
 		date_vente DATE DEFAULT CURRENT_DATE
 	)
+	-- Insérer du contenue dans les tables
+	INSERT INTO categories (nom_categorie) -- Categorie
+	VALUES ('Chaussure')
+	
+	INSERT INTO produits (nom_produit,id_categorie,description)
+	VALUES ('Nike AirForce 1',1,'Chassures de la marque Nike')
+
+	INSERT INTO achats (id_produit,quantite_achetee,prix_achat_unitaire)
+	VALUES (1,50,20.5)
+	
+	
 	-- Afficher les tables
 	SELECT * FROM categories
 	SELECT * FROM produits
 	SELECT * FROM achats
 	SELECT * FROM ventes
-	
+
+
+	---- COMMANDE DE BASE ----
 	--Ajout d'une colonne a la table Produits
 	ALTER TABLE produits
 	ADD COLUMN achat real
