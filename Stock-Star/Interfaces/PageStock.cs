@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Stock_Star.Interfaces;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -18,26 +19,38 @@ namespace Stock_Star
         BindingList<Produit> stock = new BindingList<Produit>(); //création d'une liste de produit qui va nous permettre de stocker les produits que l'on ajoute dans le DataGridView
         // On crée l'objet Gestion Produit
         GestionProduits gestion = new GestionProduits();
-        public PageStock()
+        Form1 _parent; // Création d'une variable pour stocker la référence au Form1
+        /*public PageStock()
         {
             InitializeComponent();
             guna2DataGridView1.AutoGenerateColumns = true;
-            
+
             // On remplie le DataGridView avec la méthode ChargerStock
             guna2DataGridView1.DataSource = gestion.ChargerStock();
 
+            AidesSaisies();
+
+        }*/
+
+        public PageStock(Form1 parent)
+        {
+            InitializeComponent();
+            _parent = parent;
+
+            guna2DataGridView1.AutoGenerateColumns = true;
+            guna2DataGridView1.DataSource = gestion.ChargerStock();
             AidesSaisies();
         }
 
         //
         private void AidesSaisies()
         {
-            TxtBoxCategorie.PlaceholderText = "Entrez une catégorie";
-            TxtBoxNom.PlaceholderText = "Entrez un produit";
-            TxtBoxQuantite.PlaceholderText = "Entrez une quantité";
-            TxtBoxPrice.PlaceholderText = "Entrez un prix";
-            TxtBoxEmplacement.PlaceholderText = "Entrez un emplacement (optionnel)";
-            TxtBoxDescription.PlaceholderText = "Entrez une description (optionnel)";
+            TxtBoxCategorie.PlaceholderText = "catégorie";
+            TxtBoxNom.PlaceholderText = "produit";
+            TxtBoxQuantite.PlaceholderText = "quantité";
+            TxtBoxPrice.PlaceholderText = "prix";
+            TxtBoxEmplacement.PlaceholderText = "emplacement (optionnel)";
+            TxtBoxDescription.PlaceholderText = "description (optionnel)";
         }
 
 
@@ -76,10 +89,13 @@ namespace Stock_Star
 
             // Maintenant tu peux appeler ta méthode SQL avec les bonnes variables
             gestion.AjoutStock(Categorie, Nom, Emplacement, Description, Quantite, Prix);
-            
+            gestion.AjoutStock("Informatique", "Clavier mécanique", "Rayon A3", "Clavier RGB", 10, 49.99m);
+
+
+
             // On actualise le DataGridView pour afficher notre stock avec notre nouvelle élément
             guna2DataGridView1.DataSource = gestion.ChargerStock();
-            
+
             // On vide tous les champs de texte
             ViderChamps();
         }
@@ -116,5 +132,25 @@ namespace Stock_Star
                 e.SuppressKeyPress = true;
             }
         }
+
+        private void BtnModifier_Click(object sender, EventArgs e)
+        {
+            if (guna2DataGridView1.CurrentRow == null)
+                return;
+
+            int id = Convert.ToInt32(guna2DataGridView1.CurrentRow.Cells["ID"].Value);
+            string categorie = guna2DataGridView1.CurrentRow.Cells["Catégorie"].Value.ToString();
+            string nom = guna2DataGridView1.CurrentRow.Cells["Nom"].Value.ToString();
+            string emplacement = guna2DataGridView1.CurrentRow.Cells["Emplacement"].Value.ToString();
+            string description = guna2DataGridView1.CurrentRow.Cells["Description"].Value.ToString();
+            decimal prixAchat = Convert.ToDecimal(guna2DataGridView1.CurrentRow.Cells["Prix achat"].Value);
+            int quantite = Convert.ToInt32(guna2DataGridView1.CurrentRow.Cells["Quantité"].Value);
+
+            Form1 parent = (Form1)this.FindForm(); // Récupère la référence au Form1 à partir du UserControl
+
+
+            _parent.LoadPage(new PageModification(_parent, id, categorie, nom, quantite, emplacement, description, prixAchat));
+        }
+
     }
 }

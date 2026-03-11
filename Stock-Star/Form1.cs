@@ -1,3 +1,4 @@
+using Stock_Star.Interfaces;
 using System;
 using System.ComponentModel;
 using System.Drawing;
@@ -51,13 +52,13 @@ namespace Stock_Star
         public Form1()
         {
             InitializeComponent();
-            pageStock = new PageStock();// Initialisation de l'instance de PageStock
+            pageStock = new PageStock(this);// Initialisation de l'instance de PageStock
             pageGraphique = new PageGraphique();// Initialisation de l'instance de PageGraphique
             LoadPage(pageStock); // Chargement de la page PageStock dans le Form1 Page par default
 
         }
 
-        private void LoadPage(UserControl page)
+        public void LoadPage(UserControl page)
         {
             Panel_Main.Controls.Clear();
             page.Dock = DockStyle.Fill;
@@ -98,5 +99,7 @@ namespace Stock_Star
         {
             LoadPage(pageStock);
         }
+
+
     }
 }
