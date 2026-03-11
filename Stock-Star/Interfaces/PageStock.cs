@@ -26,96 +26,62 @@ namespace Stock_Star
             // On remplie le DataGridView avec la méthode ChargerStock
             guna2DataGridView1.DataSource = gestion.ChargerStock();
 
-            stock.Add(new Produit
-            {
-                Nom = "TEST",
-                PrixAchat = 10,
-                PrixVente = 20
-            });
+            AidesSaisies();
         }
 
-        string StringTxtBoxPrix = "Entrez un prix";
-        string StringTxtBoxProduit = "Entrez un produit";
+        //
+        private void AidesSaisies()
+        {
+            TxtBoxCategorie.PlaceholderText = "Entrez une catégorie";
+            TxtBoxNom.PlaceholderText = "Entrez un produit";
+            TxtBoxQuantite.PlaceholderText = "Entrez une quantité";
+            TxtBoxPrice.PlaceholderText = "Entrez un prix";
+            TxtBoxEmplacement.PlaceholderText = "Entrez un emplacement (optionnel)";
+            TxtBoxDescription.PlaceholderText = "Entrez une description (optionnel)";
+        }
 
+
+        // Méthode ViderLesChamps TextBox
+        private void ViderChamps()
+        {
+            TxtBoxCategorie.Clear();
+            TxtBoxNom.Clear();
+            TxtBoxQuantite.Clear();
+            TxtBoxPrice.Clear();
+            TxtBoxEmplacement.Clear();
+            TxtBoxDescription.Clear();
+        }
+
+        // Click sur le bouton Ajouter
         private void BtnAjouter_Click(object sender, EventArgs e)
         {
-            string Prix = TxtBoxPrice.Text;
-            string Nom = TxtBoxObjet.Text;
+            string Categorie = TxtBoxCategorie.Text;
+            string Nom = TxtBoxNom.Text;
+            string Emplacement = TxtBoxEmplacement.Text;
+            string Description = TxtBoxDescription.Text;
 
-            if (!decimal.TryParse(TxtBoxPrice.Text, out decimal prix))                                      // On vérifie que le prix entré est bien un nombre décimal, sinon on affiche un message d'erreur et on arrête l'exécution de la fonction
+            // Conversion sécurisée de la quantité
+            if (!int.TryParse(TxtBoxQuantite.Text, out int Quantite))
             {
-                MessageBox.Show("Prix invalide");
-                return;
+                MessageBox.Show("Veuillez saisir un nombre entier pour la quantité.");
+                return; // Break
             }
 
-            stock.Add(new Produit                                                                           // On ajoute un nouveau produit à la liste de stock
+            // .Replace('.', ',') permet d'accepter les points et les virgules
+            if (!decimal.TryParse(TxtBoxPrice.Text.Replace('.', ','), out decimal Prix))
             {
-                Nom = TxtBoxObjet.Text,
-                PrixAchat = prix,
-                PrixVente = null
-            });
-
-            TxtBoxObjet.Clear();
-            TxtBoxPrice.Clear();
-        }
-
-        private void guna2DataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
-        }
-
-        private void TxtBoxPrice_Leave(object sender, EventArgs e)                                          // Les 4 fonction suivant sert à changer la couleur dans le text box pour indiquer à l'utilisateur qu'il doit entrer un prix et un produit, et aussi pour remettre le text "Entrez un prix" et "Entrez un produit"
-        {
-            if (TxtBoxPrice.Text == "")
-            {
-                TxtBoxPrice.Text = StringTxtBoxPrix;
-                TxtBoxPrice.ForeColor = Color.Gray;
+                MessageBox.Show("Veuillez saisir un prix valide.");
+                return; //Break
             }
-        }
 
-        private void TxtBoxPrice_Enter(object sender, EventArgs e)
-        {
-            if (TxtBoxPrice.Text == StringTxtBoxPrix)
-            {
-                TxtBoxPrice.Text = "";
-                TxtBoxPrice.ForeColor = Color.Black;
-            }
-        }
-
-        private void TxtBoxObjet_Leave(object sender, EventArgs e)
-        {
-            if (TxtBoxObjet.Text == "")
-            {
-                TxtBoxObjet.Text = StringTxtBoxProduit;
-                TxtBoxObjet.ForeColor = Color.Gray;
-            }
-        }
-
-        private void TxtBoxObjet_Enter(object sender, EventArgs e)
-        {
-            if (TxtBoxObjet.Text == StringTxtBoxProduit)
-            {
-                TxtBoxObjet.Text = "";
-                TxtBoxObjet.ForeColor = Color.Black;
-            }
-        }
-
-        private void PageStock_Load(object sender, EventArgs e)
-        {
-            stock.Add(new Produit
-            {
-                Nom = "TEST",
-                PrixAchat = 10,
-                PrixVente = 20
-            });
-
-            TxtBoxPrice.Text = StringTxtBoxPrix; // Au démarage on vient charger "Entrez un prix"
-            TxtBoxPrice.ForeColor = Color.Gray; //Couleur du texte en gris
-
-            TxtBoxObjet.Text = StringTxtBoxProduit;
-            TxtBoxObjet.ForeColor = Color.Gray;
-
-            guna2DataGridView1.DataSource = stock;
+            // Maintenant tu peux appeler ta méthode SQL avec les bonnes variables
+            gestion.AjoutStock(Categorie, Nom, Emplacement, Description, Quantite, Prix);
+            
+            // On actualise le DataGridView pour afficher notre stock avec notre nouvelle élément
+            guna2DataGridView1.DataSource = gestion.ChargerStock();
+            
+            // On vide tous les champs de texte
+            ViderChamps();
         }
 
         private void BtnSupprimer_Click(object sender, EventArgs e)
@@ -149,18 +115,6 @@ namespace Stock_Star
                 //Le bip provient seulment avec la touche entrée, les autres touche ne font pas de bruit car windows ne les considère pas comme des actions de validation c'est pour ça qu'on à pas ce parametre sur le suprimmer juste au dessus.
                 e.SuppressKeyPress = true;
             }
-        }
-
-        private void PageStock_Load_1(object sender, EventArgs e)
-        {
-            this.BeginInvoke(new Action(() =>
-            {
-                TxtBoxObjet.Focus();
-
-                TxtBoxPrice.Text = StringTxtBoxPrix; // Au démarage on vient charger "Entrez un prix"
-                TxtBoxPrice.ForeColor = Color.Gray; //Couleur du texte en gris
-
-            }));
         }
     }
 }

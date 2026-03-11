@@ -24,7 +24,8 @@ CREATE DATABASE "Stock-Star"
 		id_produit SERIAL PRIMARY KEY NOT NULL,
 		nom_produit TEXT NOT NULL,
 		id_categorie INT REFERENCES categories(id_categorie), --Lié avec la table categorie
-		description TEXT
+		description TEXT,
+		emplacement TEXT
 	)
 
 	--Création table achats
@@ -70,44 +71,45 @@ CREATE DATABASE "Stock-Star"
 	SELECT * FROM achats
 	SELECT * FROM ventes
 
+	-- Ajout d'une contrainte d'unicité des champs nom_catgorie et nom_produit --
+	ALTER TABLE categories ADD CONSTRAINT unique_nom_categorie UNIQUE (nom_categorie);
+	
+	ALTER TABLE produits ADD CONSTRAINT unique_nom_produit UNIQUE (nom_produit);
+
 	-- Test d'affichage des stocks (Méthode ChargerStock) --
-	SELECT 
-		c.nom_categorie AS categorie,
+	SELECT
+    	c.nom_categorie AS categorie,
 		p.nom_produit AS nom,
-		-- Calcul du stock (Total achats - Total ventes)
-		(COALESCE(sub_achats.total_qte_achats, 0) - COALESCE(sub_ventes.total_qte_ventes, 0)) AS quantite,
-		
-		-- Calcul du prix d'achat moyen (PAMP) avec conversion numeric pour le ROUND
-		ROUND(COALESCE(sub_achats.prix_moyen_achat, 0)::numeric, 2) AS "Prix achat",
-		
-		-- Calcul du prix de vente moyen
-		ROUND(COALESCE(sub_ventes.prix_moyen_vente, 0)::numeric, 2) AS "Prix de vente",
-		
+		--Stock actuel (Somme achat - Somme vente)
+		(SUM(DISTINCT a.quantite_achetee) - COALESCE(SUM(v.quantite_vendue), 0)) AS quantite,
+		-- Prix d'achat de revient (Somme (prix * qte)/ Somme (qte)
+		ROUND(SUM(a.prix_achat_unitaire * a.quantite_achetee) / SUM(a.quantite_achetee), 2) AS "Prix achat",
+		-- Prix de vente de revient (si on l'a vendu)
+		ROUND(SUM(v.prix_vente_reel * v.quantite_vendue) / SUM(v.quantite_vendue), 2) AS "Prix de vente",
 		p.emplacement AS emplacement, 
 		p.description AS description
 		FROM produits p
-		INNER JOIN categories c ON p.id_categorie = c.id_categorie
-		-- Sous-requête pour isoler le calcul des ACHATS
-		LEFT JOIN (
-			SELECT 
-				id_produit, 
-				SUM(quantite_achetee) as total_qte_achats,
-				-- Somme(prix*qte) / Somme(qte)
-				SUM(prix_achat_unitaire * quantite_achetee) / NULLIF(SUM(quantite_achetee), 0) as prix_moyen_achat
-			FROM achats 
-			GROUP BY id_produit
-		) sub_achats ON p.id_produit = sub_achats.id_produit
-		-- Sous-requête pour isoler le calcul des VENTES
-		LEFT JOIN (
-			SELECT 
-				id_produit, 
-				SUM(quantite_vendue) as total_qte_ventes,
-				-- Somme(prix_vente*qte) / Somme(qte)
-				SUM(prix_vente_reel * quantite_vendue) / NULLIF(SUM(quantite_vendue), 0) as prix_moyen_vente
-			FROM ventes 
-			GROUP BY id_produit
-		) sub_ventes ON p.id_produit = sub_ventes.id_produit;
-		
+		INNER JOIN categories c ON p.id_categorie=c.id_categorie 
+		LEFT JOIN achats a ON p.id_produit = a.id_produit 
+		LEFT JOIN ventes v ON p.id_produit = v.id_produit 
+		GROUP BY p.id_produit, p.nom_produit, p.description, c.nom_categorie;
+
+	-- Test d'ajout de stock (Méthode AjoutStock) --
+	WITH categorie_id AS (
+	    INSERT INTO categories (nom_categorie)
+	    VALUES ('Chaussure')
+	    ON CONFLICT (nom_categorie) DO UPDATE SET nom_categorie = EXCLUDED.nom_categorie
+	    RETURNING id_categorie
+	),
+	produit_id AS (
+	    INSERT INTO produits (nom_produit,id_categorie,emplacement,description)
+	    SELECT 'Air Force 2', id_categorie, 'B7X','Description' FROM categorie_id
+		ON CONFLICT (nom_produit) DO UPDATE SET nom_produit = EXCLUDED.nom_produit
+	    RETURNING id_produit
+	)
+	INSERT INTO achats (id_produit,quantite_achetee,prix_achat_unitaire,date_achat)
+	SELECT id_produit, 8,15.7, NOW() FROM produit_id;
+	
 	---- COMMANDE DE BASE ----
 	--Ajout d'une colonne a la table Produits
 	ALTER TABLE produits
