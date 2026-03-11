@@ -24,7 +24,8 @@ CREATE DATABASE "Stock-Star"
 		id_produit SERIAL PRIMARY KEY NOT NULL,
 		nom_produit TEXT NOT NULL,
 		id_categorie INT REFERENCES categories(id_categorie), --Lié avec la table categorie
-		description TEXT
+		description TEXT,
+		emplacement TEXT
 	)
 
 	--Création table achats

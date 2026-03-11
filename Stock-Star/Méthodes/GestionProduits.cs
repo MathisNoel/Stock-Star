@@ -9,6 +9,11 @@ namespace Stock_Star
         private ConnectionBDD BDD = new ConnectionBDD();
 
         //On crée une méthode qui permettre de récupérer les données de la BDD (de type DataTable)
+        /*
+        R: Créer une DataTable qui va contenir tous nos produits présents dans la base de données sans redondance et en calculant la quantité,le prix d'achat et prix de vente réel
+        E: Rien
+        S: Une DataTable contenant tous les produits (sans redondance) avec les champs : categorie,nom,quantité,prix achat,prix de vente,emplacement,description
+        */
         public DataTable ChargerStock()
         {
             //Variable interne pour ne pas être connecté a la BDD en permanence et Fermeture de liaison une fois la méthode finie
@@ -58,32 +63,49 @@ namespace Stock_Star
         }
 
         //On crée une méthode qui permettre de ajouter un achat dans la BDD
-        public void AjoutStock(string catégorie,string nom,int quantite,decimal prix_achat,string emplacement,string description)
+        /*
+        R: Ajouter un produit / Simuler un achat dans la base de données 
+        E: 4 string correspondant à la catégorie,le nom (du produit), l'emplacement et la description
+           1 entier, la quantité achetée
+           1 décimal, le prix d'achat
+        S: Rien (ajout dans la base de données)
+        */
+        public void AjoutStock(string categorie,string nom,string emplacement,string description, int quantite, decimal prix_achat)
         {
             //Variable interne pour ne pas être connecté a la BDD en permanence et Fermeture de liaison une fois la méthode finie
             using (NpgsqlConnection connection = BDD.GetConnection())
             {
                 connection.Open();
 
-                int id_categorie;
-
                 //On définit la requête SQL qu'on va réaliser
-                string SQL = $"""
+                string SQL = """
                     WITH categorie_id AS (
-                        INSERT INTO categorie (nom_categorie)
-                        VALUES ({catégorie})
+                        INSERT INTO categories (nom_categorie)
+                        VALUES (@categorie)
                         ON CONFLICT (nom_categorie) DO UPDATE SET nom_categorie = EXCLUDED.nom_categorie
                         RETURNING id_categorie
                     ),
                     produit_id AS (
                         INSERT INTO produits (nom_produit,id_categorie,emplacement,description)
-                        SELECT {nom}, id_categorie, {emplacement},{description} FROM categorie_id
+                        SELECT @nom, id_categorie, @emplacement,@description FROM categorie_id
+                    ON CONFLICT (nom_produit) DO UPDATE SET nom_produit = EXCLUDED.nom_produit
+                        RETURNING id_produit
                     )
 
-                    INSERT INTO produits (nom_produit
+                    INSERT INTO achats (id_produit,quantite_achetee,prix_achat_unitaire,date_achat)
+                    SELECT id_produit, @quantite,@prix_achat, NOW() FROM produit_id;
+                    """;
+                using (NpgsqlCommand command = new NpgsqlCommand(SQL, connection))
+                {
+                    command.Parameters.AddWithValue("categorie", categorie);
+                    command.Parameters.AddWithValue("nom", nom);
+                    command.Parameters.AddWithValue("quantite", quantite);
+                    command.Parameters.AddWithValue("prix_achat", prix_achat);
+                    command.Parameters.AddWithValue("emplacement", emplacement);
+                    command.Parameters.AddWithValue("description", description);
 
-                """;
-                new NpgsqlCommand(SQL, connection);
+                    command.ExecuteNonQuery();
+                }
 
             }
 
