@@ -71,6 +71,11 @@ CREATE DATABASE "Stock-Star"
 	SELECT * FROM achats
 	SELECT * FROM ventes
 
+	-- Ajout d'une contrainte d'unicité des champs nom_catgorie et nom_produit --
+	ALTER TABLE categories ADD CONSTRAINT unique_nom_categorie UNIQUE (nom_categorie);
+	
+	ALTER TABLE produits ADD CONSTRAINT unique_nom_produit UNIQUE (nom_produit);
+
 	-- Test d'affichage des stocks (Méthode ChargerStock) --
 	SELECT
     	c.nom_categorie AS categorie,
@@ -88,6 +93,22 @@ CREATE DATABASE "Stock-Star"
 		LEFT JOIN achats a ON p.id_produit = a.id_produit 
 		LEFT JOIN ventes v ON p.id_produit = v.id_produit 
 		GROUP BY p.id_produit, p.nom_produit, p.description, c.nom_categorie;
+
+	-- Test d'ajout de stock (Méthode AjoutStock) --
+	WITH categorie_id AS (
+	    INSERT INTO categories (nom_categorie)
+	    VALUES ('Chaussure')
+	    ON CONFLICT (nom_categorie) DO UPDATE SET nom_categorie = EXCLUDED.nom_categorie
+	    RETURNING id_categorie
+	),
+	produit_id AS (
+	    INSERT INTO produits (nom_produit,id_categorie,emplacement,description)
+	    SELECT 'Air Force 2', id_categorie, 'B7X','Description' FROM categorie_id
+		ON CONFLICT (nom_produit) DO UPDATE SET nom_produit = EXCLUDED.nom_produit
+	    RETURNING id_produit
+	)
+	INSERT INTO achats (id_produit,quantite_achetee,prix_achat_unitaire,date_achat)
+	SELECT id_produit, 8,15.7, NOW() FROM produit_id;
 	
 	---- COMMANDE DE BASE ----
 	--Ajout d'une colonne a la table Produits
