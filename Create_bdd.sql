@@ -71,23 +71,43 @@ CREATE DATABASE "Stock-Star"
 	SELECT * FROM ventes
 
 	-- Test d'affichage des stocks (Méthode ChargerStock) --
-	SELECT
-    	c.nom_categorie AS categorie,
+	SELECT 
+		c.nom_categorie AS categorie,
 		p.nom_produit AS nom,
-		--Stock actuel (Somme achat - Somme vente)
-		(SUM(DISTINCT a.quantite_achetee) - COALESCE(SUM(v.quantite_vendue), 0)) AS quantite,
-		-- Prix d'achat de revient (Somme (prix * qte)/ Somme (qte)
-		ROUND(SUM(a.prix_achat_unitaire * a.quantite_achetee) / SUM(a.quantite_achetee), 2) AS "Prix achat",
-		-- Prix de vente de revient (si on l'a vendu)
-		ROUND(SUM(v.prix_vente_reel * v.quantite_vendue) / SUM(v.quantite_vendue), 2) AS "Prix de vente",
+		-- Calcul du stock (Total achats - Total ventes)
+		(COALESCE(sub_achats.total_qte_achats, 0) - COALESCE(sub_ventes.total_qte_ventes, 0)) AS quantite,
+		
+		-- Calcul du prix d'achat moyen (PAMP) avec conversion numeric pour le ROUND
+		ROUND(COALESCE(sub_achats.prix_moyen_achat, 0)::numeric, 2) AS "Prix achat",
+		
+		-- Calcul du prix de vente moyen
+		ROUND(COALESCE(sub_ventes.prix_moyen_vente, 0)::numeric, 2) AS "Prix de vente",
+		
 		p.emplacement AS emplacement, 
 		p.description AS description
 		FROM produits p
-		INNER JOIN categories c ON p.id_categorie=c.id_categorie 
-		LEFT JOIN achats a ON p.id_produit = a.id_produit 
-		LEFT JOIN ventes v ON p.id_produit = v.id_produit 
-		GROUP BY p.id_produit, p.nom_produit, p.description, c.nom_categorie;
-	
+		INNER JOIN categories c ON p.id_categorie = c.id_categorie
+		-- Sous-requête pour isoler le calcul des ACHATS
+		LEFT JOIN (
+			SELECT 
+				id_produit, 
+				SUM(quantite_achetee) as total_qte_achats,
+				-- Somme(prix*qte) / Somme(qte)
+				SUM(prix_achat_unitaire * quantite_achetee) / NULLIF(SUM(quantite_achetee), 0) as prix_moyen_achat
+			FROM achats 
+			GROUP BY id_produit
+		) sub_achats ON p.id_produit = sub_achats.id_produit
+		-- Sous-requête pour isoler le calcul des VENTES
+		LEFT JOIN (
+			SELECT 
+				id_produit, 
+				SUM(quantite_vendue) as total_qte_ventes,
+				-- Somme(prix_vente*qte) / Somme(qte)
+				SUM(prix_vente_reel * quantite_vendue) / NULLIF(SUM(quantite_vendue), 0) as prix_moyen_vente
+			FROM ventes 
+			GROUP BY id_produit
+		) sub_ventes ON p.id_produit = sub_ventes.id_produit;
+		
 	---- COMMANDE DE BASE ----
 	--Ajout d'une colonne a la table Produits
 	ALTER TABLE produits
