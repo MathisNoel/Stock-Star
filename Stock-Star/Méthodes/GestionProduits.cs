@@ -56,5 +56,37 @@ namespace Stock_Star
             }
 
         }
+
+        //On crée une méthode qui permettre de ajouter un achat dans la BDD
+        public void AjoutStock(string catégorie,string nom,int quantite,decimal prix_achat,string emplacement,string description)
+        {
+            //Variable interne pour ne pas être connecté a la BDD en permanence et Fermeture de liaison une fois la méthode finie
+            using (NpgsqlConnection connection = BDD.GetConnection())
+            {
+                connection.Open();
+
+                int id_categorie;
+
+                //On définit la requête SQL qu'on va réaliser
+                string SQL = $"""
+                    WITH categorie_id AS (
+                        INSERT INTO categorie (nom_categorie)
+                        VALUES ({catégorie})
+                        ON CONFLICT (nom_categorie) DO UPDATE SET nom_categorie = EXCLUDED.nom_categorie
+                        RETURNING id_categorie
+                    ),
+                    produit_id AS (
+                        INSERT INTO produits (nom_produit,id_categorie,emplacement,description)
+                        SELECT {nom}, id_categorie, {emplacement},{description} FROM categorie_id
+                    )
+
+                    INSERT INTO produits (nom_produit
+
+                """;
+                new NpgsqlCommand(SQL, connection);
+
+            }
+
+        }
     }
 }
