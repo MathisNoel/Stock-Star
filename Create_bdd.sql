@@ -45,13 +45,36 @@ CREATE DATABASE "Stock-Star"
 		prix_vente_reel DECIMAL(7,2) NOT NULL,
 		date_vente DATE DEFAULT CURRENT_DATE
 	)
+	
+	-- Ajout d'une contrainte d'unicité des champs nom_catgorie et nom_produit --
+	ALTER TABLE categories ADD CONSTRAINT unique_nom_categorie UNIQUE (nom_categorie);
+	
+	ALTER TABLE produits ADD CONSTRAINT unique_nom_produit UNIQUE (nom_produit);
+
+	-- Configuration du ON DELETE CASCADE (supprimer un produit avec toutes ses dépendances) --
+	-- Tables Achats :
+	ALTER TABLE achats
+	DROP CONSTRAINT achats_id_produit_fkey;
+	ALTER TABLE achats
+	ADD FOREIGN KEY (id_produit)
+	REFERENCES produits(id_produit)
+	ON DELETE CASCADE;
+
+	-- Tables Ventes :
+	ALTER TABLE ventes
+	DROP CONSTRAINT ventes_id_produit_fkey;
+	ALTER TABLE ventes
+	ADD FOREIGN KEY (id_produit)
+	REFERENCES produits(id_produit)
+	ON DELETE CASCADE;
+	
+	--### TEST ###--
 	-- Insérer du contenue dans les tables
 	INSERT INTO categories (nom_categorie) -- Categorie
 	VALUES ('Chaussure')
 	
 	INSERT INTO produits (nom_produit,id_categorie,description)
 	VALUES ('Nike AirForce 1',1,'Chassures de la marque Nike')
-
 	--On achète deux fois a des prix différents
 	INSERT INTO achats (id_produit,quantite_achetee,prix_achat_unitaire)
 	VALUES (1,50,20.5)
@@ -66,15 +89,10 @@ CREATE DATABASE "Stock-Star"
 	VALUES (1,30,19.5)
 	
 	-- Afficher les tables
-	SELECT * FROM categories
-	SELECT * FROM produits
-	SELECT * FROM achats
-	SELECT * FROM ventes
-
-	-- Ajout d'une contrainte d'unicité des champs nom_catgorie et nom_produit --
-	ALTER TABLE categories ADD CONSTRAINT unique_nom_categorie UNIQUE (nom_categorie);
-	
-	ALTER TABLE produits ADD CONSTRAINT unique_nom_produit UNIQUE (nom_produit);
+	SELECT * FROM categories;
+	SELECT * FROM produits;
+	SELECT * FROM achats;
+	SELECT * FROM ventes;
 
 	-- Test d'affichage des stocks (Méthode ChargerStock) --
 	SELECT
@@ -109,7 +127,12 @@ CREATE DATABASE "Stock-Star"
 	)
 	INSERT INTO achats (id_produit,quantite_achetee,prix_achat_unitaire,date_achat)
 	SELECT id_produit, 8,15.7, NOW() FROM produit_id;
-	
+
+	-- Test de supprimer un produit (Méthode SupprimerProduit) --
+	DELETE FROM produits WHERE nom_produit='Nke Dunk 1 Low'; -- Nous avons préalablement configurer le ON DELETE CASCADE !
+	DELETE FROM categories --On supprime la catégorie si il n'y a plus aucun produit associé
+	WHERE id_categorie NOT IN (SELECT DISTINCT id_categorie FROM produits);
+
 	---- COMMANDE DE BASE ----
 	--Ajout d'une colonne a la table Produits
 	ALTER TABLE produits
