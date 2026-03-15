@@ -16,33 +16,33 @@ namespace Stock_Star
 {
     public partial class PageStock : UserControl
     {
-        BindingList<Produit> stock = new BindingList<Produit>(); //création d'une liste de produit qui va nous permettre de stocker les produits que l'on ajoute dans le DataGridView
         // On crée l'objet Gestion Produit
         GestionProduits gestion = new GestionProduits();
         Form1 _parent; // Création d'une variable pour stocker la référence au Form1
-        /*public PageStock()
-        {
-            InitializeComponent();
-            guna2DataGridView1.AutoGenerateColumns = true;
-
-            // On remplie le DataGridView avec la méthode ChargerStock
-            guna2DataGridView1.DataSource = gestion.ChargerStock();
-
-            AidesSaisies();
-
-        }*/
 
         public PageStock(Form1 parent)
         {
             InitializeComponent();
             _parent = parent;
 
-            guna2DataGridView1.AutoGenerateColumns = true;
-            guna2DataGridView1.DataSource = gestion.ChargerStock();
+            ActualiserGrille();
             AidesSaisies();
         }
 
-        //
+        // Méthode pour actualiser la DataGridView
+        public void ActualiserGrille()
+        {
+            guna2DataGridView1.DataSource = gestion.ChargerStock();
+            // On met les boutons supprimer tout à droite
+            var ColonneSupprimer = guna2DataGridView1.Columns["BoutonSupprimer"];
+            if (ColonneSupprimer != null)
+            {
+                ColonneSupprimer.DisplayIndex = guna2DataGridView1.ColumnCount - 1;
+                ColonneSupprimer.Width = 80;
+            }
+        }
+
+        // Aides a la saisies pour les différents champs a renseigner d'un produit
         private void AidesSaisies()
         {
             TxtBoxCategorie.PlaceholderText = "catégorie";
@@ -53,8 +53,7 @@ namespace Stock_Star
             TxtBoxDescription.PlaceholderText = "description (optionnel)";
         }
 
-
-        // Méthode ViderLesChamps TextBox
+        // Méthode pour vider les champs éventuellement renseigner par l'utilisateur des TxtBox (catégorie,nom,...)
         private void ViderChamps()
         {
             TxtBoxCategorie.Clear();
@@ -65,7 +64,7 @@ namespace Stock_Star
             TxtBoxDescription.Clear();
         }
 
-        // Click sur le bouton Ajouter
+        // Méthode suite a un click sur le bouton Ajouter
         private void BtnAjouter_Click(object sender, EventArgs e)
         {
             string Categorie = TxtBoxCategorie.Text;
@@ -73,63 +72,43 @@ namespace Stock_Star
             string Emplacement = TxtBoxEmplacement.Text;
             string Description = TxtBoxDescription.Text;
 
-            // Conversion sécurisée de la quantité
+            // Conversion sécurisée de la quantité en un entier
             if (!int.TryParse(TxtBoxQuantite.Text, out int Quantite))
             {
                 MessageBox.Show("Veuillez saisir un nombre entier pour la quantité.");
                 return; // Break
             }
 
-            // .Replace('.', ',') permet d'accepter les points et les virgules
+            // .Replace('.', ',') permet d'accepter les points et les virgules pour le chiffre décimal
             if (!decimal.TryParse(TxtBoxPrice.Text.Replace('.', ','), out decimal Prix))
             {
                 MessageBox.Show("Veuillez saisir un prix valide.");
                 return; //Break
             }
 
-            // Maintenant tu peux appeler ta méthode SQL avec les bonnes variables
+            // Appeler la méthode SQL avec les bonnes variables
             gestion.AjoutStock(Categorie, Nom, Emplacement, Description, Quantite, Prix);
-            gestion.AjoutStock("Informatique", "Clavier mécanique", "Rayon A3", "Clavier RGB", 10, 49.99m);
-
-
 
             // On actualise le DataGridView pour afficher notre stock avec notre nouvelle élément
-            guna2DataGridView1.DataSource = gestion.ChargerStock();
+            ActualiserGrille();
 
             // On vide tous les champs de texte
             ViderChamps();
         }
 
-        private void BtnSupprimer_Click(object sender, EventArgs e)
+        // Méthode lors d'un click sur un bouton du DataGridView en particulier le bouton Supprimer (afin de supprimer un produit)
+        private void ClickOnDataGridView(object sender, DataGridViewCellEventArgs e)
         {
-            if (guna2DataGridView1.CurrentRow == null)
+            // On vérifie si on a cliqué sur la colonne de l'image
+            if (e.ColumnIndex >= 0 && guna2DataGridView1.Columns[e.ColumnIndex].Name == "BoutonSupprimer" && e.RowIndex >= 0)
             {
-                MessageBox.Show("Sélectionnez une ligne à supprimer.");
-                return;
-            }
-
-            if (guna2DataGridView1.CurrentRow.DataBoundItem is Produit produit)
-            {
-                stock.Remove(produit);
-            }
-        }
-
-        private void guna2DataGridView1_KeyDown(object sender, KeyEventArgs e) //Si on appuye su le Btn suprimmer on supprime la ligne selectionner dans le DataGridView
-        {
-            if (e.KeyCode == Keys.Delete)
-            {
-                BtnSupprimer_Click(sender, e);
-            }
-        }
-
-        private void TxtBoxPrice_KeyDown(object sender, KeyEventArgs e)
-        {
-            if (e.KeyCode == Keys.Enter)
-            {
-                BtnAjouter_Click(sender, e);
-                e.Handled = true; //Cette ligne empêche le "ding" sonore lorsque vous appuyez sur Entrée
-                //Le bip provient seulment avec la touche entrée, les autres touche ne font pas de bruit car windows ne les considère pas comme des actions de validation c'est pour ça qu'on à pas ce parametre sur le suprimmer juste au dessus.
-                e.SuppressKeyPress = true;
+                // On récupère le nom du produit sur la ligne | ?. et ?? "" signifie que si il n'y a aucune valeur (null) on le transforme en caractère vide ''.
+                string nom = guna2DataGridView1.Rows[e.RowIndex].Cells["Nom"].Value?.ToString() ?? "";
+                if (!string.IsNullOrEmpty(nom))
+                {
+                    gestion.SupprimerProduit(nom);
+                    ActualiserGrille();
+                }
             }
         }
 
