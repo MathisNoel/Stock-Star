@@ -59,5 +59,15 @@ namespace Stock_Star.Properties {
                 resourceCulture = value;
             }
         }
+        
+        /// <summary>
+        ///   Recherche une ressource localisée de type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Bouton_Supprimer {
+            get {
+                object obj = ResourceManager.GetObject("Bouton_Supprimer", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
     }
 }
