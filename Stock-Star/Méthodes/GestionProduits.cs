@@ -63,7 +63,7 @@ namespace Stock_Star
 
         }
 
-        //On crée une méthode qui permettre de ajouter un achat dans la BDD
+        //On crée une méthode qui permettre d'ajouter un achat dans la BDD
         /*
         R: Ajouter un produit / Simuler un achat dans la base de données 
         E: 4 string correspondant à la catégorie,le nom (du produit), l'emplacement et la description
@@ -113,14 +113,38 @@ namespace Stock_Star
 
         }
 
-
-        //On crée une méthode qui vas permettre de modifier un produit déja existant dans la BDD
+        //On crée une méthode qui va permettre de supprimer un produit déja existant dans la BDD
         /*
-        R: Modifier les variable de notre produit grâce à l'ID produit / Simuler un achat dans la base de données 
-        E: 4 string correspondant à la catégorie,le nom (du produit), l'emplacement et la description
-           1 entier, la quantité achetée
-           1 décimal, le prix d'achat
-        S: Rien (ajout dans la base de données)
+        R : Supprimer complétement un produit passé en paramètre (nom)
+        E : 1 string, le nom du produit a supprimer
+        S : Rien
+        */
+        public void SupprimerProduit(string nom)
+        {
+            using (NpgsqlConnection connection = BDD.GetConnection())
+            {
+                connection.Open();
+                string SQL = """
+                    -- Nous avons préalablement configurer le ON DELETE CASCADE !
+                    DELETE FROM produits WHERE nom_produit=@nom; 
+                    --On supprime la catégorie si il n'y a plus aucun produit associé
+                    DELETE FROM categories 
+                    WHERE id_categorie NOT IN (SELECT DISTINCT id_categorie FROM produits WHERE id_categorie IS NOT NULL);
+                    """;
+                using (NpgsqlCommand command= new NpgsqlCommand(SQL, connection))
+                {
+                    command.Parameters.AddWithValue("nom", nom);
+                    command.ExecuteNonQuery() ;
+                }
+            }
+        }
+
+
+        //On crée une méthode qui va permettre de modifier un produit déja existant dans la BDD
+        /*
+        R:
+        E: 
+        S:
         */
         public void ModifierProduit(int idProduit, string categorie, string nom, string emplacement, string description)
         {
@@ -128,31 +152,10 @@ namespace Stock_Star
             {
                 connection.Open();
                 string SQL = """
-                        WITH categorie_id AS (
-                            INSERT INTO categories (nom_categorie)
-                            VALUES (@categorie)
-                            ON CONFLICT (nom_categorie) DO UPDATE SET nom_categorie = EXCLUDED.nom_categorie
-                            RETURNING id_categorie
-                        )
-
-                        UPDATE produits
-                        SET 
-                            nom_produit = @nom,
-                            id_categorie = (SELECT id_categorie FROM categorie_id),
-                            emplacement = @emplacement,
-                            description = @description
-
-                        WHERE id_produit = @idProduit;
+                        
                         """;
                 using (NpgsqlCommand command = new NpgsqlCommand(SQL, connection))
                 {
-                    command.Parameters.AddWithValue("categorie", categorie);
-                    command.Parameters.AddWithValue("nom", nom);
-                    //command.Parameters.AddWithValue("quantite", quantite);
-                    //command.Parameters.AddWithValue("prix_achat", prix_achat);
-                    command.Parameters.AddWithValue("emplacement", emplacement);
-                    command.Parameters.AddWithValue("description", description);
-                    command.Parameters.AddWithValue("idProduit", idProduit);
 
                     command.ExecuteNonQuery();
                 }
