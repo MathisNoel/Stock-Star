@@ -24,7 +24,6 @@ namespace Stock_Star
                 //On définit la requête SQL qu'on va réaliser
                 string SQL = """      
                     SELECT 
-                        p.id_produit AS "ID",
                         c.nom_categorie AS "Catégorie",
                         p.nom_produit AS "Nom",
                         (COALESCE(sub_achats.total_qte_achats, 0) - COALESCE(sub_ventes.total_qte_ventes, 0)) AS "Quantité",
