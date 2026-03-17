@@ -182,11 +182,11 @@
             BtnModifier.FillColor2 = Color.DarkGoldenrod;
             BtnModifier.Font = new Font("Segoe UI", 9F);
             BtnModifier.ForeColor = Color.WhiteSmoke;
-            BtnModifier.Location = new Point(749, 43);
+            BtnModifier.Location = new Point(749, 81);
             BtnModifier.Name = "BtnModifier";
             BtnModifier.ShadowDecoration.CustomizableEdges = customizableEdges4;
             BtnModifier.Size = new Size(137, 32);
-            BtnModifier.TabIndex = 11;
+            BtnModifier.TabIndex = 7;
             BtnModifier.Text = "Modifier";
             BtnModifier.Click += BtnModifier_Click;
             // 
@@ -203,14 +203,14 @@
             TxtBoxDescription.FocusedState.BorderColor = Color.FromArgb(94, 148, 255);
             TxtBoxDescription.Font = new Font("Segoe UI", 9F);
             TxtBoxDescription.HoverState.BorderColor = Color.FromArgb(94, 148, 255);
-            TxtBoxDescription.Location = new Point(454, 29);
+            TxtBoxDescription.Location = new Point(403, 29);
             TxtBoxDescription.Margin = new Padding(3, 4, 3, 4);
             TxtBoxDescription.Name = "TxtBoxDescription";
             TxtBoxDescription.PlaceholderText = "";
             TxtBoxDescription.SelectedText = "";
             TxtBoxDescription.ShadowDecoration.CustomizableEdges = customizableEdges6;
-            TxtBoxDescription.Size = new Size(123, 32);
-            TxtBoxDescription.TabIndex = 10;
+            TxtBoxDescription.Size = new Size(483, 32);
+            TxtBoxDescription.TabIndex = 5;
             // 
             // TxtBoxCategorie
             // 
@@ -233,7 +233,7 @@
             TxtBoxCategorie.SelectedText = "";
             TxtBoxCategorie.ShadowDecoration.CustomizableEdges = customizableEdges8;
             TxtBoxCategorie.Size = new Size(148, 32);
-            TxtBoxCategorie.TabIndex = 8;
+            TxtBoxCategorie.TabIndex = 0;
             // 
             // TxtBoxEmplacement
             // 
@@ -248,14 +248,14 @@
             TxtBoxEmplacement.FocusedState.BorderColor = Color.FromArgb(94, 148, 255);
             TxtBoxEmplacement.Font = new Font("Segoe UI", 9F);
             TxtBoxEmplacement.HoverState.BorderColor = Color.FromArgb(94, 148, 255);
-            TxtBoxEmplacement.Location = new Point(392, 29);
+            TxtBoxEmplacement.Location = new Point(67, 29);
             TxtBoxEmplacement.Margin = new Padding(3, 4, 3, 4);
             TxtBoxEmplacement.Name = "TxtBoxEmplacement";
             TxtBoxEmplacement.PlaceholderText = "";
             TxtBoxEmplacement.SelectedText = "";
             TxtBoxEmplacement.ShadowDecoration.CustomizableEdges = customizableEdges10;
-            TxtBoxEmplacement.Size = new Size(56, 32);
-            TxtBoxEmplacement.TabIndex = 9;
+            TxtBoxEmplacement.Size = new Size(315, 32);
+            TxtBoxEmplacement.TabIndex = 4;
             // 
             // TxtBoxQuantite
             // 
@@ -278,7 +278,7 @@
             TxtBoxQuantite.SelectedText = "";
             TxtBoxQuantite.ShadowDecoration.CustomizableEdges = customizableEdges12;
             TxtBoxQuantite.Size = new Size(85, 32);
-            TxtBoxQuantite.TabIndex = 7;
+            TxtBoxQuantite.TabIndex = 3;
             // 
             // BtnAjouter
             // 
@@ -298,7 +298,7 @@
             BtnAjouter.Name = "BtnAjouter";
             BtnAjouter.ShadowDecoration.CustomizableEdges = customizableEdges14;
             BtnAjouter.Size = new Size(137, 32);
-            BtnAjouter.TabIndex = 2;
+            BtnAjouter.TabIndex = 6;
             BtnAjouter.Text = "Ajouter";
             BtnAjouter.Click += BtnAjouter_Click;
             // 
@@ -323,7 +323,7 @@
             TxtBoxNom.SelectedText = "";
             TxtBoxNom.ShadowDecoration.CustomizableEdges = customizableEdges16;
             TxtBoxNom.Size = new Size(147, 32);
-            TxtBoxNom.TabIndex = 0;
+            TxtBoxNom.TabIndex = 1;
             // 
             // TxtBoxPrice
             // 
@@ -346,7 +346,7 @@
             TxtBoxPrice.SelectedText = "";
             TxtBoxPrice.ShadowDecoration.CustomizableEdges = customizableEdges18;
             TxtBoxPrice.Size = new Size(83, 32);
-            TxtBoxPrice.TabIndex = 1;
+            TxtBoxPrice.TabIndex = 2;
             // 
             // guna2GradientButton1
             // 
@@ -366,7 +366,7 @@
             guna2GradientButton1.Name = "guna2GradientButton1";
             guna2GradientButton1.ShadowDecoration.CustomizableEdges = customizableEdges20;
             guna2GradientButton1.Size = new Size(148, 74);
-            guna2GradientButton1.TabIndex = 6;
+            guna2GradientButton1.TabIndex = 8;
             // 
             // PageStock
             // 
