@@ -8,9 +8,9 @@ using System.Windows.Forms;
 
 namespace Stock_Star.Interfaces
 {
-    public partial class UserControl1 : UserControl
+    public partial class PageAchatEtVente : UserControl
     {
-        public UserControl1()
+        public PageAchatEtVente()
         {
             InitializeComponent();
         }

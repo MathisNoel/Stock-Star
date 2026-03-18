@@ -47,6 +47,7 @@ namespace Stock_Star
 
         private PageStock pageStock; // Création d'une instance de la classe PageStock pour pouvoir l'utiliser dans le Form1
         private PageGraphique pageGraphique; // Création d'une instance de la classe PageGraphique pour pouvoir l'utiliser dans le Form1
+        private PageAchatEtVente pageAchatEtVente;
         string StringTxtBoxPrix = "Entrez un prix";
         string StringTxtBoxProduit = "Entrez un produit";
         public Form1()
@@ -54,6 +55,7 @@ namespace Stock_Star
             InitializeComponent();
             pageStock = new PageStock(this);// Initialisation de l'instance de PageStock
             pageGraphique = new PageGraphique();// Initialisation de l'instance de PageGraphique
+            pageAchatEtVente = new PageAchatEtVente(); // Initialisation de l'instance de PageAchatEtVente
             LoadPage(pageStock); // Chargement de la page PageStock dans le Form1 Page par default
 
         }
@@ -100,6 +102,9 @@ namespace Stock_Star
             LoadPage(pageStock);
         }
 
-
+        private void BtnMenuAchatEtVente_Click(object sender, EventArgs e)
+        {
+            LoadPage(pageAchatEtVente);
+        }
     }
 }

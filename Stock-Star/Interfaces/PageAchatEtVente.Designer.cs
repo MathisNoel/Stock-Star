@@ -1,6 +1,6 @@
 ﻿namespace Stock_Star.Interfaces
 {
-    partial class UserControl1
+    partial class PageAchatEtVente
     {
         /// <summary> 
         /// Variable nécessaire au concepteur.
@@ -28,8 +28,15 @@
         /// </summary>
         private void InitializeComponent()
         {
-            components = new System.ComponentModel.Container();
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            SuspendLayout();
+            // 
+            // PageAchatEtVente
+            // 
+            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleMode = AutoScaleMode.Font;
+            Name = "PageAchatEtVente";
+            Size = new Size(804, 485);
+            ResumeLayout(false);
         }
 
         #endregion
