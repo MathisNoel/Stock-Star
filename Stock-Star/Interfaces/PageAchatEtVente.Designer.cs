@@ -33,34 +33,37 @@
             DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges17 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges18 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges3 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges4 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges19 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges20 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges5 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges6 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges7 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges8 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges9 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges10 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges11 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges12 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges13 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges14 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges15 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(PageAchatEtVente));
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges16 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges17 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(PageAchatEtVente));
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges18 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges11 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges12 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges3 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges4 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             PanelPourLeDataGridView = new Guna.UI2.WinForms.Guna2Panel();
             guna2DataGridView1 = new Guna.UI2.WinForms.Guna2DataGridView();
             BoutonSupprimer = new DataGridViewImageColumn();
             Panel_Top = new Guna.UI2.WinForms.Guna2Panel();
             BtnVendre = new Guna.UI2.WinForms.Guna2GradientButton();
-            TxtBoxIDProduit = new Guna.UI2.WinForms.Guna2TextBox();
-            TxtBoxQuantite = new Guna.UI2.WinForms.Guna2TextBox();
-            BtnAcheter = new Guna.UI2.WinForms.Guna2GradientButton();
-            TxtBoxNom = new Guna.UI2.WinForms.Guna2TextBox();
-            TxtBoxPrice = new Guna.UI2.WinForms.Guna2TextBox();
+            TxtBoxIDProduitPageVente = new Guna.UI2.WinForms.Guna2TextBox();
+            TxtBoxQuantitePageVente = new Guna.UI2.WinForms.Guna2TextBox();
+            TxtBoxNomPageVente = new Guna.UI2.WinForms.Guna2TextBox();
+            TxtBoxPricePageVente = new Guna.UI2.WinForms.Guna2TextBox();
             guna2GradientButton1 = new Guna.UI2.WinForms.Guna2GradientButton();
+            BtnAcheter = new Guna.UI2.WinForms.Guna2GradientButton();
+            TxtBoxDatePageVente = new Guna.UI2.WinForms.Guna2TextBox();
             PanelPourLeDataGridView.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)guna2DataGridView1).BeginInit();
             Panel_Top.SuspendLayout();
@@ -144,18 +147,19 @@
             // 
             // Panel_Top
             // 
+            Panel_Top.Controls.Add(TxtBoxDatePageVente);
             Panel_Top.Controls.Add(BtnVendre);
-            Panel_Top.Controls.Add(TxtBoxIDProduit);
-            Panel_Top.Controls.Add(TxtBoxQuantite);
+            Panel_Top.Controls.Add(TxtBoxIDProduitPageVente);
+            Panel_Top.Controls.Add(TxtBoxQuantitePageVente);
             Panel_Top.Controls.Add(BtnAcheter);
-            Panel_Top.Controls.Add(TxtBoxNom);
-            Panel_Top.Controls.Add(TxtBoxPrice);
+            Panel_Top.Controls.Add(TxtBoxNomPageVente);
+            Panel_Top.Controls.Add(TxtBoxPricePageVente);
             Panel_Top.Controls.Add(guna2GradientButton1);
-            Panel_Top.CustomizableEdges = customizableEdges17;
+            Panel_Top.CustomizableEdges = customizableEdges19;
             Panel_Top.Dock = DockStyle.Top;
             Panel_Top.Location = new Point(0, 0);
             Panel_Top.Name = "Panel_Top";
-            Panel_Top.ShadowDecoration.CustomizableEdges = customizableEdges18;
+            Panel_Top.ShadowDecoration.CustomizableEdges = customizableEdges20;
             Panel_Top.Size = new Size(901, 120);
             Panel_Top.TabIndex = 13;
             // 
@@ -163,7 +167,7 @@
             // 
             BtnVendre.Anchor = AnchorStyles.Top;
             BtnVendre.BorderRadius = 15;
-            BtnVendre.CustomizableEdges = customizableEdges3;
+            BtnVendre.CustomizableEdges = customizableEdges5;
             BtnVendre.DisabledState.BorderColor = Color.DarkGray;
             BtnVendre.DisabledState.CustomBorderColor = Color.DarkGray;
             BtnVendre.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
@@ -175,127 +179,107 @@
             BtnVendre.ForeColor = Color.WhiteSmoke;
             BtnVendre.Location = new Point(746, 82);
             BtnVendre.Name = "BtnVendre";
-            BtnVendre.ShadowDecoration.CustomizableEdges = customizableEdges4;
+            BtnVendre.ShadowDecoration.CustomizableEdges = customizableEdges6;
             BtnVendre.Size = new Size(137, 32);
             BtnVendre.TabIndex = 7;
             BtnVendre.Text = "Vendre";
+            BtnVendre.Click += BtnVendre_Click;
             // 
-            // TxtBoxIDProduit
+            // TxtBoxIDProduitPageVente
             // 
-            TxtBoxIDProduit.Anchor = AnchorStyles.Top;
-            TxtBoxIDProduit.BorderColor = Color.DarkGray;
-            TxtBoxIDProduit.BorderRadius = 15;
-            TxtBoxIDProduit.CustomizableEdges = customizableEdges5;
-            TxtBoxIDProduit.DefaultText = "";
-            TxtBoxIDProduit.DisabledState.BorderColor = Color.FromArgb(208, 208, 208);
-            TxtBoxIDProduit.DisabledState.FillColor = Color.FromArgb(226, 226, 226);
-            TxtBoxIDProduit.DisabledState.ForeColor = Color.FromArgb(138, 138, 138);
-            TxtBoxIDProduit.DisabledState.PlaceholderForeColor = Color.FromArgb(138, 138, 138);
-            TxtBoxIDProduit.FocusedState.BorderColor = Color.FromArgb(94, 148, 255);
-            TxtBoxIDProduit.Font = new Font("Segoe UI", 9F);
-            TxtBoxIDProduit.HoverState.BorderColor = Color.FromArgb(94, 148, 255);
-            TxtBoxIDProduit.Location = new Point(64, 82);
-            TxtBoxIDProduit.Margin = new Padding(3, 4, 3, 4);
-            TxtBoxIDProduit.Name = "TxtBoxIDProduit";
-            TxtBoxIDProduit.PlaceholderText = "";
-            TxtBoxIDProduit.SelectedText = "";
-            TxtBoxIDProduit.ShadowDecoration.CustomizableEdges = customizableEdges6;
-            TxtBoxIDProduit.Size = new Size(148, 32);
-            TxtBoxIDProduit.TabIndex = 0;
+            TxtBoxIDProduitPageVente.Anchor = AnchorStyles.Top;
+            TxtBoxIDProduitPageVente.BorderColor = Color.DarkGray;
+            TxtBoxIDProduitPageVente.BorderRadius = 15;
+            TxtBoxIDProduitPageVente.CustomizableEdges = customizableEdges7;
+            TxtBoxIDProduitPageVente.DefaultText = "";
+            TxtBoxIDProduitPageVente.DisabledState.BorderColor = Color.FromArgb(208, 208, 208);
+            TxtBoxIDProduitPageVente.DisabledState.FillColor = Color.FromArgb(226, 226, 226);
+            TxtBoxIDProduitPageVente.DisabledState.ForeColor = Color.FromArgb(138, 138, 138);
+            TxtBoxIDProduitPageVente.DisabledState.PlaceholderForeColor = Color.FromArgb(138, 138, 138);
+            TxtBoxIDProduitPageVente.FocusedState.BorderColor = Color.FromArgb(94, 148, 255);
+            TxtBoxIDProduitPageVente.Font = new Font("Segoe UI", 9F);
+            TxtBoxIDProduitPageVente.HoverState.BorderColor = Color.FromArgb(94, 148, 255);
+            TxtBoxIDProduitPageVente.Location = new Point(64, 82);
+            TxtBoxIDProduitPageVente.Margin = new Padding(3, 4, 3, 4);
+            TxtBoxIDProduitPageVente.Name = "TxtBoxIDProduitPageVente";
+            TxtBoxIDProduitPageVente.PlaceholderText = "";
+            TxtBoxIDProduitPageVente.SelectedText = "";
+            TxtBoxIDProduitPageVente.ShadowDecoration.CustomizableEdges = customizableEdges8;
+            TxtBoxIDProduitPageVente.Size = new Size(148, 32);
+            TxtBoxIDProduitPageVente.TabIndex = 0;
             // 
-            // TxtBoxQuantite
+            // TxtBoxQuantitePageVente
             // 
-            TxtBoxQuantite.Anchor = AnchorStyles.Top;
-            TxtBoxQuantite.BorderColor = Color.DarkGray;
-            TxtBoxQuantite.BorderRadius = 15;
-            TxtBoxQuantite.CustomizableEdges = customizableEdges7;
-            TxtBoxQuantite.DefaultText = "";
-            TxtBoxQuantite.DisabledState.BorderColor = Color.FromArgb(208, 208, 208);
-            TxtBoxQuantite.DisabledState.FillColor = Color.FromArgb(226, 226, 226);
-            TxtBoxQuantite.DisabledState.ForeColor = Color.FromArgb(138, 138, 138);
-            TxtBoxQuantite.DisabledState.PlaceholderForeColor = Color.FromArgb(138, 138, 138);
-            TxtBoxQuantite.FocusedState.BorderColor = Color.FromArgb(94, 148, 255);
-            TxtBoxQuantite.Font = new Font("Segoe UI", 9F);
-            TxtBoxQuantite.HoverState.BorderColor = Color.FromArgb(94, 148, 255);
-            TxtBoxQuantite.Location = new Point(501, 82);
-            TxtBoxQuantite.Margin = new Padding(3, 4, 3, 4);
-            TxtBoxQuantite.Name = "TxtBoxQuantite";
-            TxtBoxQuantite.PlaceholderText = "";
-            TxtBoxQuantite.SelectedText = "";
-            TxtBoxQuantite.ShadowDecoration.CustomizableEdges = customizableEdges8;
-            TxtBoxQuantite.Size = new Size(85, 32);
-            TxtBoxQuantite.TabIndex = 3;
+            TxtBoxQuantitePageVente.Anchor = AnchorStyles.Top;
+            TxtBoxQuantitePageVente.BorderColor = Color.DarkGray;
+            TxtBoxQuantitePageVente.BorderRadius = 15;
+            TxtBoxQuantitePageVente.CustomizableEdges = customizableEdges9;
+            TxtBoxQuantitePageVente.DefaultText = "";
+            TxtBoxQuantitePageVente.DisabledState.BorderColor = Color.FromArgb(208, 208, 208);
+            TxtBoxQuantitePageVente.DisabledState.FillColor = Color.FromArgb(226, 226, 226);
+            TxtBoxQuantitePageVente.DisabledState.ForeColor = Color.FromArgb(138, 138, 138);
+            TxtBoxQuantitePageVente.DisabledState.PlaceholderForeColor = Color.FromArgb(138, 138, 138);
+            TxtBoxQuantitePageVente.FocusedState.BorderColor = Color.FromArgb(94, 148, 255);
+            TxtBoxQuantitePageVente.Font = new Font("Segoe UI", 9F);
+            TxtBoxQuantitePageVente.HoverState.BorderColor = Color.FromArgb(94, 148, 255);
+            TxtBoxQuantitePageVente.Location = new Point(501, 82);
+            TxtBoxQuantitePageVente.Margin = new Padding(3, 4, 3, 4);
+            TxtBoxQuantitePageVente.Name = "TxtBoxQuantitePageVente";
+            TxtBoxQuantitePageVente.PlaceholderText = "";
+            TxtBoxQuantitePageVente.SelectedText = "";
+            TxtBoxQuantitePageVente.ShadowDecoration.CustomizableEdges = customizableEdges10;
+            TxtBoxQuantitePageVente.Size = new Size(85, 32);
+            TxtBoxQuantitePageVente.TabIndex = 3;
             // 
-            // BtnAcheter
+            // TxtBoxNomPageVente
             // 
-            BtnAcheter.Anchor = AnchorStyles.Top;
-            BtnAcheter.BorderRadius = 15;
-            BtnAcheter.CustomizableEdges = customizableEdges9;
-            BtnAcheter.DisabledState.BorderColor = Color.DarkGray;
-            BtnAcheter.DisabledState.CustomBorderColor = Color.DarkGray;
-            BtnAcheter.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
-            BtnAcheter.DisabledState.FillColor2 = Color.FromArgb(169, 169, 169);
-            BtnAcheter.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
-            BtnAcheter.FillColor = Color.FromArgb(184, 150, 62);
-            BtnAcheter.FillColor2 = Color.DarkGoldenrod;
-            BtnAcheter.Font = new Font("Segoe UI", 9F);
-            BtnAcheter.ForeColor = Color.WhiteSmoke;
-            BtnAcheter.Location = new Point(603, 82);
-            BtnAcheter.Name = "BtnAcheter";
-            BtnAcheter.ShadowDecoration.CustomizableEdges = customizableEdges10;
-            BtnAcheter.Size = new Size(137, 32);
-            BtnAcheter.TabIndex = 6;
-            BtnAcheter.Text = "Ajouter";
+            TxtBoxNomPageVente.Anchor = AnchorStyles.Top;
+            TxtBoxNomPageVente.BorderColor = Color.DarkGray;
+            TxtBoxNomPageVente.BorderRadius = 15;
+            TxtBoxNomPageVente.CustomizableEdges = customizableEdges13;
+            TxtBoxNomPageVente.DefaultText = "";
+            TxtBoxNomPageVente.DisabledState.BorderColor = Color.FromArgb(208, 208, 208);
+            TxtBoxNomPageVente.DisabledState.FillColor = Color.FromArgb(226, 226, 226);
+            TxtBoxNomPageVente.DisabledState.ForeColor = Color.FromArgb(138, 138, 138);
+            TxtBoxNomPageVente.DisabledState.PlaceholderForeColor = Color.FromArgb(138, 138, 138);
+            TxtBoxNomPageVente.FocusedState.BorderColor = Color.FromArgb(94, 148, 255);
+            TxtBoxNomPageVente.Font = new Font("Segoe UI", 9F);
+            TxtBoxNomPageVente.HoverState.BorderColor = Color.FromArgb(94, 148, 255);
+            TxtBoxNomPageVente.Location = new Point(232, 82);
+            TxtBoxNomPageVente.Margin = new Padding(3, 4, 3, 4);
+            TxtBoxNomPageVente.Name = "TxtBoxNomPageVente";
+            TxtBoxNomPageVente.PlaceholderText = "";
+            TxtBoxNomPageVente.SelectedText = "";
+            TxtBoxNomPageVente.ShadowDecoration.CustomizableEdges = customizableEdges14;
+            TxtBoxNomPageVente.Size = new Size(147, 32);
+            TxtBoxNomPageVente.TabIndex = 1;
             // 
-            // TxtBoxNom
+            // TxtBoxPricePageVente
             // 
-            TxtBoxNom.Anchor = AnchorStyles.Top;
-            TxtBoxNom.BorderColor = Color.DarkGray;
-            TxtBoxNom.BorderRadius = 15;
-            TxtBoxNom.CustomizableEdges = customizableEdges11;
-            TxtBoxNom.DefaultText = "";
-            TxtBoxNom.DisabledState.BorderColor = Color.FromArgb(208, 208, 208);
-            TxtBoxNom.DisabledState.FillColor = Color.FromArgb(226, 226, 226);
-            TxtBoxNom.DisabledState.ForeColor = Color.FromArgb(138, 138, 138);
-            TxtBoxNom.DisabledState.PlaceholderForeColor = Color.FromArgb(138, 138, 138);
-            TxtBoxNom.FocusedState.BorderColor = Color.FromArgb(94, 148, 255);
-            TxtBoxNom.Font = new Font("Segoe UI", 9F);
-            TxtBoxNom.HoverState.BorderColor = Color.FromArgb(94, 148, 255);
-            TxtBoxNom.Location = new Point(232, 82);
-            TxtBoxNom.Margin = new Padding(3, 4, 3, 4);
-            TxtBoxNom.Name = "TxtBoxNom";
-            TxtBoxNom.PlaceholderText = "";
-            TxtBoxNom.SelectedText = "";
-            TxtBoxNom.ShadowDecoration.CustomizableEdges = customizableEdges12;
-            TxtBoxNom.Size = new Size(147, 32);
-            TxtBoxNom.TabIndex = 1;
-            // 
-            // TxtBoxPrice
-            // 
-            TxtBoxPrice.Anchor = AnchorStyles.Top;
-            TxtBoxPrice.BorderColor = Color.DarkGray;
-            TxtBoxPrice.BorderRadius = 15;
-            TxtBoxPrice.CustomizableEdges = customizableEdges13;
-            TxtBoxPrice.DefaultText = "";
-            TxtBoxPrice.DisabledState.BorderColor = Color.FromArgb(208, 208, 208);
-            TxtBoxPrice.DisabledState.FillColor = Color.FromArgb(226, 226, 226);
-            TxtBoxPrice.DisabledState.ForeColor = Color.FromArgb(138, 138, 138);
-            TxtBoxPrice.DisabledState.PlaceholderForeColor = Color.FromArgb(138, 138, 138);
-            TxtBoxPrice.FocusedState.BorderColor = Color.FromArgb(94, 148, 255);
-            TxtBoxPrice.Font = new Font("Segoe UI", 9F);
-            TxtBoxPrice.HoverState.BorderColor = Color.FromArgb(94, 148, 255);
-            TxtBoxPrice.Location = new Point(400, 82);
-            TxtBoxPrice.Margin = new Padding(3, 4, 3, 4);
-            TxtBoxPrice.Name = "TxtBoxPrice";
-            TxtBoxPrice.PlaceholderText = "";
-            TxtBoxPrice.SelectedText = "";
-            TxtBoxPrice.ShadowDecoration.CustomizableEdges = customizableEdges14;
-            TxtBoxPrice.Size = new Size(83, 32);
-            TxtBoxPrice.TabIndex = 2;
+            TxtBoxPricePageVente.Anchor = AnchorStyles.Top;
+            TxtBoxPricePageVente.BorderColor = Color.DarkGray;
+            TxtBoxPricePageVente.BorderRadius = 15;
+            TxtBoxPricePageVente.CustomizableEdges = customizableEdges15;
+            TxtBoxPricePageVente.DefaultText = "";
+            TxtBoxPricePageVente.DisabledState.BorderColor = Color.FromArgb(208, 208, 208);
+            TxtBoxPricePageVente.DisabledState.FillColor = Color.FromArgb(226, 226, 226);
+            TxtBoxPricePageVente.DisabledState.ForeColor = Color.FromArgb(138, 138, 138);
+            TxtBoxPricePageVente.DisabledState.PlaceholderForeColor = Color.FromArgb(138, 138, 138);
+            TxtBoxPricePageVente.FocusedState.BorderColor = Color.FromArgb(94, 148, 255);
+            TxtBoxPricePageVente.Font = new Font("Segoe UI", 9F);
+            TxtBoxPricePageVente.HoverState.BorderColor = Color.FromArgb(94, 148, 255);
+            TxtBoxPricePageVente.Location = new Point(400, 82);
+            TxtBoxPricePageVente.Margin = new Padding(3, 4, 3, 4);
+            TxtBoxPricePageVente.Name = "TxtBoxPricePageVente";
+            TxtBoxPricePageVente.PlaceholderText = "";
+            TxtBoxPricePageVente.SelectedText = "";
+            TxtBoxPricePageVente.ShadowDecoration.CustomizableEdges = customizableEdges16;
+            TxtBoxPricePageVente.Size = new Size(83, 32);
+            TxtBoxPricePageVente.TabIndex = 2;
             // 
             // guna2GradientButton1
             // 
-            guna2GradientButton1.CustomizableEdges = customizableEdges15;
+            guna2GradientButton1.CustomizableEdges = customizableEdges17;
             guna2GradientButton1.DisabledState.BorderColor = Color.DarkGray;
             guna2GradientButton1.DisabledState.CustomBorderColor = Color.DarkGray;
             guna2GradientButton1.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
@@ -309,9 +293,53 @@
             guna2GradientButton1.ImageSize = new Size(150, 100);
             guna2GradientButton1.Location = new Point(4, 3);
             guna2GradientButton1.Name = "guna2GradientButton1";
-            guna2GradientButton1.ShadowDecoration.CustomizableEdges = customizableEdges16;
+            guna2GradientButton1.ShadowDecoration.CustomizableEdges = customizableEdges18;
             guna2GradientButton1.Size = new Size(148, 74);
             guna2GradientButton1.TabIndex = 8;
+            // 
+            // BtnAcheter
+            // 
+            BtnAcheter.Anchor = AnchorStyles.Top;
+            BtnAcheter.BorderRadius = 15;
+            BtnAcheter.CustomizableEdges = customizableEdges11;
+            BtnAcheter.DisabledState.BorderColor = Color.DarkGray;
+            BtnAcheter.DisabledState.CustomBorderColor = Color.DarkGray;
+            BtnAcheter.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
+            BtnAcheter.DisabledState.FillColor2 = Color.FromArgb(169, 169, 169);
+            BtnAcheter.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
+            BtnAcheter.FillColor = Color.FromArgb(184, 150, 62);
+            BtnAcheter.FillColor2 = Color.DarkGoldenrod;
+            BtnAcheter.Font = new Font("Segoe UI", 9F);
+            BtnAcheter.ForeColor = Color.WhiteSmoke;
+            BtnAcheter.Location = new Point(603, 82);
+            BtnAcheter.Name = "BtnAcheter";
+            BtnAcheter.ShadowDecoration.CustomizableEdges = customizableEdges12;
+            BtnAcheter.Size = new Size(137, 32);
+            BtnAcheter.TabIndex = 6;
+            BtnAcheter.Text = "Modifier";
+            // 
+            // TxtBoxDatePageVente
+            // 
+            TxtBoxDatePageVente.Anchor = AnchorStyles.Top;
+            TxtBoxDatePageVente.BorderColor = Color.DarkGray;
+            TxtBoxDatePageVente.BorderRadius = 15;
+            TxtBoxDatePageVente.CustomizableEdges = customizableEdges3;
+            TxtBoxDatePageVente.DefaultText = "";
+            TxtBoxDatePageVente.DisabledState.BorderColor = Color.FromArgb(208, 208, 208);
+            TxtBoxDatePageVente.DisabledState.FillColor = Color.FromArgb(226, 226, 226);
+            TxtBoxDatePageVente.DisabledState.ForeColor = Color.FromArgb(138, 138, 138);
+            TxtBoxDatePageVente.DisabledState.PlaceholderForeColor = Color.FromArgb(138, 138, 138);
+            TxtBoxDatePageVente.FocusedState.BorderColor = Color.FromArgb(94, 148, 255);
+            TxtBoxDatePageVente.Font = new Font("Segoe UI", 9F);
+            TxtBoxDatePageVente.HoverState.BorderColor = Color.FromArgb(94, 148, 255);
+            TxtBoxDatePageVente.Location = new Point(64, 42);
+            TxtBoxDatePageVente.Margin = new Padding(3, 4, 3, 4);
+            TxtBoxDatePageVente.Name = "TxtBoxDatePageVente";
+            TxtBoxDatePageVente.PlaceholderText = "";
+            TxtBoxDatePageVente.SelectedText = "";
+            TxtBoxDatePageVente.ShadowDecoration.CustomizableEdges = customizableEdges4;
+            TxtBoxDatePageVente.Size = new Size(315, 32);
+            TxtBoxDatePageVente.TabIndex = 9;
             // 
             // PageAchatEtVente
             // 
@@ -334,11 +362,12 @@
         private DataGridViewImageColumn BoutonSupprimer;
         private Guna.UI2.WinForms.Guna2Panel Panel_Top;
         private Guna.UI2.WinForms.Guna2GradientButton BtnVendre;
-        private Guna.UI2.WinForms.Guna2TextBox TxtBoxIDProduit;
-        private Guna.UI2.WinForms.Guna2TextBox TxtBoxQuantite;
-        private Guna.UI2.WinForms.Guna2GradientButton BtnAcheter;
-        private Guna.UI2.WinForms.Guna2TextBox TxtBoxNom;
-        private Guna.UI2.WinForms.Guna2TextBox TxtBoxPrice;
+        private Guna.UI2.WinForms.Guna2TextBox TxtBoxIDProduitPageVente;
+        private Guna.UI2.WinForms.Guna2TextBox TxtBoxQuantitePageVente;
+        private Guna.UI2.WinForms.Guna2TextBox TxtBoxNomPageVente;
+        private Guna.UI2.WinForms.Guna2TextBox TxtBoxPricePageVente;
         private Guna.UI2.WinForms.Guna2GradientButton guna2GradientButton1;
+        private Guna.UI2.WinForms.Guna2GradientButton BtnAcheter;
+        private Guna.UI2.WinForms.Guna2TextBox TxtBoxDatePageVente;
     }
 }

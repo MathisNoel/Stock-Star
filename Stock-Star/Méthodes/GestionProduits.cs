@@ -164,5 +164,79 @@ namespace Stock_Star
 
         }
 
+
+
+        //On crée une méthode qui permettre d'ajouter un achat dans la BDD
+        /*
+        R: 
+        E: 
+        S: 
+        */
+        /*public void AjoutVente(string nom, string prixVente, string Quantité, int quantite, decimal prix_achat)
+        {
+            //Variable interne pour ne pas être connecté a la BDD en permanence et Fermeture de liaison une fois la méthode finie
+            using (NpgsqlConnection connection = BDD.GetConnection())
+            {
+                connection.Open();
+
+                //On définit la requête SQL qu'on va réaliser
+                string SQL = """"
+                    SELECT (id_produit) FROM produits WHERE nom_produit = @nom,
+                    RETURNING id_produit
+
+                    INSERT INTO ventes (id_produit,quantite_vendue,prix_vente_reel,date_vente)
+                    SELECT id_produit, @quantite,@prixVente, NOW() FROM produit_id;
+                                       
+                    """";
+                using (NpgsqlCommand command = new NpgsqlCommand(SQL, connection))
+                {
+                    command.Parameters.AddWithValue("id_produit", id_produit);
+                    command.Parameters.AddWithValue("quantite_vendue", quantite);
+                    command.Parameters.AddWithValue("prix_achat", prix_achat);
+                    command.Parameters.AddWithValue("prix_vente_reel", prixVente);
+
+                    command.ExecuteNonQuery();
+                }
+
+            }
+
+        }*/
+
+
+
+        /*
+        R : Ajouter une nouvelle vente dans la table vente
+        E : String le nom du produit, int la quantité de produit vendue, decimal prix de Vente
+        S : vide
+         */
+        public void AjoutVente(string nom, int quantiteVendue, decimal prixVente)
+        {
+            using (var connection = BDD.GetConnection())
+            {
+                connection.Open();
+
+                string SQL = """
+                 WITH produit_id AS ( --on creer une table intermediaire produit_id dans laquel il y'as une seul ligne id_produit FROM produit where nom=@nom
+                     SELECT id_produit
+                     FROM produits
+                     WHERE nom_produit = @nom
+                     LIMIT 1
+                 )
+                 INSERT INTO ventes (id_produit, quantite_vendue, prix_vente_reel, date_vente)
+                 SELECT id_produit, @quantiteVendue, @prixVente, NOW()
+                 FROM produit_id;
+                 """;
+
+                using (var command = new NpgsqlCommand(SQL, connection))
+                {
+                    command.Parameters.AddWithValue("nom", nom);
+                    command.Parameters.AddWithValue("quantiteVendue", quantiteVendue);
+                    command.Parameters.AddWithValue("prixVente", prixVente);
+
+                    command.ExecuteNonQuery();
+                }
+            }
+        }
+
     }
 }
