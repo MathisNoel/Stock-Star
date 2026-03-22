@@ -8,15 +8,19 @@ using System.Text;
 using System.Windows.Forms;
 using static System.Collections.Specialized.BitVector32;
 
+
 namespace Stock_Star.Interfaces
 {
     public partial class PageAchatEtVente : UserControl
     {
+        public event Action VenteEffectuee;
         GestionProduits gestion = new GestionProduits();
+
         public PageAchatEtVente()
         {
             InitializeComponent();
             AidesSaisies();
+
         }
 
         private void AidesSaisies()
@@ -57,6 +61,7 @@ namespace Stock_Star.Interfaces
 
             ViderChamps();
             gestion.AjoutVente(NomVente, QuantiteVendue, PrixVente);
+            VenteEffectuee?.Invoke();
 
         }
     }

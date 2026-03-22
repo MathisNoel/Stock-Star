@@ -58,6 +58,14 @@ namespace Stock_Star
             pageAchatEtVente = new PageAchatEtVente(); // Initialisation de l'instance de PageAchatEtVente
             LoadPage(pageStock); // Chargement de la page PageStock dans le Form1 Page par default
 
+
+            pageAchatEtVente.VenteEffectuee += () =>
+            {
+                pageStock.ActualiserGrille();
+            };
+
+
+
         }
 
         public void LoadPage(UserControl page)
