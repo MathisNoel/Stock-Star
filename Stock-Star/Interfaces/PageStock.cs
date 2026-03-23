@@ -131,5 +131,14 @@ namespace Stock_Star
             _parent.LoadPage(new PageModification(_parent, id, categorie, nom, quantite, emplacement, description, prixAchat));
         }
 
+        private void TxtBoxQuantite_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                BtnAjouter.PerformClick();   // Simule un clic sur le bouton Ajouter
+                e.SuppressKeyPress = true;   // Empêche le "ding" Windows
+            }    
+        }
     }
+
 }

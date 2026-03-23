@@ -209,7 +209,7 @@ namespace Stock_Star
         E : String le nom du produit, int la quantité de produit vendue, decimal prix de Vente
         S : vide
          */
-        public void AjoutVente(string nom, int quantiteVendue, decimal prixVente)
+        public void AjoutVente(string nom, int quantiteVendue, decimal prixVente, DateTime dateVente)
         {
             using (var connection = BDD.GetConnection())
             {
@@ -223,7 +223,7 @@ namespace Stock_Star
                      LIMIT 1
                  )
                  INSERT INTO ventes (id_produit, quantite_vendue, prix_vente_reel, date_vente)
-                 SELECT id_produit, @quantiteVendue, @prixVente, NOW()
+                 SELECT id_produit, @quantiteVendue, @prixVente, @dateVente
                  FROM produit_id;
                  """;
 
@@ -232,10 +232,49 @@ namespace Stock_Star
                     command.Parameters.AddWithValue("nom", nom);
                     command.Parameters.AddWithValue("quantiteVendue", quantiteVendue);
                     command.Parameters.AddWithValue("prixVente", prixVente);
+                    command.Parameters.AddWithValue("dateVente", dateVente);
+
 
                     command.ExecuteNonQuery();
                 }
             }
+        }
+
+
+
+        //On crée une méthode qui permettre de récupérer les données de la BDD (de type DataTable)
+        /*
+        R: Créer une DataTable qui va contenir tous nos produits présents dans la base de données sans redondance et en calculant la quantité,le prix d'achat et prix de vente réel
+        E: Rien
+        S: Une DataTable contenant tous les produits (sans redondance) avec les champs : categorie,nom,quantité,prix achat,prix de vente,emplacement,description
+        */
+        public DataTable ChargerLesVentes()
+        {
+            //Variable interne pour ne pas être connecté a la BDD en permanence et Fermeture de liaison une fois la méthode finie
+            using (NpgsqlConnection connection = BDD.GetConnection())
+            {
+                connection.Open();
+
+                //On définit la requête SQL qu'on va réaliser
+                string SQL = """      
+                    SELECT
+                        id_vente AS "ID Vente",
+                        id_produit AS "ID Produit",
+                        quantite_vendue AS "Quantité Vendue",
+                        prix_vente_reel AS "Prix de Vente Réel",
+                        date_vente AS "Date de Vente"
+                        FROM ventes
+                    """;
+
+                using (NpgsqlDataAdapter adapter = new NpgsqlDataAdapter(SQL, connection)) //On créer un adapter pour lier les informations de la requête SQL avec une DataTable
+                {
+                    //On créer un type DataTable
+                    DataTable dt = new DataTable();
+                    adapter.Fill(dt); //On remplie la DataTable avec notre requête SQL
+                    return dt;
+                }
+            }
+
         }
 
     }

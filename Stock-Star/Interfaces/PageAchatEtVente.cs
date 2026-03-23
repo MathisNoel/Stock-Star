@@ -20,6 +20,7 @@ namespace Stock_Star.Interfaces
         {
             InitializeComponent();
             AidesSaisies();
+            ActualiserGrille();
 
         }
 
@@ -39,13 +40,42 @@ namespace Stock_Star.Interfaces
             TxtBoxPricePageVente.Clear();
         }
 
+        public void ActualiserGrille()
+        {
+            guna2DataGridView1.DataSource = gestion.ChargerLesVentes();
+            // On met les boutons supprimer tout à droite
+            var ColonneSupprimer = guna2DataGridView1.Columns["BoutonSupprimer"];
+            if (ColonneSupprimer != null)
+            {
+                ColonneSupprimer.DisplayIndex = guna2DataGridView1.ColumnCount - 1;
+                ColonneSupprimer.Width = 80;
+            }
+        }
+
         private void BtnVendre_Click(object sender, EventArgs e)
         {
             string NomVente = TxtBoxNomPageVente.Text;
             //string QuantiteVendue = TxtBoxQuantitePageVente.Text;
             //string PrixVente = TxtBoxPricePageVente.Text;
-            string DateVente = TxtBoxDatePageVente.Text;
 
+
+            DateTime dateVente;
+            string dateTexte = TxtBoxDatePageVente.Text;
+
+            // Si vide → on utilise la date actuelle
+            if (string.IsNullOrWhiteSpace(dateTexte))
+            {
+                dateVente = DateTime.Now;
+            }
+            else
+            {
+                // Si non vide → on vérifie que la date est valide
+                if (!DateTime.TryParse(dateTexte, out dateVente))
+                {
+                    MessageBox.Show("La date saisie est invalide.");
+                    return;
+                }
+            }
 
             if (!int.TryParse(TxtBoxQuantitePageVente.Text, out int QuantiteVendue))
             {
@@ -60,9 +90,12 @@ namespace Stock_Star.Interfaces
             }
 
             ViderChamps();
-            gestion.AjoutVente(NomVente, QuantiteVendue, PrixVente);
-            VenteEffectuee?.Invoke(); // Previens les autres user controlel que la vente a été effectuée pour qu'ils puissent réagir en conséquence (actualiser le stock par exemple)
 
+
+
+            gestion.AjoutVente(NomVente, QuantiteVendue, PrixVente, dateVente);
+            VenteEffectuee?.Invoke(); // Previens les autres user controlel que la vente a été effectuée pour qu'ils puissent réagir en conséquence (actualiser le stock par exemple)
+            ActualiserGrille();
         }
     }
 }

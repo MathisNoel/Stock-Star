@@ -279,6 +279,7 @@
             TxtBoxQuantite.ShadowDecoration.CustomizableEdges = customizableEdges12;
             TxtBoxQuantite.Size = new Size(85, 32);
             TxtBoxQuantite.TabIndex = 3;
+            TxtBoxQuantite.KeyDown += TxtBoxQuantite_KeyDown;
             // 
             // BtnAjouter
             // 
