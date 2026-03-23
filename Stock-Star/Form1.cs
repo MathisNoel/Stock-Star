@@ -59,9 +59,9 @@ namespace Stock_Star
             LoadPage(pageStock); // Chargement de la page PageStock dans le Form1 Page par default
 
 
-            pageAchatEtVente.VenteEffectuee += () =>
+            pageAchatEtVente.VenteEffectuee += () => // Abonnement à l'événement VenteEffectuee de la page PageAchatEtVente. Lorsque cet événement est déclenché, la méthode ActualiserGrille de la page PageStock est appelée pour mettre à jour l'affichage du stock après une vente.
             {
-                pageStock.ActualiserGrille();
+                pageStock.ActualiserGrille(); // on actualise la Datagrid view de page stock lorsque on appuie sur le bouton vendre de PageAchatEtVente pour que les changements soient pris en compte et que le stock soit à jour
             };
 
 

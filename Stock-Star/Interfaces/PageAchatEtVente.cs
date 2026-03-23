@@ -61,7 +61,7 @@ namespace Stock_Star.Interfaces
 
             ViderChamps();
             gestion.AjoutVente(NomVente, QuantiteVendue, PrixVente);
-            VenteEffectuee?.Invoke();
+            VenteEffectuee?.Invoke(); // Previens les autres user controlel que la vente a été effectuée pour qu'ils puissent réagir en conséquence (actualiser le stock par exemple)
 
         }
     }
