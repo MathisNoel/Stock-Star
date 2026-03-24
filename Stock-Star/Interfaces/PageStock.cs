@@ -33,12 +33,21 @@ namespace Stock_Star
         public void ActualiserGrille()
         {
             guna2DataGridView1.DataSource = gestion.ChargerStock();
-            // On met les boutons supprimer tout à droite
+
+            // On met les boutons supprimer tout à droite, colonne N
             var ColonneSupprimer = guna2DataGridView1.Columns["BoutonSupprimer"];
             if (ColonneSupprimer != null)
             {
                 ColonneSupprimer.DisplayIndex = guna2DataGridView1.ColumnCount - 1;
                 ColonneSupprimer.Width = 80;
+            }
+
+            // On met les boutons éditer tout à droite -1, colonne N-1
+            var ColonneEditer = guna2DataGridView1.Columns["BoutonEditer"];
+            if (ColonneEditer != null)
+            {
+                ColonneEditer.DisplayIndex = guna2DataGridView1.ColumnCount - 2;
+                ColonneEditer.Width = 80;
             }
         }
 
@@ -96,10 +105,10 @@ namespace Stock_Star
             ViderChamps();
         }
 
-        // Méthode lors d'un click sur un bouton du DataGridView en particulier le bouton Supprimer (afin de supprimer un produit)
+        // Méthode lors d'un click sur un bouton/colonne du DataGridView en particulier le bouton Supprimer/Editer
         private void ClickOnDataGridView(object sender, DataGridViewCellEventArgs e)
         {
-            // On vérifie si on a cliqué sur la colonne de l'image
+            // On vérifie si on a cliqué sur la colonne BoutonSupprimer
             if (e.ColumnIndex >= 0 && guna2DataGridView1.Columns[e.ColumnIndex].Name == "BoutonSupprimer" && e.RowIndex >= 0)
             {
                 // On récupère le nom du produit sur la ligne | ?. et ?? "" signifie que si il n'y a aucune valeur (null) on le transforme en caractère vide ''.
@@ -110,28 +119,20 @@ namespace Stock_Star
                     ActualiserGrille();
                 }
             }
+            // On vérifie si on a cliqué sur la colonne BoutonEditer
+            if (e.ColumnIndex >= 0 && guna2DataGridView1.Columns[e.ColumnIndex].Name == "BoutonEditer" && e.RowIndex >= 0)
+            {
+                // On récupère le nom du produit sur la ligne | ?. et ?? "" signifie que si il n'y a aucune valeur (null) on le transforme en caractère vide ''.
+                string nom = guna2DataGridView1.Rows[e.RowIndex].Cells["Nom"].Value?.ToString() ?? "";
+                if (!string.IsNullOrEmpty(nom))
+                {
+                    //On affiche la page PageModification.cs avec le nom récupéré précedemment afin de supprimer le produit
+                    PageModification pagemodification = new PageModification(_parent, nom);
+                    // On affiche la page
+                    _parent.LoadPage(pagemodification);
+                }
+            }
         }
-
-        /*
-        private void BtnModifier_Click(object sender, EventArgs e)
-        {
-            if (guna2DataGridView1.CurrentRow == null)
-                return;
-
-            int id = Convert.ToInt32(guna2DataGridView1.CurrentRow.Cells["ID"].Value);
-            string categorie = guna2DataGridView1.CurrentRow.Cells["Catégorie"].Value.ToString();
-            string nom = guna2DataGridView1.CurrentRow.Cells["Nom"].Value.ToString();
-            string emplacement = guna2DataGridView1.CurrentRow.Cells["Emplacement"].Value.ToString();
-            string description = guna2DataGridView1.CurrentRow.Cells["Description"].Value.ToString();
-            decimal prixAchat = Convert.ToDecimal(guna2DataGridView1.CurrentRow.Cells["Prix achat"].Value);
-            int quantite = Convert.ToInt32(guna2DataGridView1.CurrentRow.Cells["Quantité"].Value);
-
-            Form1 parent = (Form1)this.FindForm(); // Récupère la référence au Form1 à partir du UserControl
-
-
-            _parent.LoadPage(new PageModification(_parent, id, categorie, nom, quantite, emplacement, description, prixAchat));
-        }
-        */
         private void TxtBoxQuantite_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Enter)

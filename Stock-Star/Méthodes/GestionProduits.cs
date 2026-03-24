@@ -160,11 +160,11 @@ namespace Stock_Star
                                                 ELSE @categorie
                                             END
                         WHERE id_categorie=(SELECT id_categorie FROM produits
-                        WHERE nom=@ancien_nom)
+                        WHERE nom_produit=@ancien_nom);
                         
                         --Modifier le produit
                         UPDATE produits
-                        SET nom= CASE
+                        SET nom_produit= CASE
                                     WHEN @nouveau_nom = ''
                                     THEN nom_produit
                                     ELSE @nouveau_nom
@@ -179,8 +179,7 @@ namespace Stock_Star
                                             THEN description
                                             ELSE @description
                                         END
-                        WHERE nom=@ancien_nom
-                        
+                        WHERE nom_produit=@ancien_nom;
                         """;
                 using (NpgsqlCommand command = new NpgsqlCommand(SQL, connection))
                 {
