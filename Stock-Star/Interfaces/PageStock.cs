@@ -112,6 +112,7 @@ namespace Stock_Star
             }
         }
 
+        /*
         private void BtnModifier_Click(object sender, EventArgs e)
         {
             if (guna2DataGridView1.CurrentRow == null)
@@ -130,7 +131,7 @@ namespace Stock_Star
 
             _parent.LoadPage(new PageModification(_parent, id, categorie, nom, quantite, emplacement, description, prixAchat));
         }
-
+        */
         private void TxtBoxQuantite_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Enter)

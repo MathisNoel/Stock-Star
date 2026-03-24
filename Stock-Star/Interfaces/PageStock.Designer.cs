@@ -181,7 +181,6 @@
             BtnModifier.Size = new Size(137, 32);
             BtnModifier.TabIndex = 7;
             BtnModifier.Text = "Modifier";
-            BtnModifier.Click += BtnModifier_Click;
             // 
             // TxtBoxDescription
             // 

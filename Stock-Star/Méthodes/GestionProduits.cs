@@ -27,7 +27,7 @@ namespace Stock_Star
                         c.nom_categorie AS "Catégorie",
                         p.nom_produit AS "Nom",
                         (COALESCE(sub_achats.total_qte_achats, 0) - COALESCE(sub_ventes.total_qte_ventes, 0)) AS "Quantité",
-                        //Coalesce pour remplacer par 0 en cas de Null
+                        --Coalesce pour remplacer par 0 en cas de Null
                         ROUND(COALESCE(sub_achats.prix_moyen_achat, 0), 2) AS "Prix achat",
                         ROUND(COALESCE(sub_ventes.prix_moyen_vente, 0), 2) AS "Prix de vente",
                         p.emplacement AS "Emplacement", 
