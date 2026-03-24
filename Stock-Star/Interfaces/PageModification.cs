@@ -58,13 +58,14 @@ namespace Stock_Star.Interfaces
             // Appel à la méthode SQL existante
             GestionProduits gestion = new GestionProduits();
 
+            /*
             gestion.ModifierProduit(
-                _idProduit,
                 TxtBoxCategorie.Text,
                 TxtBoxNom.Text,
                 TxtBoxEmplacement.Text,
                 TxtBoxDescription.Text
             );
+            */
 
             MessageBox.Show("Produit modifié avec succès.");
 

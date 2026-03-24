@@ -1,10 +1,6 @@
 {
   "version": 2,
-<<<<<<< Updated upstream
-  "dgSpecHash": "BR89El8eiZQ=",
-=======
   "dgSpecHash": "P2chea6RLJw=",
->>>>>>> Stashed changes
   "success": true,
   "projectFilePath": "C:\\Users\\Mathis.N\\Documents\\GitHub\\Stock-Star\\Stock-Star\\Stock-Star.csproj",
   "expectedPackageFiles": [
@@ -14,15 +10,5 @@
     "C:\\Users\\Mathis.N\\.nuget\\packages\\npgsql\\10.0.1\\npgsql.10.0.1.nupkg.sha512",
     "C:\\Users\\Mathis.N\\.nuget\\packages\\system.management\\7.0.0\\system.management.7.0.0.nupkg.sha512"
   ],
-  "logs": [
-    {
-      "code": "NU1900",
-      "level": "Warning",
-      "message": "Une erreur s’est produite lors de l’obtention des données de vulnérabilité du package\u00A0: Impossible de charger l'index de service pour la source https://api.nuget.org/v3/index.json.",
-      "projectPath": "C:\\Users\\Mathis.N\\Documents\\GitHub\\Stock-Star\\Stock-Star\\Stock-Star.csproj",
-      "warningLevel": 1,
-      "filePath": "C:\\Users\\Mathis.N\\Documents\\GitHub\\Stock-Star\\Stock-Star\\Stock-Star.csproj",
-      "targetGraphs": []
-    }
-  ]
+  "logs": []
 }

@@ -133,6 +133,23 @@ CREATE DATABASE "Stock-Star"
 	DELETE FROM categories --On supprime la catégorie si il n'y a plus aucun produit associé
 	WHERE id_categorie NOT IN (SELECT DISTINCT id_categorie FROM produits);
 
+
+	-- Test de modifier un produit (Méthode ModifierProduit) --
+	--Modifier la catégorie
+	UPDATE categories
+	SET nom_categorie='Ecran'
+	WHERE id_categorie=(SELECT id_categorie FROM produits
+	WHERE nom_produit='Ecran');
+	
+	--Modifier le produit
+	UPDATE produits
+	SET nom_produit='Acer 7 Pouce 180Hz 4K HDR' ,
+	    emplacement='Nouveau emplacement',
+	    description='Nouvelle description'
+	WHERE nom_produit='Ecran';
+
+
+	
 	---- COMMANDE DE BASE ----
 	--Ajout d'une colonne a la table Produits
 	ALTER TABLE produits

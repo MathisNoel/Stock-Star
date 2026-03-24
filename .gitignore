@@ -426,3 +426,12 @@ FodyWeavers.xsd
 *.msix
 *.msm
 *.msp
+
+# Dossiers de compilation (toutes architectures)
+[Bb]in/
+[Oo]bj/
+
+# Fichiers spécifiques à Visual Studio et NuGet
+*.shell_cache
+project.assets.json
+project.nuget.cache
