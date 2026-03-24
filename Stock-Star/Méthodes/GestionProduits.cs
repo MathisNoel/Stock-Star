@@ -27,8 +27,9 @@ namespace Stock_Star
                         c.nom_categorie AS "Catégorie",
                         p.nom_produit AS "Nom",
                         (COALESCE(sub_achats.total_qte_achats, 0) - COALESCE(sub_ventes.total_qte_ventes, 0)) AS "Quantité",
-                        ROUND(COALESCE(sub_achats.prix_moyen_achat, 0)::numeric, 2) AS "Prix achat",
-                        ROUND(COALESCE(sub_ventes.prix_moyen_vente, 0)::numeric, 2) AS "Prix de vente",
+                        //Coalesce pour remplacer par 0 en cas de Null
+                        ROUND(COALESCE(sub_achats.prix_moyen_achat, 0), 2) AS "Prix achat",
+                        ROUND(COALESCE(sub_ventes.prix_moyen_vente, 0), 2) AS "Prix de vente",
                         p.emplacement AS "Emplacement", 
                         p.description AS "Description"
                     FROM produits p
@@ -79,7 +80,7 @@ namespace Stock_Star
 
                 //On définit la requête SQL qu'on va réaliser
                 string SQL = """
-                    WITH                                                                                            --sert à faire des requêtes imbriquées pour éviter les redondances et faire les insertions dans les bonnes tables
+                    WITH
                     categorie_id AS (
                         INSERT INTO categories (nom_categorie)
                         VALUES (@categorie)
@@ -141,21 +142,53 @@ namespace Stock_Star
 
         //On crée une méthode qui va permettre de modifier un produit déja existant dans la BDD
         /*
-        R:
-        E: 
-        S:
+        R: Modifier un produit déjà existant ou bien la catégorie (associé à ce produit)
+        E: 5 string, l'ancien nom du produit a modifié , la catégorie a modifié associé à ce produit, le nouveau nom du produit, le nouvelle emplacement du produit et la nouvelle description du produit
+        S: Rien
         */
-        public void ModifierProduit(int idProduit, string categorie, string nom, string emplacement, string description)
+        public void ModifierProduit(string ancien_nom,string categorie, string nouveau_nom, string emplacement, string description)
         {
             using (NpgsqlConnection connection = BDD.GetConnection())
             {
                 connection.Open();
                 string SQL = """
+                        --Modifier la catégorie
+                        UPDATE categories
+                        SET nom_categorie= CASE
+                                                WHEN @categorie = ''
+                                                THEN nom_categorie
+                                                ELSE @categorie
+                                            END
+                        WHERE id_categorie=(SELECT id_categorie FROM produits
+                        WHERE nom=@ancien_nom)
+                        
+                        --Modifier le produit
+                        UPDATE produits
+                        SET nom= CASE
+                                    WHEN @nouveau_nom = ''
+                                    THEN nom_produit
+                                    ELSE @nouveau_nom
+                                  END,
+                            emplacement=CASE
+                                            WHEN @emplacement = ''
+                                            THEN emplacement
+                                            ELSE @emplacement
+                                        END,
+                            description=CASE
+                                            WHEN @description = ''
+                                            THEN description
+                                            ELSE @description
+                                        END
+                        WHERE nom=@ancien_nom
                         
                         """;
                 using (NpgsqlCommand command = new NpgsqlCommand(SQL, connection))
                 {
-
+                    command.Parameters.AddWithValue("ancien_nom", ancien_nom);
+                    command.Parameters.AddWithValue("categorie", categorie);
+                    command.Parameters.AddWithValue("nouveau_nom", nouveau_nom);
+                    command.Parameters.AddWithValue("emplacement", emplacement);
+                    command.Parameters.AddWithValue("description", description);
                     command.ExecuteNonQuery();
                 }
             }

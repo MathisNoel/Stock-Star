@@ -56,7 +56,6 @@
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges20 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             PanelPourLeDataGridView = new Guna.UI2.WinForms.Guna2Panel();
             guna2DataGridView1 = new Guna.UI2.WinForms.Guna2DataGridView();
-            BoutonSupprimer = new DataGridViewImageColumn();
             Panel_Top = new Guna.UI2.WinForms.Guna2Panel();
             BtnModifier = new Guna.UI2.WinForms.Guna2GradientButton();
             TxtBoxDescription = new Guna.UI2.WinForms.Guna2TextBox();
@@ -67,6 +66,8 @@
             TxtBoxNom = new Guna.UI2.WinForms.Guna2TextBox();
             TxtBoxPrice = new Guna.UI2.WinForms.Guna2TextBox();
             guna2GradientButton1 = new Guna.UI2.WinForms.Guna2GradientButton();
+            BoutonSupprimer = new DataGridViewImageColumn();
+            BoutonEditer = new DataGridViewImageColumn();
             PanelPourLeDataGridView.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)guna2DataGridView1).BeginInit();
             Panel_Top.SuspendLayout();
@@ -101,7 +102,7 @@
             guna2DataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             guna2DataGridView1.ColumnHeadersHeight = 22;
             guna2DataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.EnableResizing;
-            guna2DataGridView1.Columns.AddRange(new DataGridViewColumn[] { BoutonSupprimer });
+            guna2DataGridView1.Columns.AddRange(new DataGridViewColumn[] { BoutonSupprimer, BoutonEditer });
             dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle3.BackColor = Color.White;
             dataGridViewCellStyle3.Font = new Font("Segoe UI", 9F);
@@ -140,14 +141,6 @@
             guna2DataGridView1.ThemeStyle.RowsStyle.SelectionBackColor = Color.FromArgb(231, 229, 255);
             guna2DataGridView1.ThemeStyle.RowsStyle.SelectionForeColor = Color.FromArgb(71, 69, 94);
             guna2DataGridView1.CellContentClick += ClickOnDataGridView;
-            // 
-            // BoutonSupprimer
-            // 
-            BoutonSupprimer.HeaderText = "";
-            BoutonSupprimer.Image = Properties.Resources.Bouton_Supprimer;
-            BoutonSupprimer.ImageLayout = DataGridViewImageCellLayout.Zoom;
-            BoutonSupprimer.MinimumWidth = 6;
-            BoutonSupprimer.Name = "BoutonSupprimer";
             // 
             // Panel_Top
             // 
@@ -369,6 +362,22 @@
             guna2GradientButton1.Size = new Size(148, 74);
             guna2GradientButton1.TabIndex = 8;
             // 
+            // BoutonSupprimer
+            // 
+            BoutonSupprimer.HeaderText = "";
+            BoutonSupprimer.Image = Properties.Resources.Bouton_Supprimer;
+            BoutonSupprimer.ImageLayout = DataGridViewImageCellLayout.Zoom;
+            BoutonSupprimer.MinimumWidth = 6;
+            BoutonSupprimer.Name = "BoutonSupprimer";
+            // 
+            // BoutonEditer
+            // 
+            BoutonEditer.HeaderText = "";
+            BoutonEditer.Image = Properties.Resources.Bouton_Editer;
+            BoutonEditer.ImageLayout = DataGridViewImageCellLayout.Zoom;
+            BoutonEditer.MinimumWidth = 6;
+            BoutonEditer.Name = "BoutonEditer";
+            // 
             // PageStock
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
@@ -398,5 +407,6 @@
         private Guna.UI2.WinForms.Guna2TextBox TxtBoxDescription;
         private Guna.UI2.WinForms.Guna2GradientButton BtnModifier;
         private DataGridViewImageColumn BoutonSupprimer;
+        private DataGridViewImageColumn BoutonEditer;
     }
 }
