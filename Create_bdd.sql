@@ -51,6 +51,9 @@ CREATE DATABASE "Stock-Star"
 	
 	ALTER TABLE produits ADD CONSTRAINT unique_nom_produit UNIQUE (nom_produit);
 
+	--Ajout colonne bénéfices dans la table ventes --
+	ALTER TABLE categories ADD COLUMN benefices NUMERIC(7,2) DEFAULT 0.00;
+
 	-- Configuration du ON DELETE CASCADE (supprimer un produit avec toutes ses dépendances) --
 	-- Tables Achats :
 	ALTER TABLE achats
