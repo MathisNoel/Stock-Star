@@ -121,4 +121,7 @@
   <data name="Bouton_Supprimer" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\images\Bouton_Supprimer.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="Bouton_Editer" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\images\Bouton_Editer.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
 </root>

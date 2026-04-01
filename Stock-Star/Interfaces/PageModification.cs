@@ -11,19 +11,19 @@ namespace Stock_Star.Interfaces
     public partial class PageModification : UserControl
     {
         private Form1 _parent;
-        private int _idProduit;
-        public PageModification(Form1 parent, int idProduit, string categorie, string nom, int quantité, string emplacement, string description, decimal prixAchat)
+        private string _nomInitial;
+        public PageModification(Form1 parent, string nomProduit)
         {
             InitializeComponent();
 
             _parent = parent;
-            _idProduit = idProduit;
+            _nomInitial = nomProduit;
 
-            // Pré-remplissage des champs
-            TxtBoxCategorie.Text = categorie;
-            TxtBoxNom.Text = nom;
-            TxtBoxEmplacement.Text = emplacement;
-            TxtBoxDescription.Text = description;
+            // On affiche l'ancien nom dans une boîte
+            TxtBoxNom.Text = nomProduit;
+
+            //On affiche des places holders dans les TextBox pour aider la saisies des informations
+            AidesSaisies();
         }
 
         private void AidesSaisies()
@@ -34,44 +34,35 @@ namespace Stock_Star.Interfaces
             TxtBoxDescription.PlaceholderText = "Entrez une description (optionnel)";
         }
 
-        private void BtnAnnuler_Click(object sender, EventArgs e)
-        {
-            _parent.LoadPage(new PageStock(_parent)); // Retour à la page de stock
-
-        }
-
+        // Appuie sur le bouton Modifier
         private void BtnModifier_Click(object sender, EventArgs e)
         {
-            // Validation simple
-            if (string.IsNullOrWhiteSpace(TxtBoxNom.Text))
+            // On enregistre le contenue dans les TextBox dans des variables string
+            string nouveauNom = TxtBoxNom.Text;
+            string nouvelleCategorie = TxtBoxCategorie.Text;
+            string nouvelEmplacement = TxtBoxEmplacement.Text;
+            string nouvelleDescription = TxtBoxDescription.Text;
+            // Vérification qu'on a pas renseigné un produit avec un nom vide ou un espace
+            if (string.IsNullOrWhiteSpace(nouveauNom))
             {
                 MessageBox.Show("Le nom du produit est obligatoire.");
                 return;
             }
 
-            if (string.IsNullOrWhiteSpace(TxtBoxCategorie.Text))
-            {
-                MessageBox.Show("La catégorie est obligatoire.");
-                return;
-            }
-
-            // Appel à la méthode SQL existante
+            // On initialise une variable gestion qui pourra appeller les méthodes de la classe GestionProduits
             GestionProduits gestion = new GestionProduits();
+            // On appelle la méthode ModifierProduit définie dans la classe GestionProduits
+            gestion.ModifierProduit(_nomInitial, nouvelleCategorie, nouveauNom, nouvelEmplacement, nouvelleDescription);
 
-            gestion.ModifierProduit(
-                _idProduit,
-                TxtBoxCategorie.Text,
-                TxtBoxNom.Text,
-                TxtBoxEmplacement.Text,
-                TxtBoxDescription.Text
-            );
-
-            MessageBox.Show("Produit modifié avec succès.");
-
-            // Retour à la page stock
+            // On reviens a la PageStock si on appuie sur le bouton Modifier
             _parent.LoadPage(new PageStock(_parent));
-
         }
 
+        // Appuie sur le bouton Annuler
+        private void BtnAnnuler_Click(object sender, EventArgs e)
+        {
+            // On reviens a la PageStock si on appuie sur le bouton Annuler
+            _parent.LoadPage(new PageStock(_parent));
+        }
     }
 }
