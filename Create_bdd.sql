@@ -51,6 +51,9 @@ CREATE DATABASE "Stock-Star"
 	
 	ALTER TABLE produits ADD CONSTRAINT unique_nom_produit UNIQUE (nom_produit);
 
+	--Ajout d'une colonne bénéfice à la table vente --
+	ALTER TABLE ventes ADD COLUMN benefice NUMERIC(7,2) DEFAULT 0.00;
+
 	-- Configuration du ON DELETE CASCADE (supprimer un produit avec toutes ses dépendances) --
 	-- Tables Achats :
 	ALTER TABLE achats
@@ -133,6 +136,48 @@ CREATE DATABASE "Stock-Star"
 	DELETE FROM categories --On supprime la catégorie si il n'y a plus aucun produit associé
 	WHERE id_categorie NOT IN (SELECT DISTINCT id_categorie FROM produits);
 
+
+	-- Test de modifier un produit (Méthode ModifierProduit) --
+	DO $$
+	-- Déclaration des variables pour le test
+	DECLARE 
+    Ancien_nom   TEXT := 'TEST';          
+    Nouveau_nom  TEXT := 'Pomme de terre';     
+    Categorie    TEXT := 'Légumes';   
+    Nouveau_Emplacement  TEXT := 'BXDC7';
+    Nouveau_Description  TEXT := 'Jardin de Papi';
+	BEGIN
+		--Modifier la catégorie
+		UPDATE categories
+		SET nom_categorie= CASE
+		                        WHEN Categorie = ''
+		                        THEN nom_categorie
+		                        ELSE Categorie
+		                    END
+		WHERE id_categorie=(SELECT id_categorie FROM produits
+		WHERE nom_produit=Ancien_nom);
+		
+		--Modifier le produit
+		UPDATE produits
+		SET nom_produit= CASE
+		            WHEN Nouveau_nom = ''
+		            THEN nom_produit
+		            ELSE Nouveau_nom
+		          END,
+		    emplacement=CASE
+		                    WHEN Nouveau_Emplacement = ''
+		                    THEN emplacement
+		                    ELSE Nouveau_Emplacement
+		                END,
+		    description=CASE
+		                    WHEN Nouveau_Description = ''
+		                    THEN description
+		                    ELSE Nouveau_Description
+		                END
+		WHERE nom_produit=Ancien_nom;
+	END $$;
+
+	
 	---- COMMANDE DE BASE ----
 	--Ajout d'une colonne a la table Produits
 	ALTER TABLE produits
