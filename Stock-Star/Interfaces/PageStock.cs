@@ -54,12 +54,12 @@ namespace Stock_Star
         // Aides a la saisies pour les différents champs a renseigner d'un produit
         private void AidesSaisies()
         {
-            TxtBoxCategorie.PlaceholderText = "catégorie";
-            TxtBoxNom.PlaceholderText = "produit";
-            TxtBoxQuantite.PlaceholderText = "quantité";
-            TxtBoxPrice.PlaceholderText = "prix";
-            TxtBoxEmplacement.PlaceholderText = "emplacement (optionnel)";
-            TxtBoxDescription.PlaceholderText = "description (optionnel)";
+            TxtBoxCategorie.PlaceholderText = "Catégorie";
+            TxtBoxNom.PlaceholderText = "Produit";
+            TxtBoxQuantite.PlaceholderText = "Quantité";
+            TxtBoxPrice.PlaceholderText = "Prix (/u)";
+            TxtBoxEmplacement.PlaceholderText = "Emplacement (optionnel)";
+            TxtBoxDescription.PlaceholderText = "Description (optionnel)";
         }
 
         // Méthode pour vider les champs éventuellement renseigner par l'utilisateur des TxtBox (catégorie,nom,...)
