@@ -10,7 +10,7 @@ namespace Stock_Star
         // On déclare les pages pour pouvoir basculer de l'une à l'autre
         private PageStock pageStock;
         private PageGraphique pageGraphique;
-        private PageAchatEtVente pageAchatEtVente;
+        private PageTransaction pageAchatEtVente;
 
         // Paramètres Windows pour pouvoir déplacer la fenêtre à la souris
         const int WM_NCHITTEST = 0x84;
@@ -27,7 +27,7 @@ namespace Stock_Star
                 // Initialisation des pages
                 pageStock = new PageStock(this);
                 pageGraphique = new PageGraphique();
-                pageAchatEtVente = new PageAchatEtVente();
+                pageAchatEtVente = new PageTransaction();
 
                 // On affiche la page Stock dès l'ouverture
                 LoadPage(pageStock);

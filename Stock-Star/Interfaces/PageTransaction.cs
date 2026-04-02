@@ -11,12 +11,12 @@ using static System.Collections.Specialized.BitVector32;
 
 namespace Stock_Star.Interfaces
 {
-    public partial class PageAchatEtVente : UserControl
+    public partial class PageTransaction : UserControl
     {
         public event Action VenteEffectuee;
         GestionProduits gestion = new GestionProduits();
 
-        public PageAchatEtVente()
+        public PageTransaction()
         {
             InitializeComponent();
             AidesSaisies();
@@ -26,29 +26,52 @@ namespace Stock_Star.Interfaces
 
         private void AidesSaisies()
         {
+            //Ligne Vendre
             TxtBoxNomPageVente.PlaceholderText = "Nom";
+            TxtBoxQuantitePageVente.PlaceholderText = "Quantité";
+            TxtBoxPricePageVente.PlaceholderText = "Prix de vente (/u)";
             TxtBoxDatePageVente.PlaceholderText = "Date jj/mm/aaaa";
-            TxtBoxQuantitePageVente.PlaceholderText = "quantité";
-            TxtBoxPricePageVente.PlaceholderText = "Prix de vente";
+            //Ligne Achat
+            TxtBoxNomPageAchat.PlaceholderText = "Nom";
+            TxtBoxQuantitePageAchat.PlaceholderText = "Quantité";
+            TxtBoxPricePageAchat.PlaceholderText = "Prix d'achat (/u)";
+            TxtBoxDatePageAchat.PlaceholderText = "Date jj/mm/aaaa";
         }
 
         private void ViderChamps()
         {
+            //
             TxtBoxNomPageVente.Clear();
             TxtBoxDatePageVente.Clear();
             TxtBoxQuantitePageVente.Clear();
             TxtBoxPricePageVente.Clear();
+
+            TxtBoxNomPageAchat.Clear();
+            TxtBoxDatePageAchat.Clear();
+            TxtBoxQuantitePageAchat.Clear();
+            TxtBoxPricePageAchat.Clear();
         }
 
         public void ActualiserGrille()
         {
-            guna2DataGridView1.DataSource = gestion.ChargerLesVentes();
+            // Tableau Historique des Ventes
+            DataGridView_Ventes.DataSource = gestion.ChargerLesVentes();
             // On met les boutons supprimer tout à droite
-            var ColonneSupprimer = guna2DataGridView1.Columns["BoutonSupprimer"];
-            if (ColonneSupprimer != null)
+            var ColonneSupprimerV = DataGridView_Ventes.Columns["BoutonSupprimerVente"];
+            if (ColonneSupprimerV != null)
             {
-                ColonneSupprimer.DisplayIndex = guna2DataGridView1.ColumnCount - 1;
-                ColonneSupprimer.Width = 80;
+                ColonneSupprimerV.DisplayIndex = DataGridView_Ventes.ColumnCount - 1;
+                ColonneSupprimerV.Width = 80;
+            }
+
+            // Tableau Historique des Achats
+            //DataGridView_Achats.DataSource = gestion.ChargerLesAchats();
+            // On met les boutons supprimer tout à droite
+            var ColonneSupprimerA = DataGridView_Achats.Columns["BoutonSupprimerAchat"];
+            if (ColonneSupprimerA != null)
+            {
+                ColonneSupprimerA.DisplayIndex = DataGridView_Achats.ColumnCount - 1;
+                ColonneSupprimerA.Width = 80;
             }
         }
 
