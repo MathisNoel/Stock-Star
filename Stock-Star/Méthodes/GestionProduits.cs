@@ -71,7 +71,7 @@ namespace Stock_Star
            1 décimal, le prix d'achat
         S: Rien (ajout dans la base de données)
         */
-        public void AjoutStock(string categorie,string nom,string emplacement,string description, int quantite, decimal prix_achat)
+        public void AjoutStock(string categorie, string nom, string emplacement, string description, int quantite, decimal prix_achat)
         {
             //Variable interne pour ne pas être connecté a la BDD en permanence et Fermeture de liaison une fois la méthode finie
             using (NpgsqlConnection connection = BDD.GetConnection())
@@ -131,10 +131,10 @@ namespace Stock_Star
                     DELETE FROM categories 
                     WHERE id_categorie NOT IN (SELECT DISTINCT id_categorie FROM produits WHERE id_categorie IS NOT NULL);
                     """;
-                using (NpgsqlCommand command= new NpgsqlCommand(SQL, connection))
+                using (NpgsqlCommand command = new NpgsqlCommand(SQL, connection))
                 {
                     command.Parameters.AddWithValue("nom", nom);
-                    command.ExecuteNonQuery() ;
+                    command.ExecuteNonQuery();
                 }
             }
         }
@@ -146,7 +146,7 @@ namespace Stock_Star
         E: 5 string, l'ancien nom du produit a modifié , la catégorie a modifié associé à ce produit, le nouveau nom du produit, le nouvelle emplacement du produit et la nouvelle description du produit
         S: Rien
         */
-        public void ModifierProduit(string ancien_nom,string categorie, string nouveau_nom, string emplacement, string description)
+        public void ModifierProduit(string ancien_nom, string categorie, string nouveau_nom, string emplacement, string description)
         {
             using (NpgsqlConnection connection = BDD.GetConnection())
             {
@@ -276,11 +276,60 @@ namespace Stock_Star
 
         //On crée une méthode qui permettre de récupérer les données de la BDD (de type DataTable)
         /*
-        R: Créer une DataTable qui va contenir tous nos produits présents dans la base de données sans redondance et en calculant la quantité,le prix d'achat et prix de vente réel
+        R: Créer une DataTable qui va contenir toutes nos ventes présent dans la table ventes et calcul le bénéfice associé a chacune
         E: Rien
-        S: Une DataTable contenant tous les produits (sans redondance) avec les champs : categorie,nom,quantité,prix achat,prix de vente,emplacement,description
+        S: Une DataTable contenant toutes les ventes avec les champs suivant : id_vente,nom_produit,quantité,prix vente (/u),benefice,date_vente
         */
         public DataTable ChargerLesVentes()
+        {
+            //Variable interne pour ne pas être connecté a la BDD en permanence et Fermeture de liaison une fois la méthode finie
+            using (NpgsqlConnection connection = BDD.GetConnection())
+            {
+                connection.Open();
+
+                //On définit la requête SQL qu'on va réaliser
+                string SQL = """      
+                    SELECT 
+                        v.id_vente AS "ID Vente",
+                        p.nom_produit AS "Nom",
+                        v.quantite_vendue AS "Quantité",
+                        v.prix_vente_reel AS "Prix unitaire",
+                        -- Calcul du bénéfice (Prix Vente - Prix Achat Moyen) * Quantité Vente
+                        -- ROUND pour arrondir le résultat a 2 chiffres après la virgule
+                        ROUND((v.prix_vente_reel - COALESCE(AVG(a.prix_achat_unitaire), 0)) * v.quantite_vendue, 2) AS "Bénéfice",
+                        v.date_vente AS "Date de Vente"
+                    FROM ventes AS v
+                    LEFT JOIN produits AS p ON v.id_produit = p.id_produit
+                    -- On ne prend que les achats qui ont eu lieu AVANT ou LE JOUR de la vente (on prend pas en compte les achats futur)
+                    LEFT JOIN achats AS a ON v.id_produit = a.id_produit AND a.date_achat <= v.date_vente
+                    -- GROUP BY car fonction d'Aggrégation AVG
+                    GROUP BY 
+                        v.id_vente, 
+                        p.nom_produit, 
+                        v.quantite_vendue, 
+                        v.prix_vente_reel, 
+                        v.date_vente
+                    ORDER BY v.date_vente DESC;
+                    """;
+
+                using (NpgsqlDataAdapter adapter = new NpgsqlDataAdapter(SQL, connection)) //On créer un adapter pour lier les informations de la requête SQL avec une DataTable
+                {
+                    //On créer un type DataTable
+                    DataTable dt = new DataTable();
+                    adapter.Fill(dt); //On remplie la DataTable avec notre requête SQL
+                    return dt;
+                }
+            }
+
+        }
+
+        //On crée une méthode qui permettre de récupérer les données de la BDD (de type DataTable)
+        /*
+        R: Créer une DataTable qui va contenir tous nos achats présent dans la table achats et calcul le bénéfice associé a chacun
+        E: Rien
+        S: Une DataTable contenant tous les achats avec les champs suivant : id_achat,nom_produit,quantité,prix achat (/u),benefice,date_achat
+        */
+        public DataTable ChargerLesAchats()
         {
             //Variable interne pour ne pas être connecté a la BDD en permanence et Fermeture de liaison une fois la méthode finie
             using (NpgsqlConnection connection = BDD.GetConnection())
