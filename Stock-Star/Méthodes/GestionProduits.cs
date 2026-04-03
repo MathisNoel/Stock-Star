@@ -290,12 +290,22 @@ namespace Stock_Star
                 //On définit la requête SQL qu'on va réaliser
                 string SQL = """      
                     SELECT
-                        id_vente AS "ID Vente",
-                        id_produit AS "ID Produit",
-                        quantite_vendue AS "Quantité Vendue",
-                        prix_vente_reel AS "Prix de Vente Réel",
-                        date_vente AS "Date de Vente"
-                        FROM ventes
+                        v.id_vente AS "ID Vente",
+                        v.id_produit AS "ID Produit",
+                        v.quantite_vendue AS "Quantité Vendue",
+                        v.prix_vente_reel AS "Prix de Vente Réel",
+                        ROUND(sub_achats.prix_moyen_achat, 2) AS "Prix Moyen Achat", --arrondie la mooyenne à 2 décimale après la virgule,
+                        ROUND((v.prix_vente_reel - sub_achats.prix_moyen_achat),2) AS "Bénéfice",
+                        v.date_vente AS "Date de Vente"
+                        FROM ventes as v
+                    LEFT JOIN (
+                        SELECT 
+                            id_produit, 
+                            SUM(quantite_achetee) as total_qte_achats,
+                            SUM(prix_achat_unitaire * quantite_achetee) / NULLIF(SUM(quantite_achetee), 0) as prix_moyen_achat
+                        FROM achats 
+                        GROUP BY id_produit
+                    ) sub_achats ON v.id_produit = sub_achats.id_produit
                     """;
 
                 using (NpgsqlDataAdapter adapter = new NpgsqlDataAdapter(SQL, connection)) //On créer un adapter pour lier les informations de la requête SQL avec une DataTable

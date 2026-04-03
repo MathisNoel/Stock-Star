@@ -7,7 +7,7 @@ namespace Stock_Star
 {
     internal class ConnectionBDD
     {
-        string connString = "Server=localhost;Port=5432;Database=Stock-Star;User Id=user;Password=user;";
+        string connString = "Server=localhost;Port=5432;Database=postgres;User Id=postgres;Password=sudo;";
         public NpgsqlConnection GetConnection() {
             return new NpgsqlConnection(connString);
         }       

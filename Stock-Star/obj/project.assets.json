@@ -273,23 +273,23 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Mathis.N\\.nuget\\packages\\": {},
+    "C:\\Users\\OBCK\\.nuget\\packages\\": {},
     "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Mathis.N\\Documents\\GitHub\\Stock-Star\\Stock-Star\\Stock-Star.csproj",
+      "projectUniqueName": "C:\\Users\\OBCK\\Documents\\GitHub\\Stock-Star\\Stock-Star\\Stock-Star.csproj",
       "projectName": "Stock-Star",
-      "projectPath": "C:\\Users\\Mathis.N\\Documents\\GitHub\\Stock-Star\\Stock-Star\\Stock-Star.csproj",
-      "packagesPath": "C:\\Users\\Mathis.N\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Mathis.N\\Documents\\GitHub\\Stock-Star\\Stock-Star\\obj\\",
+      "projectPath": "C:\\Users\\OBCK\\Documents\\GitHub\\Stock-Star\\Stock-Star\\Stock-Star.csproj",
+      "packagesPath": "C:\\Users\\OBCK\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\OBCK\\Documents\\GitHub\\Stock-Star\\Stock-Star\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
       ],
       "configFilePaths": [
-        "C:\\Users\\Mathis.N\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\OBCK\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
@@ -316,7 +316,7 @@
         "auditLevel": "low",
         "auditMode": "all"
       },
-      "SdkAnalysisLevel": "10.0.100"
+      "SdkAnalysisLevel": "10.0.200"
     },
     "frameworks": {
       "net10.0-windows7.0": {
@@ -350,7 +350,7 @@
             "privateAssets": "none"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\10.0.104/PortableRuntimeIdentifierGraph.json",
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\10.0.201/PortableRuntimeIdentifierGraph.json",
         "packagesToPrune": {
           "Microsoft.CSharp": "(,4.7.32767]",
           "Microsoft.VisualBasic": "(,10.4.32767]",
