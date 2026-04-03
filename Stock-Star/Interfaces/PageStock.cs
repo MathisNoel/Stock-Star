@@ -1,16 +1,4 @@
 ﻿using Stock_Star.Interfaces;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Text;
-using System.Windows.Forms;
-
-// Remarques :
-// - Le préprocesseur C# n'a pas d'instruction `#include`. La ligne `#include "Class2.cs"` provoque l'erreur CS1024.
-// - Pour inclure `Class2.cs`, ajoutez simplement le fichier au projet (Visual Studio > Ajouter > Élément existant) ; il sera compilé avec les autres fichiers.
-// - Ici, on retire la directive invalide et on conserve le reste du fichier intact.
 
 namespace Stock_Star
 {
@@ -18,129 +6,141 @@ namespace Stock_Star
     {
         // On crée l'objet Gestion Produit
         GestionProduits gestion = new GestionProduits();
-        Form1 _parent; // Création d'une variable pour stocker la référence au Form1
+        Form1 _parent;
 
         public PageStock(Form1 parent)
         {
             InitializeComponent();
+
+            // Configuration de la ComboBox
             _parent = parent;
 
             ActualiserGrille();
             AidesSaisies();
         }
 
-        // Méthode pour actualiser la DataGridView
         public void ActualiserGrille()
         {
-            guna2DataGridView1.DataSource = gestion.ChargerStock();
+            try
+            {   
+                //Remplir la DataGridView
+                guna2DataGridView1.DataSource = gestion.ChargerStock();
+                //Remplir la ComboBox
+                gestion.RemplirCategorie(ComboBoxCategorie);
 
-            // On met les boutons supprimer tout à droite, colonne N
-            var ColonneSupprimer = guna2DataGridView1.Columns["BoutonSupprimer"];
-            if (ColonneSupprimer != null)
-            {
-                ColonneSupprimer.DisplayIndex = guna2DataGridView1.ColumnCount - 1;
-                ColonneSupprimer.Width = 80;
+                ComboBoxCategorie.TextOffset = new Point(-500, 0);
+
+                var ColonneSupprimer = guna2DataGridView1.Columns["BoutonSupprimer"];
+                if (ColonneSupprimer != null)
+                {
+                    ColonneSupprimer.DisplayIndex = guna2DataGridView1.ColumnCount - 1;
+                    ColonneSupprimer.Width = 80;
+                }
+
+                var ColonneEditer = guna2DataGridView1.Columns["BoutonEditer"];
+                if (ColonneEditer != null)
+                {
+                    ColonneEditer.DisplayIndex = guna2DataGridView1.ColumnCount - 2;
+                    ColonneEditer.Width = 80;
+                }
+                
             }
-
-            // On met les boutons éditer tout à droite -1, colonne N-1
-            var ColonneEditer = guna2DataGridView1.Columns["BoutonEditer"];
-            if (ColonneEditer != null)
+            catch (Exception ex)
             {
-                ColonneEditer.DisplayIndex = guna2DataGridView1.ColumnCount - 2;
-                ColonneEditer.Width = 80;
+                MessageBox.Show("Erreur au chargement : " + ex.Message);
             }
         }
 
-        // Aides a la saisies pour les différents champs a renseigner d'un produit
         private void AidesSaisies()
         {
+            // On utilise la propriété Text pour la ComboBox car PlaceholderText n'existe pas tjs sur Guna Combo
             TxtBoxCategorie.PlaceholderText = "Catégorie";
             TxtBoxNom.PlaceholderText = "Produit";
-            TxtBoxQuantite.PlaceholderText = "Quantité";
-            TxtBoxPrice.PlaceholderText = "Prix (/u)";
             TxtBoxEmplacement.PlaceholderText = "Emplacement (optionnel)";
             TxtBoxDescription.PlaceholderText = "Description (optionnel)";
+
         }
 
-        // Méthode pour vider les champs éventuellement renseigner par l'utilisateur des TxtBox (catégorie,nom,...)
         private void ViderChamps()
         {
-            TxtBoxCategorie.Clear();
+            ComboBoxCategorie.Text = ""; // On vide la combo
+            TxtBoxCategorie.Text = "";
             TxtBoxNom.Clear();
-            TxtBoxQuantite.Clear();
-            TxtBoxPrice.Clear();
             TxtBoxEmplacement.Clear();
             TxtBoxDescription.Clear();
         }
 
-        // Méthode suite a un click sur le bouton Ajouter
         private void BtnAjouter_Click(object sender, EventArgs e)
         {
-            string Categorie = TxtBoxCategorie.Text;
-            string Nom = TxtBoxNom.Text;
-            string Emplacement = TxtBoxEmplacement.Text;
-            string Description = TxtBoxDescription.Text;
+            // IMPORTANT : On prend le texte de la TextBox (celle qui est devant)
+            string Categorie = TxtBoxCategorie.Text.Trim();
+            string Nom = TxtBoxNom.Text.Trim();
+            string Emplacement = TxtBoxEmplacement.Text.Trim();
+            string Description = TxtBoxDescription.Text.Trim();
 
-            // Conversion sécurisée de la quantité en un entier
-            if (!int.TryParse(TxtBoxQuantite.Text, out int Quantite))
+            // Vérification de base
+            if (string.IsNullOrEmpty(Nom) || string.IsNullOrEmpty(Categorie))
             {
-                MessageBox.Show("Veuillez saisir un nombre entier pour la quantité.");
-                return; // Break
+                MessageBox.Show("Le nom et la catégorie sont obligatoires !");
+                return;
             }
 
-            // .Replace('.', ',') permet d'accepter les points et les virgules pour le chiffre décimal
-            if (!decimal.TryParse(TxtBoxPrice.Text.Replace('.', ','), out decimal Prix))
+            try
             {
-                MessageBox.Show("Veuillez saisir un prix valide.");
-                return; //Break
+                // On appelle ta méthode de gestion (celle avec la grosse requête SQL simplifiée)
+                // Note : On garde les 0, 0 à la fin si ta méthode attend toujours 6 paramètres,
+                // mais ils ne seront pas utilisés par notre nouvelle requête SQL.
+                gestion.AjoutStock(Categorie, Nom, Emplacement, Description);
+
+                // On rafraîchit la grille ET la ComboBox (via ActualiserGrille)
+                ActualiserGrille();
+
+                // On nettoie l'interface
+                ViderChamps();
+
             }
-
-            // Appeler la méthode SQL avec les bonnes variables
-            gestion.AjoutStock(Categorie, Nom, Emplacement, Description, Quantite, Prix);
-
-            // On actualise le DataGridView pour afficher notre stock avec notre nouvelle élément
-            ActualiserGrille();
-
-            // On vide tous les champs de texte
-            ViderChamps();
+            catch (Exception ex)
+            {
+                MessageBox.Show("Erreur lors de l'ajout : " + ex.Message);
+            }
         }
 
-        // Méthode lors d'un click sur un bouton/colonne du DataGridView en particulier le bouton Supprimer/Editer
         private void ClickOnDataGridView(object sender, DataGridViewCellEventArgs e)
         {
-            // On vérifie si on a cliqué sur la colonne BoutonSupprimer
-            if (e.ColumnIndex >= 0 && guna2DataGridView1.Columns[e.ColumnIndex].Name == "BoutonSupprimer" && e.RowIndex >= 0)
+            if (e.RowIndex < 0) return;
+
+            string nom = guna2DataGridView1.Rows[e.RowIndex].Cells["Nom"].Value?.ToString() ?? "";
+
+            if (guna2DataGridView1.Columns[e.ColumnIndex].Name == "BoutonSupprimer")
             {
-                // On récupère le nom du produit sur la ligne | ?. et ?? "" signifie que si il n'y a aucune valeur (null) on le transforme en caractère vide ''.
-                string nom = guna2DataGridView1.Rows[e.RowIndex].Cells["Nom"].Value?.ToString() ?? "";
                 if (!string.IsNullOrEmpty(nom))
                 {
                     gestion.SupprimerProduit(nom);
                     ActualiserGrille();
                 }
             }
-            // On vérifie si on a cliqué sur la colonne BoutonEditer
-            if (e.ColumnIndex >= 0 && guna2DataGridView1.Columns[e.ColumnIndex].Name == "BoutonEditer" && e.RowIndex >= 0)
+
+            if (guna2DataGridView1.Columns[e.ColumnIndex].Name == "BoutonEditer")
             {
-                // On récupère le nom du produit sur la ligne | ?. et ?? "" signifie que si il n'y a aucune valeur (null) on le transforme en caractère vide ''.
-                string nom = guna2DataGridView1.Rows[e.RowIndex].Cells["Nom"].Value?.ToString() ?? "";
                 if (!string.IsNullOrEmpty(nom))
                 {
-                    //On affiche la page PageModification.cs avec le nom récupéré précedemment afin de supprimer le produit
                     PageModification pagemodification = new PageModification(_parent, nom);
-                    // On affiche la page
                     _parent.LoadPage(pagemodification);
                 }
             }
         }
-        private void TxtBoxQuantite_KeyDown(object sender, KeyEventArgs e)
+
+        // Synchronisation TextBoxCategorie et ComboBoxCategorie
+        private void ComboBoxCategorie_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (e.KeyCode == Keys.Enter)
-            {
-                BtnAjouter.PerformClick();   // Simule un clic sur le bouton Ajouter
-                e.SuppressKeyPress = true;   // Empêche le "ding" Windows
-            }    
+            // Si l'utilisateur choisit dans la liste, on le met dans la TextBox
+            TxtBoxCategorie.Text = ComboBoxCategorie.Text;
+        }
+
+        private void TxtBoxCategorie_Click(object sender, EventArgs e)
+        {
+            // Si on clique sur le texte, on peut aussi ouvrir la liste
+            ComboBoxCategorie.DroppedDown = true;
         }
     }
-
 }

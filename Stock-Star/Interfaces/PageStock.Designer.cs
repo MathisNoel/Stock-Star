@@ -35,12 +35,12 @@
             DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges19 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges20 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges7 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges8 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges3 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges4 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges5 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges6 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges7 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges8 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges9 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges10 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges11 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
@@ -57,17 +57,20 @@
             BoutonSupprimer = new DataGridViewImageColumn();
             BoutonEditer = new DataGridViewImageColumn();
             Panel_Top = new Guna.UI2.WinForms.Guna2Panel();
-            TxtBoxDescription = new Guna.UI2.WinForms.Guna2TextBox();
+            tableLayoutPanel1 = new TableLayoutPanel();
+            guna2Panel1 = new Guna.UI2.WinForms.Guna2Panel();
             TxtBoxCategorie = new Guna.UI2.WinForms.Guna2TextBox();
-            TxtBoxEmplacement = new Guna.UI2.WinForms.Guna2TextBox();
-            TxtBoxQuantite = new Guna.UI2.WinForms.Guna2TextBox();
-            BtnAjouter = new Guna.UI2.WinForms.Guna2GradientButton();
+            ComboBoxCategorie = new Guna.UI2.WinForms.Guna2ComboBox();
             TxtBoxNom = new Guna.UI2.WinForms.Guna2TextBox();
-            TxtBoxPrice = new Guna.UI2.WinForms.Guna2TextBox();
+            TxtBoxEmplacement = new Guna.UI2.WinForms.Guna2TextBox();
+            TxtBoxDescription = new Guna.UI2.WinForms.Guna2TextBox();
+            BtnAjouter = new Guna.UI2.WinForms.Guna2GradientButton();
             guna2GradientButton1 = new Guna.UI2.WinForms.Guna2GradientButton();
             PanelPourLeDataGridView.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)guna2DataGridView1).BeginInit();
             Panel_Top.SuspendLayout();
+            tableLayoutPanel1.SuspendLayout();
+            guna2Panel1.SuspendLayout();
             SuspendLayout();
             // 
             // PanelPourLeDataGridView
@@ -157,13 +160,7 @@
             // 
             // Panel_Top
             // 
-            Panel_Top.Controls.Add(TxtBoxDescription);
-            Panel_Top.Controls.Add(TxtBoxCategorie);
-            Panel_Top.Controls.Add(TxtBoxEmplacement);
-            Panel_Top.Controls.Add(TxtBoxQuantite);
-            Panel_Top.Controls.Add(BtnAjouter);
-            Panel_Top.Controls.Add(TxtBoxNom);
-            Panel_Top.Controls.Add(TxtBoxPrice);
+            Panel_Top.Controls.Add(tableLayoutPanel1);
             Panel_Top.Controls.Add(guna2GradientButton1);
             Panel_Top.CustomizableEdges = customizableEdges19;
             Panel_Top.Dock = DockStyle.Top;
@@ -173,34 +170,46 @@
             Panel_Top.Size = new Size(901, 120);
             Panel_Top.TabIndex = 11;
             // 
-            // TxtBoxDescription
+            // tableLayoutPanel1
             // 
-            TxtBoxDescription.Anchor = AnchorStyles.Top;
-            TxtBoxDescription.BorderRadius = 15;
-            TxtBoxDescription.CustomizableEdges = customizableEdges3;
-            TxtBoxDescription.DefaultText = "";
-            TxtBoxDescription.DisabledState.BorderColor = Color.FromArgb(208, 208, 208);
-            TxtBoxDescription.DisabledState.FillColor = Color.FromArgb(226, 226, 226);
-            TxtBoxDescription.DisabledState.ForeColor = Color.FromArgb(138, 138, 138);
-            TxtBoxDescription.DisabledState.PlaceholderForeColor = Color.FromArgb(138, 138, 138);
-            TxtBoxDescription.FocusedState.BorderColor = Color.FromArgb(94, 148, 255);
-            TxtBoxDescription.Font = new Font("Segoe UI", 9F);
-            TxtBoxDescription.HoverState.BorderColor = Color.FromArgb(94, 148, 255);
-            TxtBoxDescription.Location = new Point(403, 29);
-            TxtBoxDescription.Margin = new Padding(3, 4, 3, 4);
-            TxtBoxDescription.Name = "TxtBoxDescription";
-            TxtBoxDescription.PlaceholderText = "";
-            TxtBoxDescription.SelectedText = "";
-            TxtBoxDescription.ShadowDecoration.CustomizableEdges = customizableEdges4;
-            TxtBoxDescription.Size = new Size(483, 32);
-            TxtBoxDescription.TabIndex = 5;
+            tableLayoutPanel1.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            tableLayoutPanel1.ColumnCount = 5;
+            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 25.8908F));
+            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 25.8908062F));
+            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 15.85488F));
+            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 32.36351F));
+            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle());
+            tableLayoutPanel1.Controls.Add(guna2Panel1, 0, 0);
+            tableLayoutPanel1.Controls.Add(TxtBoxNom, 1, 0);
+            tableLayoutPanel1.Controls.Add(TxtBoxEmplacement, 2, 0);
+            tableLayoutPanel1.Controls.Add(TxtBoxDescription, 3, 0);
+            tableLayoutPanel1.Controls.Add(BtnAjouter, 4, 0);
+            tableLayoutPanel1.Location = new Point(68, 62);
+            tableLayoutPanel1.Name = "tableLayoutPanel1";
+            tableLayoutPanel1.Padding = new Padding(1);
+            tableLayoutPanel1.RowCount = 1;
+            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
+            tableLayoutPanel1.Size = new Size(776, 43);
+            tableLayoutPanel1.TabIndex = 10;
+            // 
+            // guna2Panel1
+            // 
+            guna2Panel1.Controls.Add(TxtBoxCategorie);
+            guna2Panel1.Controls.Add(ComboBoxCategorie);
+            guna2Panel1.CustomizableEdges = customizableEdges7;
+            guna2Panel1.Dock = DockStyle.Fill;
+            guna2Panel1.Location = new Point(4, 4);
+            guna2Panel1.Name = "guna2Panel1";
+            guna2Panel1.ShadowDecoration.CustomizableEdges = customizableEdges8;
+            guna2Panel1.Size = new Size(149, 35);
+            guna2Panel1.TabIndex = 12;
             // 
             // TxtBoxCategorie
             // 
-            TxtBoxCategorie.Anchor = AnchorStyles.Top;
-            TxtBoxCategorie.BorderColor = Color.DarkGray;
-            TxtBoxCategorie.BorderRadius = 15;
-            TxtBoxCategorie.CustomizableEdges = customizableEdges5;
+            TxtBoxCategorie.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            TxtBoxCategorie.BackColor = Color.White;
+            TxtBoxCategorie.BorderThickness = 0;
+            TxtBoxCategorie.CustomizableEdges = customizableEdges3;
             TxtBoxCategorie.DefaultText = "";
             TxtBoxCategorie.DisabledState.BorderColor = Color.FromArgb(208, 208, 208);
             TxtBoxCategorie.DisabledState.FillColor = Color.FromArgb(226, 226, 226);
@@ -209,128 +218,130 @@
             TxtBoxCategorie.FocusedState.BorderColor = Color.FromArgb(94, 148, 255);
             TxtBoxCategorie.Font = new Font("Segoe UI", 9F);
             TxtBoxCategorie.HoverState.BorderColor = Color.FromArgb(94, 148, 255);
-            TxtBoxCategorie.Location = new Point(67, 81);
+            TxtBoxCategorie.Location = new Point(13, 4);
             TxtBoxCategorie.Margin = new Padding(3, 4, 3, 4);
             TxtBoxCategorie.Name = "TxtBoxCategorie";
             TxtBoxCategorie.PlaceholderText = "";
             TxtBoxCategorie.SelectedText = "";
-            TxtBoxCategorie.ShadowDecoration.CustomizableEdges = customizableEdges6;
-            TxtBoxCategorie.Size = new Size(148, 32);
-            TxtBoxCategorie.TabIndex = 0;
+            TxtBoxCategorie.ShadowDecoration.CustomizableEdges = customizableEdges4;
+            TxtBoxCategorie.Size = new Size(115, 25);
+            TxtBoxCategorie.TabIndex = 11;
+            TxtBoxCategorie.Click += TxtBoxCategorie_Click;
             // 
-            // TxtBoxEmplacement
+            // ComboBoxCategorie
             // 
-            TxtBoxEmplacement.Anchor = AnchorStyles.Top;
-            TxtBoxEmplacement.BorderRadius = 15;
-            TxtBoxEmplacement.CustomizableEdges = customizableEdges7;
-            TxtBoxEmplacement.DefaultText = "";
-            TxtBoxEmplacement.DisabledState.BorderColor = Color.FromArgb(208, 208, 208);
-            TxtBoxEmplacement.DisabledState.FillColor = Color.FromArgb(226, 226, 226);
-            TxtBoxEmplacement.DisabledState.ForeColor = Color.FromArgb(138, 138, 138);
-            TxtBoxEmplacement.DisabledState.PlaceholderForeColor = Color.FromArgb(138, 138, 138);
-            TxtBoxEmplacement.FocusedState.BorderColor = Color.FromArgb(94, 148, 255);
-            TxtBoxEmplacement.Font = new Font("Segoe UI", 9F);
-            TxtBoxEmplacement.HoverState.BorderColor = Color.FromArgb(94, 148, 255);
-            TxtBoxEmplacement.Location = new Point(67, 29);
-            TxtBoxEmplacement.Margin = new Padding(3, 4, 3, 4);
-            TxtBoxEmplacement.Name = "TxtBoxEmplacement";
-            TxtBoxEmplacement.PlaceholderText = "";
-            TxtBoxEmplacement.SelectedText = "";
-            TxtBoxEmplacement.ShadowDecoration.CustomizableEdges = customizableEdges8;
-            TxtBoxEmplacement.Size = new Size(315, 32);
-            TxtBoxEmplacement.TabIndex = 4;
-            // 
-            // TxtBoxQuantite
-            // 
-            TxtBoxQuantite.Anchor = AnchorStyles.Top;
-            TxtBoxQuantite.BorderColor = Color.DarkGray;
-            TxtBoxQuantite.BorderRadius = 15;
-            TxtBoxQuantite.CustomizableEdges = customizableEdges9;
-            TxtBoxQuantite.DefaultText = "";
-            TxtBoxQuantite.DisabledState.BorderColor = Color.FromArgb(208, 208, 208);
-            TxtBoxQuantite.DisabledState.FillColor = Color.FromArgb(226, 226, 226);
-            TxtBoxQuantite.DisabledState.ForeColor = Color.FromArgb(138, 138, 138);
-            TxtBoxQuantite.DisabledState.PlaceholderForeColor = Color.FromArgb(138, 138, 138);
-            TxtBoxQuantite.FocusedState.BorderColor = Color.FromArgb(94, 148, 255);
-            TxtBoxQuantite.Font = new Font("Segoe UI", 9F);
-            TxtBoxQuantite.HoverState.BorderColor = Color.FromArgb(94, 148, 255);
-            TxtBoxQuantite.Location = new Point(504, 81);
-            TxtBoxQuantite.Margin = new Padding(3, 4, 3, 4);
-            TxtBoxQuantite.Name = "TxtBoxQuantite";
-            TxtBoxQuantite.PlaceholderText = "";
-            TxtBoxQuantite.SelectedText = "";
-            TxtBoxQuantite.ShadowDecoration.CustomizableEdges = customizableEdges10;
-            TxtBoxQuantite.Size = new Size(85, 32);
-            TxtBoxQuantite.TabIndex = 3;
-            TxtBoxQuantite.KeyDown += TxtBoxQuantite_KeyDown;
-            // 
-            // BtnAjouter
-            // 
-            BtnAjouter.Anchor = AnchorStyles.Top;
-            BtnAjouter.BorderRadius = 15;
-            BtnAjouter.CustomizableEdges = customizableEdges11;
-            BtnAjouter.DisabledState.BorderColor = Color.DarkGray;
-            BtnAjouter.DisabledState.CustomBorderColor = Color.DarkGray;
-            BtnAjouter.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
-            BtnAjouter.DisabledState.FillColor2 = Color.FromArgb(169, 169, 169);
-            BtnAjouter.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
-            BtnAjouter.FillColor = Color.FromArgb(184, 150, 62);
-            BtnAjouter.FillColor2 = Color.DarkGoldenrod;
-            BtnAjouter.Font = new Font("Segoe UI", 9F);
-            BtnAjouter.ForeColor = Color.WhiteSmoke;
-            BtnAjouter.Location = new Point(606, 81);
-            BtnAjouter.Name = "BtnAjouter";
-            BtnAjouter.ShadowDecoration.CustomizableEdges = customizableEdges12;
-            BtnAjouter.Size = new Size(137, 32);
-            BtnAjouter.TabIndex = 6;
-            BtnAjouter.Text = "Ajouter";
-            BtnAjouter.Click += BtnAjouter_Click;
+            ComboBoxCategorie.BackColor = Color.Transparent;
+            ComboBoxCategorie.BorderColor = Color.DarkGray;
+            ComboBoxCategorie.BorderRadius = 15;
+            ComboBoxCategorie.CustomizableEdges = customizableEdges5;
+            ComboBoxCategorie.Dock = DockStyle.Fill;
+            ComboBoxCategorie.DrawMode = DrawMode.OwnerDrawFixed;
+            ComboBoxCategorie.DropDownStyle = ComboBoxStyle.DropDownList;
+            ComboBoxCategorie.FocusedColor = Color.FromArgb(94, 148, 255);
+            ComboBoxCategorie.FocusedState.BorderColor = Color.FromArgb(94, 148, 255);
+            ComboBoxCategorie.FocusedState.FillColor = Color.Transparent;
+            ComboBoxCategorie.Font = new Font("Segoe UI", 10F);
+            ComboBoxCategorie.ForeColor = Color.Black;
+            ComboBoxCategorie.ItemHeight = 28;
+            ComboBoxCategorie.ItemsAppearance.ForeColor = Color.Black;
+            ComboBoxCategorie.Location = new Point(0, 0);
+            ComboBoxCategorie.Name = "ComboBoxCategorie";
+            ComboBoxCategorie.ShadowDecoration.CustomizableEdges = customizableEdges6;
+            ComboBoxCategorie.Size = new Size(149, 34);
+            ComboBoxCategorie.TabIndex = 7;
+            ComboBoxCategorie.SelectedIndexChanged += ComboBoxCategorie_SelectedIndexChanged;
             // 
             // TxtBoxNom
             // 
-            TxtBoxNom.Anchor = AnchorStyles.Top;
             TxtBoxNom.BorderColor = Color.DarkGray;
             TxtBoxNom.BorderRadius = 15;
-            TxtBoxNom.CustomizableEdges = customizableEdges13;
+            TxtBoxNom.CustomizableEdges = customizableEdges9;
             TxtBoxNom.DefaultText = "";
             TxtBoxNom.DisabledState.BorderColor = Color.FromArgb(208, 208, 208);
             TxtBoxNom.DisabledState.FillColor = Color.FromArgb(226, 226, 226);
             TxtBoxNom.DisabledState.ForeColor = Color.FromArgb(138, 138, 138);
             TxtBoxNom.DisabledState.PlaceholderForeColor = Color.FromArgb(138, 138, 138);
+            TxtBoxNom.Dock = DockStyle.Fill;
             TxtBoxNom.FocusedState.BorderColor = Color.FromArgb(94, 148, 255);
             TxtBoxNom.Font = new Font("Segoe UI", 9F);
             TxtBoxNom.HoverState.BorderColor = Color.FromArgb(94, 148, 255);
-            TxtBoxNom.Location = new Point(235, 81);
-            TxtBoxNom.Margin = new Padding(3, 4, 3, 4);
+            TxtBoxNom.Location = new Point(164, 5);
+            TxtBoxNom.Margin = new Padding(8, 4, 8, 4);
             TxtBoxNom.Name = "TxtBoxNom";
             TxtBoxNom.PlaceholderText = "";
             TxtBoxNom.SelectedText = "";
-            TxtBoxNom.ShadowDecoration.CustomizableEdges = customizableEdges14;
-            TxtBoxNom.Size = new Size(147, 32);
+            TxtBoxNom.ShadowDecoration.CustomizableEdges = customizableEdges10;
+            TxtBoxNom.Size = new Size(139, 33);
             TxtBoxNom.TabIndex = 1;
             // 
-            // TxtBoxPrice
+            // TxtBoxEmplacement
             // 
-            TxtBoxPrice.Anchor = AnchorStyles.Top;
-            TxtBoxPrice.BorderColor = Color.DarkGray;
-            TxtBoxPrice.BorderRadius = 15;
-            TxtBoxPrice.CustomizableEdges = customizableEdges15;
-            TxtBoxPrice.DefaultText = "";
-            TxtBoxPrice.DisabledState.BorderColor = Color.FromArgb(208, 208, 208);
-            TxtBoxPrice.DisabledState.FillColor = Color.FromArgb(226, 226, 226);
-            TxtBoxPrice.DisabledState.ForeColor = Color.FromArgb(138, 138, 138);
-            TxtBoxPrice.DisabledState.PlaceholderForeColor = Color.FromArgb(138, 138, 138);
-            TxtBoxPrice.FocusedState.BorderColor = Color.FromArgb(94, 148, 255);
-            TxtBoxPrice.Font = new Font("Segoe UI", 9F);
-            TxtBoxPrice.HoverState.BorderColor = Color.FromArgb(94, 148, 255);
-            TxtBoxPrice.Location = new Point(403, 81);
-            TxtBoxPrice.Margin = new Padding(3, 4, 3, 4);
-            TxtBoxPrice.Name = "TxtBoxPrice";
-            TxtBoxPrice.PlaceholderText = "";
-            TxtBoxPrice.SelectedText = "";
-            TxtBoxPrice.ShadowDecoration.CustomizableEdges = customizableEdges16;
-            TxtBoxPrice.Size = new Size(83, 32);
-            TxtBoxPrice.TabIndex = 2;
+            TxtBoxEmplacement.BorderColor = Color.DarkGray;
+            TxtBoxEmplacement.BorderRadius = 15;
+            TxtBoxEmplacement.CustomizableEdges = customizableEdges11;
+            TxtBoxEmplacement.DefaultText = "";
+            TxtBoxEmplacement.DisabledState.BorderColor = Color.FromArgb(208, 208, 208);
+            TxtBoxEmplacement.DisabledState.FillColor = Color.FromArgb(226, 226, 226);
+            TxtBoxEmplacement.DisabledState.ForeColor = Color.FromArgb(138, 138, 138);
+            TxtBoxEmplacement.DisabledState.PlaceholderForeColor = Color.FromArgb(138, 138, 138);
+            TxtBoxEmplacement.Dock = DockStyle.Fill;
+            TxtBoxEmplacement.FocusedState.BorderColor = Color.FromArgb(94, 148, 255);
+            TxtBoxEmplacement.Font = new Font("Segoe UI", 9F);
+            TxtBoxEmplacement.HoverState.BorderColor = Color.FromArgb(94, 148, 255);
+            TxtBoxEmplacement.Location = new Point(319, 5);
+            TxtBoxEmplacement.Margin = new Padding(8, 4, 8, 4);
+            TxtBoxEmplacement.Name = "TxtBoxEmplacement";
+            TxtBoxEmplacement.PlaceholderText = "";
+            TxtBoxEmplacement.SelectedText = "";
+            TxtBoxEmplacement.ShadowDecoration.CustomizableEdges = customizableEdges12;
+            TxtBoxEmplacement.Size = new Size(78, 33);
+            TxtBoxEmplacement.TabIndex = 4;
+            // 
+            // TxtBoxDescription
+            // 
+            TxtBoxDescription.BorderColor = Color.DarkGray;
+            TxtBoxDescription.BorderRadius = 15;
+            TxtBoxDescription.CustomizableEdges = customizableEdges13;
+            TxtBoxDescription.DefaultText = "";
+            TxtBoxDescription.DisabledState.BorderColor = Color.FromArgb(208, 208, 208);
+            TxtBoxDescription.DisabledState.FillColor = Color.FromArgb(226, 226, 226);
+            TxtBoxDescription.DisabledState.ForeColor = Color.FromArgb(138, 138, 138);
+            TxtBoxDescription.DisabledState.PlaceholderForeColor = Color.FromArgb(138, 138, 138);
+            TxtBoxDescription.Dock = DockStyle.Fill;
+            TxtBoxDescription.FocusedState.BorderColor = Color.FromArgb(94, 148, 255);
+            TxtBoxDescription.Font = new Font("Segoe UI", 9F);
+            TxtBoxDescription.HoverState.BorderColor = Color.FromArgb(94, 148, 255);
+            TxtBoxDescription.Location = new Point(413, 5);
+            TxtBoxDescription.Margin = new Padding(8, 4, 8, 4);
+            TxtBoxDescription.Name = "TxtBoxDescription";
+            TxtBoxDescription.PlaceholderText = "";
+            TxtBoxDescription.SelectedText = "";
+            TxtBoxDescription.ShadowDecoration.CustomizableEdges = customizableEdges14;
+            TxtBoxDescription.Size = new Size(177, 33);
+            TxtBoxDescription.TabIndex = 5;
+            // 
+            // BtnAjouter
+            // 
+            BtnAjouter.BorderRadius = 15;
+            BtnAjouter.CustomizableEdges = customizableEdges15;
+            BtnAjouter.DisabledState.BorderColor = Color.DarkGray;
+            BtnAjouter.DisabledState.CustomBorderColor = Color.DarkGray;
+            BtnAjouter.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
+            BtnAjouter.DisabledState.FillColor2 = Color.FromArgb(169, 169, 169);
+            BtnAjouter.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
+            BtnAjouter.Dock = DockStyle.Fill;
+            BtnAjouter.FillColor = Color.FromArgb(184, 150, 62);
+            BtnAjouter.FillColor2 = Color.DarkGoldenrod;
+            BtnAjouter.Font = new Font("Segoe UI", 9F);
+            BtnAjouter.ForeColor = Color.WhiteSmoke;
+            BtnAjouter.Location = new Point(606, 5);
+            BtnAjouter.Margin = new Padding(8, 4, 8, 4);
+            BtnAjouter.Name = "BtnAjouter";
+            BtnAjouter.ShadowDecoration.CustomizableEdges = customizableEdges16;
+            BtnAjouter.Size = new Size(161, 33);
+            BtnAjouter.TabIndex = 6;
+            BtnAjouter.Text = "Ajouter";
+            BtnAjouter.Click += BtnAjouter_Click;
             // 
             // guna2GradientButton1
             // 
@@ -349,7 +360,7 @@
             guna2GradientButton1.Location = new Point(4, 3);
             guna2GradientButton1.Name = "guna2GradientButton1";
             guna2GradientButton1.ShadowDecoration.CustomizableEdges = customizableEdges18;
-            guna2GradientButton1.Size = new Size(148, 74);
+            guna2GradientButton1.Size = new Size(125, 57);
             guna2GradientButton1.TabIndex = 8;
             // 
             // PageStock
@@ -363,6 +374,8 @@
             PanelPourLeDataGridView.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)guna2DataGridView1).EndInit();
             Panel_Top.ResumeLayout(false);
+            tableLayoutPanel1.ResumeLayout(false);
+            guna2Panel1.ResumeLayout(false);
             ResumeLayout(false);
         }
 
@@ -373,13 +386,14 @@
         private Guna.UI2.WinForms.Guna2Panel Panel_Top;
         private Guna.UI2.WinForms.Guna2GradientButton BtnAjouter;
         private Guna.UI2.WinForms.Guna2TextBox TxtBoxNom;
-        private Guna.UI2.WinForms.Guna2TextBox TxtBoxPrice;
         private Guna.UI2.WinForms.Guna2GradientButton guna2GradientButton1;
-        private Guna.UI2.WinForms.Guna2TextBox TxtBoxQuantite;
-        private Guna.UI2.WinForms.Guna2TextBox TxtBoxCategorie;
         private Guna.UI2.WinForms.Guna2TextBox TxtBoxEmplacement;
         private Guna.UI2.WinForms.Guna2TextBox TxtBoxDescription;
         private DataGridViewImageColumn BoutonSupprimer;
         private DataGridViewImageColumn BoutonEditer;
+        private TableLayoutPanel tableLayoutPanel1;
+        private Guna.UI2.WinForms.Guna2TextBox TxtBoxCategorie;
+        private Guna.UI2.WinForms.Guna2ComboBox ComboBoxCategorie;
+        private Guna.UI2.WinForms.Guna2Panel guna2Panel1;
     }
 }

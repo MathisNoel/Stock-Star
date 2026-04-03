@@ -77,48 +77,60 @@ namespace Stock_Star.Interfaces
 
         private void BtnVendre_Click(object sender, EventArgs e)
         {
-            string NomVente = TxtBoxNomPageVente.Text;
-            //string QuantiteVendue = TxtBoxQuantitePageVente.Text;
-            //string PrixVente = TxtBoxPricePageVente.Text;
+            // 1. Récupération brute des textes
+            string nomVente = TxtBoxNomPageVente.Text.Trim();
 
+            // 2. Vérification du nom (évite d'envoyer du vide à la BDD)
+            if (string.IsNullOrWhiteSpace(nomVente))
+            {
+                MessageBox.Show("Veuillez saisir un nom de produit.");
+                return;
+            }
 
+            // 3. Parsing de la Date
             DateTime dateVente;
-            string dateTexte = TxtBoxDatePageVente.Text;
-
-            // Si vide → on utilise la date actuelle
+            string dateTexte = TxtBoxDatePageVente.Text.Trim();
             if (string.IsNullOrWhiteSpace(dateTexte))
             {
                 dateVente = DateTime.Now;
             }
-            else
+            else if (!DateTime.TryParse(dateTexte, out dateVente))
             {
-                // Si non vide → on vérifie que la date est valide
-                if (!DateTime.TryParse(dateTexte, out dateVente))
-                {
-                    MessageBox.Show("La date saisie est invalide.");
-                    return;
-                }
+                MessageBox.Show("La date saisie est invalide.");
+                return;
             }
 
-            if (!int.TryParse(TxtBoxQuantitePageVente.Text, out int QuantiteVendue))
+            // 4. Parsing de la Quantité (int)
+            if (!int.TryParse(TxtBoxQuantitePageVente.Text, out int qteFinale))
             {
                 MessageBox.Show("Veuillez saisir un nombre entier pour la quantité.");
-                return; // Break
+                return;
             }
 
-            if (!decimal.TryParse(TxtBoxPricePageVente.Text.Replace('.', ','), out decimal PrixVente))
+            // 5. Parsing du Prix (decimal)
+            // On remplace le point par la virgule pour gérer les saisies FR
+            string prixTexte = TxtBoxPricePageVente.Text.Replace('.', ',');
+            if (!decimal.TryParse(prixTexte, out decimal prixFinal))
             {
                 MessageBox.Show("Veuillez saisir un prix valide.");
-                return; //Break
+                return;
             }
 
-            ViderChamps();
+            // 6. Exécution
+            try
+            {
+                // On appelle ta méthode SQL avec les bonnes variables castées
+                gestion.AjoutVente(nomVente, qteFinale, prixFinal, dateVente);
 
-
-
-            gestion.AjoutVente(NomVente, QuantiteVendue, PrixVente, dateVente);
-            VenteEffectuee?.Invoke(); // Previens les autres user controlel que la vente a été effectuée pour qu'ils puissent réagir en conséquence (actualiser le stock par exemple)
-            ActualiserGrille();
+                // 7. Nettoyage et Feedback
+                ViderChamps();
+                // VenteEffectuee?.Invoke(); // À décommenter si tu as l'event
+                ActualiserGrille();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Erreur lors de l'ajout : " + ex.Message);
+            }
         }
     }
 }

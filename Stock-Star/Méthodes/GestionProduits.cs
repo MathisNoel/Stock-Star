@@ -8,6 +8,37 @@ namespace Stock_Star
         //On crée un champ qui va contenir le moyen de se connecter à la BDD
         private ConnectionBDD BDD = new ConnectionBDD();
 
+        // On créer une méthode qui va pouvoir compléter la ComboBox de catégorie
+        /*
+        R: Récupérer les catégories pour les affichers en forme de liste dans la combobox passé en paramètre
+        E: Une comboxbox
+        S: Rien
+        */
+        public void RemplirCategorie(ComboBox CategorieBox)
+        {
+            using (NpgsqlConnection connection = BDD.GetConnection())
+            {
+                connection.Open();
+                string SQL = "SELECT nom_categorie FROM categories ORDER BY nom_categorie ASC;";
+
+                using (NpgsqlDataAdapter adapter = new NpgsqlDataAdapter(SQL, connection))
+                {
+                    DataTable dt = new DataTable();
+                    adapter.Fill(dt);
+
+                    // Comme pour un DataGridView, on lie la source
+                    CategorieBox.DataSource = dt;
+
+                    // INDISPENSABLE : On dit quelle colonne afficher dans la liste
+                    CategorieBox.DisplayMember = "nom_categorie";
+
+                    // On peut aussi définir la valeur interne (souvent l'ID, mais ici le nom suffit)
+                    CategorieBox.ValueMember = "nom_categorie";
+                }
+            }
+
+        }
+
         //On crée une méthode qui permettre de récupérer les données de la BDD (de type DataTable)
         /*
         R: Créer une DataTable qui va contenir tous nos produits présents dans la base de données sans redondance et en calculant la quantité,le prix d'achat et prix de vente réel
@@ -67,11 +98,9 @@ namespace Stock_Star
         /*
         R: Ajouter un produit / Simuler un achat dans la base de données 
         E: 4 string correspondant à la catégorie,le nom (du produit), l'emplacement et la description
-           1 entier, la quantité achetée
-           1 décimal, le prix d'achat
         S: Rien (ajout dans la base de données)
         */
-        public void AjoutStock(string categorie, string nom, string emplacement, string description, int quantite, decimal prix_achat)
+        public void AjoutStock(string categorie, string nom, string emplacement, string description)
         {
             //Variable interne pour ne pas être connecté a la BDD en permanence et Fermeture de liaison une fois la méthode finie
             using (NpgsqlConnection connection = BDD.GetConnection())
@@ -80,29 +109,23 @@ namespace Stock_Star
 
                 //On définit la requête SQL qu'on va réaliser
                 string SQL = """
-                    WITH
+                    WITH 
                     categorie_id AS (
-                        INSERT INTO categories (nom_categorie)
+                        INSERT INTO categories (nom_categorie) 
                         VALUES (@categorie)
-                        ON CONFLICT (nom_categorie) DO UPDATE SET nom_categorie = EXCLUDED.nom_categorie
+                        ON CONFLICT (nom_categorie) DO UPDATE 
+                            SET nom_categorie = EXCLUDED.nom_categorie 
                         RETURNING id_categorie
-                    ),
-                    produit_id AS (
-                        INSERT INTO produits (nom_produit,id_categorie,emplacement,description)
-                        SELECT @nom, id_categorie, @emplacement,@description FROM categorie_id
-                    ON CONFLICT (nom_produit) DO UPDATE SET nom_produit = EXCLUDED.nom_produit
-                        RETURNING id_produit
                     )
-
-                    INSERT INTO achats (id_produit,quantite_achetee,prix_achat_unitaire,date_achat)
-                    SELECT id_produit, @quantite,@prix_achat, NOW() FROM produit_id;
+                    INSERT INTO produits (nom_produit, id_categorie, emplacement, description)
+                    SELECT @nom, id_categorie, @emplacement, @description 
+                    FROM categorie_id
+                    ON CONFLICT (nom_produit) DO NOTHING;
                     """;
                 using (NpgsqlCommand command = new NpgsqlCommand(SQL, connection))
                 {
                     command.Parameters.AddWithValue("categorie", categorie);
                     command.Parameters.AddWithValue("nom", nom);
-                    command.Parameters.AddWithValue("quantite", quantite);
-                    command.Parameters.AddWithValue("prix_achat", prix_achat);
                     command.Parameters.AddWithValue("emplacement", emplacement);
                     command.Parameters.AddWithValue("description", description);
 
@@ -238,34 +261,37 @@ namespace Stock_Star
 
         /*
         R : Ajouter une nouvelle vente dans la table vente
-        E : String le nom du produit, int la quantité de produit vendue, decimal prix de Vente
+        E : String le nom du produit, int la quantité de produit vendue, decimal prix de Vente, date la date de vente
         S : vide
          */
-        public void AjoutVente(string nom, int quantiteVendue, decimal prixVente, DateTime dateVente)
+        public void AjoutVente(string nom, int quantite, decimal prix, DateTime date)
         {
             using (var connection = BDD.GetConnection())
             {
                 connection.Open();
 
                 string SQL = """
-                 WITH produit_id AS ( --on creer une table intermediaire produit_id dans laquel il y'as une seul ligne id_produit FROM produit where nom=@nom
-                     SELECT id_produit
-                     FROM produits
-                     WHERE nom_produit = @nom
-                     LIMIT 1
-                 )
-                 INSERT INTO ventes (id_produit, quantite_vendue, prix_vente_reel, date_vente)
-                 SELECT id_produit, @quantiteVendue, @prixVente, @dateVente
-                 FROM produit_id;
+                 INSERT INTO ventes (id_produit, quantite_vendue, prix_vente_reel, date_vente, benefice)
+                 SELECT 
+                     p.id_produit, 
+                     @quantite, 
+                     @prix, 
+                     @date,
+                     -- Calcul : (Prix Vente - Moyenne Achat) * Quantité
+                     -- Le COALESCE met 0 si aucun achat n'existe avant la date
+                     ( @prix - COALESCE(AVG(a.prix_achat_unitaire), 0) ) * @quantite
+                 FROM produits p
+                 LEFT JOIN achats a ON p.id_produit = a.id_produit AND a.date_achat <= @date
+                 WHERE p.nom_produit = @nom
+                 GROUP BY p.id_produit;
                  """;
 
                 using (var command = new NpgsqlCommand(SQL, connection))
                 {
                     command.Parameters.AddWithValue("nom", nom);
-                    command.Parameters.AddWithValue("quantiteVendue", quantiteVendue);
-                    command.Parameters.AddWithValue("prixVente", prixVente);
-                    command.Parameters.AddWithValue("dateVente", dateVente);
-
+                    command.Parameters.AddWithValue("quantite", quantite);
+                    command.Parameters.AddWithValue("prix", prix);
+                    command.Parameters.AddWithValue("date", date);
 
                     command.ExecuteNonQuery();
                 }
@@ -288,28 +314,17 @@ namespace Stock_Star
                 connection.Open();
 
                 //On définit la requête SQL qu'on va réaliser
-                string SQL = """      
+                string SQL = """
                     SELECT 
-                        v.id_vente AS "ID Vente",
+                        id_vente AS "ID Vente",
                         p.nom_produit AS "Nom",
-                        v.quantite_vendue AS "Quantité",
-                        v.prix_vente_reel AS "Prix unitaire",
-                        -- Calcul du bénéfice (Prix Vente - Prix Achat Moyen) * Quantité Vente
-                        -- ROUND pour arrondir le résultat a 2 chiffres après la virgule
-                        ROUND((v.prix_vente_reel - COALESCE(AVG(a.prix_achat_unitaire), 0)) * v.quantite_vendue, 2) AS "Bénéfice",
-                        v.date_vente AS "Date de Vente"
-                    FROM ventes AS v
-                    LEFT JOIN produits AS p ON v.id_produit = p.id_produit
-                    -- On ne prend que les achats qui ont eu lieu AVANT ou LE JOUR de la vente (on prend pas en compte les achats futur)
-                    LEFT JOIN achats AS a ON v.id_produit = a.id_produit AND a.date_achat <= v.date_vente
-                    -- GROUP BY car fonction d'Aggrégation AVG
-                    GROUP BY 
-                        v.id_vente, 
-                        p.nom_produit, 
-                        v.quantite_vendue, 
-                        v.prix_vente_reel, 
-                        v.date_vente
-                    ORDER BY v.date_vente DESC;
+                        quantite_vendue AS "Quantité",
+                        prix_vente_reel AS "Prix unitaire",
+                        benefice AS "Bénéfice", -- On appelle juste la colonne
+                        date_vente AS "Date de Vente"
+                    FROM ventes v
+                    LEFT JOIN produits p ON v.id_produit = p.id_produit
+                    ORDER BY date_vente DESC;
                     """;
 
                 using (NpgsqlDataAdapter adapter = new NpgsqlDataAdapter(SQL, connection)) //On créer un adapter pour lier les informations de la requête SQL avec une DataTable
