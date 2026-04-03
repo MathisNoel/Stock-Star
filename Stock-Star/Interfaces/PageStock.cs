@@ -124,10 +124,13 @@ namespace Stock_Star
             {
                 // On récupère le nom du produit sur la ligne | ?. et ?? "" signifie que si il n'y a aucune valeur (null) on le transforme en caractère vide ''.
                 string nom = guna2DataGridView1.Rows[e.RowIndex].Cells["Nom"].Value?.ToString() ?? "";
+                string categorie = guna2DataGridView1.Rows[e.RowIndex].Cells["Catégorie"].Value?.ToString() ?? "";
+                string emplacement = guna2DataGridView1.Rows[e.RowIndex].Cells["Emplacement"].Value?.ToString() ?? "";
+                string description = guna2DataGridView1.Rows[e.RowIndex].Cells["Description"].Value?.ToString() ?? "";
                 if (!string.IsNullOrEmpty(nom))
                 {
                     //On affiche la page PageModification.cs avec le nom récupéré précedemment afin de supprimer le produit
-                    PageModification pagemodification = new PageModification(_parent, nom);
+                    PageModification pagemodification = new PageModification(_parent, nom , categorie, emplacement, description);
                     // On affiche la page
                     _parent.LoadPage(pagemodification);
                 }
