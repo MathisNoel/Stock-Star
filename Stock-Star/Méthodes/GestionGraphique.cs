@@ -123,6 +123,82 @@ namespace Stock_Star.Méthodes
 
 
 
+        public DataTable ChargerBeneficesEntreDates(DateOnly debut, DateOnly fin)
+        {
+            using (var connection = BDD.GetConnection())
+            {
+                connection.Open();
+
+                string SQL = @"
+                    SELECT
+                        v.date_vente AS Date,
+                        SUM(v.prix_vente_reel - sub_achats.prix_moyen_achat) AS Benefice
+                    FROM ventes AS v
+                    LEFT JOIN (
+                        SELECT
+                            id_produit,
+                            SUM(prix_achat_unitaire * quantite_achetee) / NULLIF(SUM(quantite_achetee), 0)
+                                AS prix_moyen_achat
+                        FROM achats
+                        GROUP BY id_produit
+                    ) sub_achats ON v.id_produit = sub_achats.id_produit
+                    WHERE v.date_vente BETWEEN @debut AND @fin
+                    GROUP BY v.date_vente
+                    ORDER BY v.date_vente;
+                 ";
+
+                using (var cmd = new NpgsqlCommand(SQL, connection))
+                {
+                    cmd.Parameters.AddWithValue("@debut", debut.ToDateTime(TimeOnly.MinValue));
+                    cmd.Parameters.AddWithValue("@fin", fin.ToDateTime(TimeOnly.MaxValue));
+
+                    using (var adapter = new NpgsqlDataAdapter(cmd))
+                    {
+                        DataTable dt = new DataTable();
+                        adapter.Fill(dt);
+                        return dt;
+                    }
+                }
+            }
+        }
+
+
+
+
+        public DataTable ChargerTresorerieEntreDate(DateOnly debut, DateOnly fin)
+        {
+            DataTable dtTresorerie = new DataTable(); // Création d'une nouvelle DataTable pour stocker les données de trésorerie
+
+            DataTable dtBenefices = ChargerBeneficesEntreDates(debut, fin); //Appel de la méthode ChargerBeneficesParDate() pour obtenir les bénéfices par date
+
+
+            dtTresorerie.Columns.Add("Date", typeof(DateOnly)); //Ajout de la colonne "Date" de type DateOnly à la DataTable de trésorerie
+            dtTresorerie.Columns.Add("Tresorerie", typeof(decimal)); //Ajout de la colonne "Tresorerie" de type decimal à la DataTable de trésorerie
+
+            decimal cumul = 0; //Valeur de départ de la trésorerie, initialisée à 0
+
+            foreach (DataRow row in dtBenefices.Rows) //Boucle à travers chaque ligne de la DataTable des bénéfices
+            {
+                DateOnly date = (DateOnly)row["Date"];
+                decimal benefice = Convert.ToDecimal(row["Benefice"]);
+
+                cumul += benefice;
+
+                dtTresorerie.Rows.Add(date, cumul);
+            }
+
+            return dtTresorerie;
+
+        }
+
+
+
+
+
+
+
+
+
 
     }
 }

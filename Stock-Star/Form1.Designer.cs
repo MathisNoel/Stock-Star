@@ -41,14 +41,14 @@ namespace Stock_Star
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges6 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges15 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges16 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges9 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges10 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges11 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges12 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges13 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges14 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges17 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges18 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges9 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges10 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             BtnClose = new Guna.UI2.WinForms.Guna2Button();
             TitleBar = new Guna.UI2.WinForms.Guna2Panel();
             BtnCacherFenetre = new Guna.UI2.WinForms.Guna2Button();
@@ -59,10 +59,10 @@ namespace Stock_Star
             guna2DragControl4 = new Guna.UI2.WinForms.Guna2DragControl(components);
             guna2DragControl5 = new Guna.UI2.WinForms.Guna2DragControl(components);
             Panel_Menu = new Guna.UI2.WinForms.Guna2CustomGradientPanel();
+            BtnMenuAchatEtVente = new Guna.UI2.WinForms.Guna2GradientButton();
             BtnMenuStock = new Guna.UI2.WinForms.Guna2GradientButton();
             BtnMenuGraphique = new Guna.UI2.WinForms.Guna2GradientButton();
             Panel_Main = new Guna.UI2.WinForms.Guna2Panel();
-            BtnMenuAchatEtVente = new Guna.UI2.WinForms.Guna2GradientButton();
             TitleBar.SuspendLayout();
             Panel_Menu.SuspendLayout();
             SuspendLayout();
@@ -198,6 +198,29 @@ namespace Stock_Star
             Panel_Menu.Size = new Size(55, 534);
             Panel_Menu.TabIndex = 9;
             // 
+            // BtnMenuAchatEtVente
+            // 
+            BtnMenuAchatEtVente.BackColor = Color.Transparent;
+            BtnMenuAchatEtVente.BorderRadius = 15;
+            BtnMenuAchatEtVente.CustomizableEdges = customizableEdges9;
+            BtnMenuAchatEtVente.DisabledState.BorderColor = Color.DarkGray;
+            BtnMenuAchatEtVente.DisabledState.CustomBorderColor = Color.DarkGray;
+            BtnMenuAchatEtVente.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
+            BtnMenuAchatEtVente.DisabledState.FillColor2 = Color.FromArgb(169, 169, 169);
+            BtnMenuAchatEtVente.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
+            BtnMenuAchatEtVente.FillColor = Color.RoyalBlue;
+            BtnMenuAchatEtVente.FillColor2 = Color.Navy;
+            BtnMenuAchatEtVente.Font = new Font("Segoe UI", 9F);
+            BtnMenuAchatEtVente.ForeColor = Color.White;
+            BtnMenuAchatEtVente.Image = (Image)resources.GetObject("BtnMenuAchatEtVente.Image");
+            BtnMenuAchatEtVente.ImageSize = new Size(30, 30);
+            BtnMenuAchatEtVente.Location = new Point(3, 80);
+            BtnMenuAchatEtVente.Name = "BtnMenuAchatEtVente";
+            BtnMenuAchatEtVente.ShadowDecoration.CustomizableEdges = customizableEdges10;
+            BtnMenuAchatEtVente.Size = new Size(47, 31);
+            BtnMenuAchatEtVente.TabIndex = 12;
+            BtnMenuAchatEtVente.Click += BtnMenuAchatEtVente_Click;
+            // 
             // BtnMenuStock
             // 
             BtnMenuStock.BackColor = Color.Transparent;
@@ -254,29 +277,6 @@ namespace Stock_Star
             Panel_Main.Size = new Size(811, 534);
             Panel_Main.TabIndex = 10;
             // 
-            // BtnMenuAchatEtVente
-            // 
-            BtnMenuAchatEtVente.BackColor = Color.Transparent;
-            BtnMenuAchatEtVente.BorderRadius = 15;
-            BtnMenuAchatEtVente.CustomizableEdges = customizableEdges9;
-            BtnMenuAchatEtVente.DisabledState.BorderColor = Color.DarkGray;
-            BtnMenuAchatEtVente.DisabledState.CustomBorderColor = Color.DarkGray;
-            BtnMenuAchatEtVente.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
-            BtnMenuAchatEtVente.DisabledState.FillColor2 = Color.FromArgb(169, 169, 169);
-            BtnMenuAchatEtVente.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
-            BtnMenuAchatEtVente.FillColor = Color.RoyalBlue;
-            BtnMenuAchatEtVente.FillColor2 = Color.Navy;
-            BtnMenuAchatEtVente.Font = new Font("Segoe UI", 9F);
-            BtnMenuAchatEtVente.ForeColor = Color.White;
-            BtnMenuAchatEtVente.Image = (Image)resources.GetObject("BtnMenuAchatEtVente.Image");
-            BtnMenuAchatEtVente.ImageSize = new Size(30, 30);
-            BtnMenuAchatEtVente.Location = new Point(3, 80);
-            BtnMenuAchatEtVente.Name = "BtnMenuAchatEtVente";
-            BtnMenuAchatEtVente.ShadowDecoration.CustomizableEdges = customizableEdges10;
-            BtnMenuAchatEtVente.Size = new Size(47, 31);
-            BtnMenuAchatEtVente.TabIndex = 12;
-            BtnMenuAchatEtVente.Click += BtnMenuAchatEtVente_Click;
-            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
@@ -289,6 +289,7 @@ namespace Stock_Star
             Controls.Add(Panel_Menu);
             Controls.Add(TitleBar);
             FormBorderStyle = FormBorderStyle.None;
+            Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "Form1";
             Text = "Page Aceuil Stock&Star";
             TitleBar.ResumeLayout(false);

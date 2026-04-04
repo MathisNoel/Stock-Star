@@ -60,21 +60,27 @@
             Guna.Charts.WinForms.ChartFont chartFont15 = new Guna.Charts.WinForms.ChartFont();
             Guna.Charts.WinForms.Tick tick6 = new Guna.Charts.WinForms.Tick();
             Guna.Charts.WinForms.ChartFont chartFont16 = new Guna.Charts.WinForms.ChartFont();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges9 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges10 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges13 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges14 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges3 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges4 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges5 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(PageGraphique));
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges6 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges7 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges8 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges9 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(PageGraphique));
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges10 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges11 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges12 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             panel3 = new Panel();
             PanelPourLeDataGridView = new Guna.UI2.WinForms.Guna2Panel();
             tableLayoutPanel1 = new TableLayoutPanel();
             GunaGraphiqueBenefice = new Guna.Charts.WinForms.GunaChart();
             GunaGraphiqueTresorerie = new Guna.Charts.WinForms.GunaChart();
             Panel_Top = new Guna.UI2.WinForms.Guna2Panel();
+            guna2DateTimePicker1Fin = new Guna.UI2.WinForms.Guna2DateTimePicker();
+            guna2DateTimePicker1Debut = new Guna.UI2.WinForms.Guna2DateTimePicker();
             guna2CustomGradientPanel5 = new Guna.UI2.WinForms.Guna2CustomGradientPanel();
             TextBoxCA_nonvariable = new Label();
             TextBoxVariableCA = new Label();
@@ -208,29 +214,74 @@
             chartFont16.FontName = "Arial";
             tick6.Font = chartFont16;
             GunaGraphiqueTresorerie.ZAxes.Ticks = tick6;
+            GunaGraphiqueTresorerie.Zoom = Guna.Charts.WinForms.ZoomMode.XY;
             // 
             // Panel_Top
             // 
+            Panel_Top.Controls.Add(guna2DateTimePicker1Fin);
+            Panel_Top.Controls.Add(guna2DateTimePicker1Debut);
             Panel_Top.Controls.Add(guna2CustomGradientPanel5);
             Panel_Top.Controls.Add(guna2GradientButton1);
             Panel_Top.Controls.Add(guna2CustomGradientPanel2);
-            Panel_Top.CustomizableEdges = customizableEdges9;
+            Panel_Top.CustomizableEdges = customizableEdges13;
             Panel_Top.Dock = DockStyle.Top;
             Panel_Top.Location = new Point(0, 0);
             Panel_Top.Name = "Panel_Top";
-            Panel_Top.ShadowDecoration.CustomizableEdges = customizableEdges10;
+            Panel_Top.ShadowDecoration.CustomizableEdges = customizableEdges14;
             Panel_Top.Size = new Size(1109, 120);
             Panel_Top.TabIndex = 15;
+            // 
+            // guna2DateTimePicker1Fin
+            // 
+            guna2DateTimePicker1Fin.Anchor = AnchorStyles.Top;
+            guna2DateTimePicker1Fin.BorderRadius = 15;
+            guna2DateTimePicker1Fin.Checked = true;
+            guna2DateTimePicker1Fin.CustomizableEdges = customizableEdges3;
+            guna2DateTimePicker1Fin.FillColor = Color.DarkGoldenrod;
+            guna2DateTimePicker1Fin.FocusedColor = Color.FromArgb(184, 150, 62);
+            guna2DateTimePicker1Fin.Font = new Font("Segoe UI", 7.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            guna2DateTimePicker1Fin.ForeColor = Color.WhiteSmoke;
+            guna2DateTimePicker1Fin.Format = DateTimePickerFormat.Long;
+            guna2DateTimePicker1Fin.Location = new Point(853, 72);
+            guna2DateTimePicker1Fin.MaxDate = new DateTime(9998, 12, 31, 0, 0, 0, 0);
+            guna2DateTimePicker1Fin.MinDate = new DateTime(1753, 1, 1, 0, 0, 0, 0);
+            guna2DateTimePicker1Fin.Name = "guna2DateTimePicker1Fin";
+            guna2DateTimePicker1Fin.ShadowDecoration.CustomizableEdges = customizableEdges4;
+            guna2DateTimePicker1Fin.Size = new Size(191, 30);
+            guna2DateTimePicker1Fin.TabIndex = 10;
+            guna2DateTimePicker1Fin.Value = new DateTime(2026, 4, 4, 18, 15, 33, 619);
+            guna2DateTimePicker1Fin.ValueChanged += guna2DateTimePicker1Fin_ValueChanged;
+            // 
+            // guna2DateTimePicker1Debut
+            // 
+            guna2DateTimePicker1Debut.Anchor = AnchorStyles.Top;
+            guna2DateTimePicker1Debut.BorderRadius = 15;
+            guna2DateTimePicker1Debut.Checked = true;
+            guna2DateTimePicker1Debut.CustomizableEdges = customizableEdges5;
+            guna2DateTimePicker1Debut.FillColor = Color.DarkGoldenrod;
+            guna2DateTimePicker1Debut.FocusedColor = Color.FromArgb(184, 150, 62);
+            guna2DateTimePicker1Debut.Font = new Font("Segoe UI", 7.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            guna2DateTimePicker1Debut.ForeColor = Color.WhiteSmoke;
+            guna2DateTimePicker1Debut.Format = DateTimePickerFormat.Long;
+            guna2DateTimePicker1Debut.Location = new Point(853, 34);
+            guna2DateTimePicker1Debut.MaxDate = new DateTime(9998, 12, 31, 0, 0, 0, 0);
+            guna2DateTimePicker1Debut.MinDate = new DateTime(1753, 1, 1, 0, 0, 0, 0);
+            guna2DateTimePicker1Debut.Name = "guna2DateTimePicker1Debut";
+            guna2DateTimePicker1Debut.ShadowDecoration.CustomizableEdges = customizableEdges6;
+            guna2DateTimePicker1Debut.Size = new Size(191, 30);
+            guna2DateTimePicker1Debut.TabIndex = 9;
+            guna2DateTimePicker1Debut.Value = new DateTime(2026, 4, 4, 18, 15, 33, 619);
+            guna2DateTimePicker1Debut.ValueChanged += guna2DateTimePicker1Debut_ValueChanged;
             // 
             // guna2CustomGradientPanel5
             // 
             guna2CustomGradientPanel5.Anchor = AnchorStyles.Top;
             guna2CustomGradientPanel5.AutoSize = true;
-            guna2CustomGradientPanel5.BackColor = SystemColors.Control;
+            guna2CustomGradientPanel5.BackColor = Color.WhiteSmoke;
             guna2CustomGradientPanel5.BorderRadius = 30;
             guna2CustomGradientPanel5.Controls.Add(TextBoxCA_nonvariable);
             guna2CustomGradientPanel5.Controls.Add(TextBoxVariableCA);
-            guna2CustomGradientPanel5.CustomizableEdges = customizableEdges3;
+            guna2CustomGradientPanel5.CustomizableEdges = customizableEdges7;
             guna2CustomGradientPanel5.FillColor = Color.FromArgb(184, 150, 62);
             guna2CustomGradientPanel5.FillColor2 = Color.DeepPink;
             guna2CustomGradientPanel5.FillColor3 = Color.Goldenrod;
@@ -238,7 +289,7 @@
             guna2CustomGradientPanel5.Location = new Point(577, 37);
             guna2CustomGradientPanel5.Margin = new Padding(30);
             guna2CustomGradientPanel5.Name = "guna2CustomGradientPanel5";
-            guna2CustomGradientPanel5.ShadowDecoration.CustomizableEdges = customizableEdges4;
+            guna2CustomGradientPanel5.ShadowDecoration.CustomizableEdges = customizableEdges8;
             guna2CustomGradientPanel5.Size = new Size(245, 60);
             guna2CustomGradientPanel5.TabIndex = 5;
             // 
@@ -271,7 +322,7 @@
             // 
             // guna2GradientButton1
             // 
-            guna2GradientButton1.CustomizableEdges = customizableEdges5;
+            guna2GradientButton1.CustomizableEdges = customizableEdges9;
             guna2GradientButton1.DisabledState.BorderColor = Color.DarkGray;
             guna2GradientButton1.DisabledState.CustomBorderColor = Color.DarkGray;
             guna2GradientButton1.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
@@ -285,7 +336,7 @@
             guna2GradientButton1.ImageSize = new Size(150, 100);
             guna2GradientButton1.Location = new Point(4, 3);
             guna2GradientButton1.Name = "guna2GradientButton1";
-            guna2GradientButton1.ShadowDecoration.CustomizableEdges = customizableEdges6;
+            guna2GradientButton1.ShadowDecoration.CustomizableEdges = customizableEdges10;
             guna2GradientButton1.Size = new Size(148, 74);
             guna2GradientButton1.TabIndex = 8;
             // 
@@ -293,11 +344,11 @@
             // 
             guna2CustomGradientPanel2.Anchor = AnchorStyles.Top;
             guna2CustomGradientPanel2.AutoSize = true;
-            guna2CustomGradientPanel2.BackColor = SystemColors.Control;
+            guna2CustomGradientPanel2.BackColor = Color.WhiteSmoke;
             guna2CustomGradientPanel2.BorderRadius = 30;
             guna2CustomGradientPanel2.Controls.Add(Text_BeneficeTotal);
             guna2CustomGradientPanel2.Controls.Add(TextBoxBenefice);
-            guna2CustomGradientPanel2.CustomizableEdges = customizableEdges7;
+            guna2CustomGradientPanel2.CustomizableEdges = customizableEdges11;
             guna2CustomGradientPanel2.FillColor = Color.FromArgb(184, 150, 62);
             guna2CustomGradientPanel2.FillColor2 = Color.DarkGreen;
             guna2CustomGradientPanel2.FillColor3 = Color.Goldenrod;
@@ -305,7 +356,7 @@
             guna2CustomGradientPanel2.Location = new Point(143, 37);
             guna2CustomGradientPanel2.Margin = new Padding(30);
             guna2CustomGradientPanel2.Name = "guna2CustomGradientPanel2";
-            guna2CustomGradientPanel2.ShadowDecoration.CustomizableEdges = customizableEdges8;
+            guna2CustomGradientPanel2.ShadowDecoration.CustomizableEdges = customizableEdges12;
             guna2CustomGradientPanel2.Size = new Size(394, 60);
             guna2CustomGradientPanel2.TabIndex = 4;
             // 
@@ -372,5 +423,7 @@
         private Label TextBoxCA_nonvariable;
         private Label TextBoxVariableCA;
         private Guna.Charts.WinForms.GunaChart GunaGraphiqueTresorerie;
+        private Guna.UI2.WinForms.Guna2DateTimePicker guna2DateTimePicker1Fin;
+        private Guna.UI2.WinForms.Guna2DateTimePicker guna2DateTimePicker1Debut;
     }
 }
