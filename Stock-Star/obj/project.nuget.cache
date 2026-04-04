@@ -1,9 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "BR89El8eiZQ=",
+  "dgSpecHash": "e1Zh4hsyJ9Q=",
   "success": true,
   "projectFilePath": "C:\\Users\\OBCK\\Documents\\GitHub\\Stock-Star\\Stock-Star\\Stock-Star.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\OBCK\\.nuget\\packages\\guna.charts.winforms\\1.1.0\\guna.charts.winforms.1.1.0.nupkg.sha512",
     "C:\\Users\\OBCK\\.nuget\\packages\\guna.ui2.winforms\\2.0.4.7\\guna.ui2.winforms.2.0.4.7.nupkg.sha512",
     "C:\\Users\\OBCK\\.nuget\\packages\\microsoft.extensions.dependencyinjection.abstractions\\10.0.0\\microsoft.extensions.dependencyinjection.abstractions.10.0.0.nupkg.sha512",
     "C:\\Users\\OBCK\\.nuget\\packages\\microsoft.extensions.logging.abstractions\\10.0.0\\microsoft.extensions.logging.abstractions.10.0.0.nupkg.sha512",
