@@ -139,12 +139,15 @@ namespace Stock_Star
         private void guna2DateTimePicker1Debut_ValueChanged(object sender, EventArgs e)
         {
             FiltrerParPeriode();
-
+            TextBoxBenefice.Text = gestionGraphique.CalculerBeneficeTotal().ToString("C2");
+            TextBoxVariableCA.Text = gestionGraphique.CalculerChiffreAffaire().ToString("C2");
         }
 
         private void guna2DateTimePicker1Fin_ValueChanged(object sender, EventArgs e)
         {
             FiltrerParPeriode();
+            TextBoxBenefice.Text = gestionGraphique.CalculerBeneficeTotal().ToString("C2");
+            TextBoxVariableCA.Text = gestionGraphique.CalculerChiffreAffaire().ToString("C2");
         }
 
         private void FiltrerParPeriode()
