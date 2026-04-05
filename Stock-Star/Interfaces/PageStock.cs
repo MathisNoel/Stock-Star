@@ -22,13 +22,14 @@ namespace Stock_Star
         public void ActualiserGrille()
         {
             try
-            {   
+            {
                 //Remplir la DataGridView
                 guna2DataGridView1.DataSource = gestion.ChargerStock();
                 //Remplir la ComboBox
                 gestion.RemplirCategorie(ComboBoxCategorie);
+                TxtBoxCategorie.Clear();
 
-                ComboBoxCategorie.TextOffset = new Point(-500, 0);
+                ComboBoxCategorie.TextOffset = new Point(50000, 0);
 
                 var ColonneSupprimer = guna2DataGridView1.Columns["BoutonSupprimer"];
                 if (ColonneSupprimer != null)
@@ -43,7 +44,7 @@ namespace Stock_Star
                     ColonneEditer.DisplayIndex = guna2DataGridView1.ColumnCount - 2;
                     ColonneEditer.Width = 80;
                 }
-                
+
             }
             catch (Exception ex)
             {
@@ -105,12 +106,20 @@ namespace Stock_Star
             }
         }
 
+        // Détection lors d'un click sur la DataGridView (pour détecter bouton supprimer ou éditer)
+        // Détection lors d'un click sur la DataGridView (pour détecter bouton supprimer ou éditer)
         private void ClickOnDataGridView(object sender, DataGridViewCellEventArgs e)
         {
+            // On ignore le clic sur l'en-tête (index -1)
             if (e.RowIndex < 0) return;
 
-            string nom = guna2DataGridView1.Rows[e.RowIndex].Cells["Nom"].Value?.ToString() ?? "";
+            // Récupération de la ligne cliquée
+            DataGridViewRow row = guna2DataGridView1.Rows[e.RowIndex];
 
+            // Récupération du nom (obligatoire pour identifier le produit)
+            string nom = row.Cells["Nom"].Value?.ToString() ?? "";
+
+            // CAS 1 : BOUTON SUPPRIMER
             if (guna2DataGridView1.Columns[e.ColumnIndex].Name == "BoutonSupprimer")
             {
                 if (!string.IsNullOrEmpty(nom))
@@ -120,12 +129,18 @@ namespace Stock_Star
                 }
             }
 
+            // CAS 2 : BOUTON ÉDITER
             if (guna2DataGridView1.Columns[e.ColumnIndex].Name == "BoutonEditer")
             {
                 if (!string.IsNullOrEmpty(nom))
                 {
-                    PageModification pagemodification = new PageModification(_parent, nom);
-                    _parent.LoadPage(pagemodification);
+                    // Récupération sécurisée des autres colonnes (on gère le null avec ??)
+                    string cat = row.Cells["Catégorie"].Value?.ToString() ?? "";
+                    string emp = row.Cells["Emplacement"].Value?.ToString() ?? "";
+                    string desc = row.Cells["Description"].Value?.ToString() ?? "";
+
+                    // On envoie TOUTES les infos à la page de modification
+                    _parent.LoadPage(new PageModification(_parent, nom, cat, emp, desc));
                 }
             }
         }
@@ -141,6 +156,15 @@ namespace Stock_Star
         {
             // Si on clique sur le texte, on peut aussi ouvrir la liste
             ComboBoxCategorie.DroppedDown = true;
+        }
+
+        private void PageStock_VisibleChanged(object sender, EventArgs e)
+        {
+            // On vérifie que la page devient visible (et pas l'inverse)
+            if (this.Visible)
+            {
+                ActualiserGrille();
+            }
         }
     }
 }

@@ -201,7 +201,7 @@
             guna2Panel1.Location = new Point(4, 4);
             guna2Panel1.Name = "guna2Panel1";
             guna2Panel1.ShadowDecoration.CustomizableEdges = customizableEdges8;
-            guna2Panel1.Size = new Size(149, 35);
+            guna2Panel1.Size = new Size(140, 35);
             guna2Panel1.TabIndex = 12;
             // 
             // TxtBoxCategorie
@@ -224,7 +224,7 @@
             TxtBoxCategorie.PlaceholderText = "";
             TxtBoxCategorie.SelectedText = "";
             TxtBoxCategorie.ShadowDecoration.CustomizableEdges = customizableEdges4;
-            TxtBoxCategorie.Size = new Size(115, 25);
+            TxtBoxCategorie.Size = new Size(106, 25);
             TxtBoxCategorie.TabIndex = 11;
             TxtBoxCategorie.Click += TxtBoxCategorie_Click;
             // 
@@ -247,7 +247,7 @@
             ComboBoxCategorie.Location = new Point(0, 0);
             ComboBoxCategorie.Name = "ComboBoxCategorie";
             ComboBoxCategorie.ShadowDecoration.CustomizableEdges = customizableEdges6;
-            ComboBoxCategorie.Size = new Size(149, 34);
+            ComboBoxCategorie.Size = new Size(140, 34);
             ComboBoxCategorie.TabIndex = 7;
             ComboBoxCategorie.SelectedIndexChanged += ComboBoxCategorie_SelectedIndexChanged;
             // 
@@ -265,13 +265,13 @@
             TxtBoxNom.FocusedState.BorderColor = Color.FromArgb(94, 148, 255);
             TxtBoxNom.Font = new Font("Segoe UI", 9F);
             TxtBoxNom.HoverState.BorderColor = Color.FromArgb(94, 148, 255);
-            TxtBoxNom.Location = new Point(164, 5);
+            TxtBoxNom.Location = new Point(155, 5);
             TxtBoxNom.Margin = new Padding(8, 4, 8, 4);
             TxtBoxNom.Name = "TxtBoxNom";
             TxtBoxNom.PlaceholderText = "";
             TxtBoxNom.SelectedText = "";
             TxtBoxNom.ShadowDecoration.CustomizableEdges = customizableEdges10;
-            TxtBoxNom.Size = new Size(139, 33);
+            TxtBoxNom.Size = new Size(130, 33);
             TxtBoxNom.TabIndex = 1;
             // 
             // TxtBoxEmplacement
@@ -288,13 +288,13 @@
             TxtBoxEmplacement.FocusedState.BorderColor = Color.FromArgb(94, 148, 255);
             TxtBoxEmplacement.Font = new Font("Segoe UI", 9F);
             TxtBoxEmplacement.HoverState.BorderColor = Color.FromArgb(94, 148, 255);
-            TxtBoxEmplacement.Location = new Point(319, 5);
+            TxtBoxEmplacement.Location = new Point(301, 5);
             TxtBoxEmplacement.Margin = new Padding(8, 4, 8, 4);
             TxtBoxEmplacement.Name = "TxtBoxEmplacement";
             TxtBoxEmplacement.PlaceholderText = "";
             TxtBoxEmplacement.SelectedText = "";
             TxtBoxEmplacement.ShadowDecoration.CustomizableEdges = customizableEdges12;
-            TxtBoxEmplacement.Size = new Size(78, 33);
+            TxtBoxEmplacement.Size = new Size(73, 33);
             TxtBoxEmplacement.TabIndex = 4;
             // 
             // TxtBoxDescription
@@ -311,13 +311,13 @@
             TxtBoxDescription.FocusedState.BorderColor = Color.FromArgb(94, 148, 255);
             TxtBoxDescription.Font = new Font("Segoe UI", 9F);
             TxtBoxDescription.HoverState.BorderColor = Color.FromArgb(94, 148, 255);
-            TxtBoxDescription.Location = new Point(413, 5);
+            TxtBoxDescription.Location = new Point(390, 5);
             TxtBoxDescription.Margin = new Padding(8, 4, 8, 4);
             TxtBoxDescription.Name = "TxtBoxDescription";
             TxtBoxDescription.PlaceholderText = "";
             TxtBoxDescription.SelectedText = "";
             TxtBoxDescription.ShadowDecoration.CustomizableEdges = customizableEdges14;
-            TxtBoxDescription.Size = new Size(177, 33);
+            TxtBoxDescription.Size = new Size(166, 33);
             TxtBoxDescription.TabIndex = 5;
             // 
             // BtnAjouter
@@ -334,11 +334,11 @@
             BtnAjouter.FillColor2 = Color.DarkGoldenrod;
             BtnAjouter.Font = new Font("Segoe UI", 9F);
             BtnAjouter.ForeColor = Color.WhiteSmoke;
-            BtnAjouter.Location = new Point(606, 5);
+            BtnAjouter.Location = new Point(572, 5);
             BtnAjouter.Margin = new Padding(8, 4, 8, 4);
             BtnAjouter.Name = "BtnAjouter";
             BtnAjouter.ShadowDecoration.CustomizableEdges = customizableEdges16;
-            BtnAjouter.Size = new Size(161, 33);
+            BtnAjouter.Size = new Size(195, 33);
             BtnAjouter.TabIndex = 6;
             BtnAjouter.Text = "Ajouter";
             BtnAjouter.Click += BtnAjouter_Click;
@@ -371,6 +371,7 @@
             Controls.Add(Panel_Top);
             Name = "PageStock";
             Size = new Size(901, 579);
+            VisibleChanged += PageStock_VisibleChanged;
             PanelPourLeDataGridView.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)guna2DataGridView1).EndInit();
             Panel_Top.ResumeLayout(false);

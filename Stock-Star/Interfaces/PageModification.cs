@@ -12,17 +12,22 @@ namespace Stock_Star.Interfaces
     {
         private Form1 _parent;
         private string _nomInitial;
-        public PageModification(Form1 parent, string nomProduit)
+
+        // On ajoute les arguments manquants ici
+        public PageModification(Form1 parent, string nomProduit, string categorie, string emplacement, string description)
         {
             InitializeComponent();
 
             _parent = parent;
-            _nomInitial = nomProduit;
+            _nomInitial = nomProduit; // On garde précieusement l'ancien nom pour le WHERE du SQL
 
-            // On affiche l'ancien nom dans une boîte
+            // On remplit directement les TextBox avec ce qu'on a reçu
             TxtBoxNom.Text = nomProduit;
+            TxtBoxCategorie.Text = categorie;
+            TxtBoxEmplacement.Text = emplacement;
+            TxtBoxDescription.Text = description;
 
-            //On affiche des places holders dans les TextBox pour aider la saisies des informations
+            // On affiches les placeholders si il y aucun text
             AidesSaisies();
         }
 
