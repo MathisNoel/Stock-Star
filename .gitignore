@@ -436,3 +436,5 @@ FodyWeavers.xsd
 project.assets.json
 project.nuget.cache
 Stock-Star/obj/project.nuget.cache
+Stock-Star/obj/project.assets.json
+Stock-Star/obj/project.nuget.cache
