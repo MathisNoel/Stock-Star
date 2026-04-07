@@ -30,12 +30,12 @@
         {
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges1 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges2 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            DataGridViewCellStyle dataGridViewCellStyle4 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle5 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle6 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle4 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle5 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle6 = new DataGridViewCellStyle();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges25 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges26 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges3 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
@@ -64,11 +64,11 @@
             PanelPourLeDataGridView = new Guna.UI2.WinForms.Guna2Panel();
             tableLayoutPanel2 = new TableLayoutPanel();
             guna2HtmlLabel2 = new Guna.UI2.WinForms.Guna2HtmlLabel();
-            DataGridView_Ventes = new Guna.UI2.WinForms.Guna2DataGridView();
-            BoutonSupprimerVente = new DataGridViewImageColumn();
             guna2HtmlLabel1 = new Guna.UI2.WinForms.Guna2HtmlLabel();
             DataGridView_Achats = new Guna.UI2.WinForms.Guna2DataGridView();
             BoutonSupprimerAchat = new DataGridViewImageColumn();
+            DataGridView_Ventes = new Guna.UI2.WinForms.Guna2DataGridView();
+            BoutonSupprimerVente = new DataGridViewImageColumn();
             Panel_Top = new Guna.UI2.WinForms.Guna2Panel();
             tableLayoutPanel1 = new TableLayoutPanel();
             ComboBoxNomPageAchat = new Guna.UI2.WinForms.Guna2ComboBox();
@@ -84,8 +84,8 @@
             guna2GradientButton1 = new Guna.UI2.WinForms.Guna2GradientButton();
             PanelPourLeDataGridView.SuspendLayout();
             tableLayoutPanel2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)DataGridView_Ventes).BeginInit();
             ((System.ComponentModel.ISupportInitialize)DataGridView_Achats).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)DataGridView_Ventes).BeginInit();
             Panel_Top.SuspendLayout();
             tableLayoutPanel1.SuspendLayout();
             SuspendLayout();
@@ -135,71 +135,6 @@
             guna2HtmlLabel2.Size = new Size(172, 30);
             guna2HtmlLabel2.TabIndex = 3;
             guna2HtmlLabel2.Text = "Historique Achats";
-            // 
-            // DataGridView_Ventes
-            // 
-            DataGridView_Ventes.AllowUserToAddRows = false;
-            DataGridView_Ventes.AllowUserToOrderColumns = true;
-            dataGridViewCellStyle4.BackColor = Color.White;
-            DataGridView_Ventes.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle4;
-            DataGridView_Ventes.BackgroundColor = Color.WhiteSmoke;
-            dataGridViewCellStyle5.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle5.BackColor = Color.FromArgb(201, 162, 39);
-            dataGridViewCellStyle5.Font = new Font("Segoe UI", 9F);
-            dataGridViewCellStyle5.ForeColor = Color.White;
-            dataGridViewCellStyle5.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle5.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle5.WrapMode = DataGridViewTriState.True;
-            DataGridView_Ventes.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
-            DataGridView_Ventes.ColumnHeadersHeight = 22;
-            DataGridView_Ventes.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.EnableResizing;
-            DataGridView_Ventes.Columns.AddRange(new DataGridViewColumn[] { BoutonSupprimerVente });
-            dataGridViewCellStyle6.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle6.BackColor = Color.White;
-            dataGridViewCellStyle6.Font = new Font("Segoe UI", 9F);
-            dataGridViewCellStyle6.ForeColor = Color.FromArgb(71, 69, 94);
-            dataGridViewCellStyle6.SelectionBackColor = Color.FromArgb(231, 229, 255);
-            dataGridViewCellStyle6.SelectionForeColor = Color.FromArgb(71, 69, 94);
-            dataGridViewCellStyle6.WrapMode = DataGridViewTriState.False;
-            DataGridView_Ventes.DefaultCellStyle = dataGridViewCellStyle6;
-            DataGridView_Ventes.Dock = DockStyle.Fill;
-            DataGridView_Ventes.GridColor = Color.FromArgb(231, 229, 255);
-            DataGridView_Ventes.Location = new Point(3, 61);
-            DataGridView_Ventes.Name = "DataGridView_Ventes";
-            DataGridView_Ventes.RowHeadersVisible = false;
-            DataGridView_Ventes.RowHeadersWidth = 51;
-            DataGridView_Ventes.Size = new Size(865, 129);
-            DataGridView_Ventes.TabIndex = 0;
-            DataGridView_Ventes.ThemeStyle.AlternatingRowsStyle.BackColor = Color.White;
-            DataGridView_Ventes.ThemeStyle.AlternatingRowsStyle.Font = null;
-            DataGridView_Ventes.ThemeStyle.AlternatingRowsStyle.ForeColor = Color.Empty;
-            DataGridView_Ventes.ThemeStyle.AlternatingRowsStyle.SelectionBackColor = Color.Empty;
-            DataGridView_Ventes.ThemeStyle.AlternatingRowsStyle.SelectionForeColor = Color.Empty;
-            DataGridView_Ventes.ThemeStyle.BackColor = Color.WhiteSmoke;
-            DataGridView_Ventes.ThemeStyle.GridColor = Color.FromArgb(231, 229, 255);
-            DataGridView_Ventes.ThemeStyle.HeaderStyle.BackColor = Color.FromArgb(100, 88, 255);
-            DataGridView_Ventes.ThemeStyle.HeaderStyle.BorderStyle = DataGridViewHeaderBorderStyle.None;
-            DataGridView_Ventes.ThemeStyle.HeaderStyle.Font = new Font("Segoe UI", 9F);
-            DataGridView_Ventes.ThemeStyle.HeaderStyle.ForeColor = Color.White;
-            DataGridView_Ventes.ThemeStyle.HeaderStyle.HeaightSizeMode = DataGridViewColumnHeadersHeightSizeMode.EnableResizing;
-            DataGridView_Ventes.ThemeStyle.HeaderStyle.Height = 22;
-            DataGridView_Ventes.ThemeStyle.ReadOnly = false;
-            DataGridView_Ventes.ThemeStyle.RowsStyle.BackColor = Color.White;
-            DataGridView_Ventes.ThemeStyle.RowsStyle.BorderStyle = DataGridViewCellBorderStyle.SingleHorizontal;
-            DataGridView_Ventes.ThemeStyle.RowsStyle.Font = new Font("Segoe UI", 9F);
-            DataGridView_Ventes.ThemeStyle.RowsStyle.ForeColor = Color.FromArgb(71, 69, 94);
-            DataGridView_Ventes.ThemeStyle.RowsStyle.Height = 29;
-            DataGridView_Ventes.ThemeStyle.RowsStyle.SelectionBackColor = Color.FromArgb(231, 229, 255);
-            DataGridView_Ventes.ThemeStyle.RowsStyle.SelectionForeColor = Color.FromArgb(71, 69, 94);
-            DataGridView_Ventes.CellContentClick += ClickOnGrilleVentes;
-            // 
-            // BoutonSupprimerVente
-            // 
-            BoutonSupprimerVente.HeaderText = "";
-            BoutonSupprimerVente.Image = Properties.Resources.Bouton_Supprimer;
-            BoutonSupprimerVente.ImageLayout = DataGridViewImageCellLayout.Zoom;
-            BoutonSupprimerVente.MinimumWidth = 6;
-            BoutonSupprimerVente.Name = "BoutonSupprimerVente";
             // 
             // guna2HtmlLabel1
             // 
@@ -279,6 +214,71 @@
             BoutonSupprimerAchat.MinimumWidth = 6;
             BoutonSupprimerAchat.Name = "BoutonSupprimerAchat";
             // 
+            // DataGridView_Ventes
+            // 
+            DataGridView_Ventes.AllowUserToAddRows = false;
+            DataGridView_Ventes.AllowUserToOrderColumns = true;
+            dataGridViewCellStyle4.BackColor = Color.White;
+            DataGridView_Ventes.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle4;
+            DataGridView_Ventes.BackgroundColor = Color.WhiteSmoke;
+            dataGridViewCellStyle5.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle5.BackColor = Color.FromArgb(201, 162, 39);
+            dataGridViewCellStyle5.Font = new Font("Segoe UI", 9F);
+            dataGridViewCellStyle5.ForeColor = Color.White;
+            dataGridViewCellStyle5.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle5.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle5.WrapMode = DataGridViewTriState.True;
+            DataGridView_Ventes.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
+            DataGridView_Ventes.ColumnHeadersHeight = 22;
+            DataGridView_Ventes.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.EnableResizing;
+            DataGridView_Ventes.Columns.AddRange(new DataGridViewColumn[] { BoutonSupprimerVente });
+            dataGridViewCellStyle6.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle6.BackColor = Color.White;
+            dataGridViewCellStyle6.Font = new Font("Segoe UI", 9F);
+            dataGridViewCellStyle6.ForeColor = Color.FromArgb(71, 69, 94);
+            dataGridViewCellStyle6.SelectionBackColor = Color.FromArgb(231, 229, 255);
+            dataGridViewCellStyle6.SelectionForeColor = Color.FromArgb(71, 69, 94);
+            dataGridViewCellStyle6.WrapMode = DataGridViewTriState.False;
+            DataGridView_Ventes.DefaultCellStyle = dataGridViewCellStyle6;
+            DataGridView_Ventes.Dock = DockStyle.Fill;
+            DataGridView_Ventes.GridColor = Color.FromArgb(231, 229, 255);
+            DataGridView_Ventes.Location = new Point(3, 61);
+            DataGridView_Ventes.Name = "DataGridView_Ventes";
+            DataGridView_Ventes.RowHeadersVisible = false;
+            DataGridView_Ventes.RowHeadersWidth = 51;
+            DataGridView_Ventes.Size = new Size(865, 129);
+            DataGridView_Ventes.TabIndex = 0;
+            DataGridView_Ventes.ThemeStyle.AlternatingRowsStyle.BackColor = Color.White;
+            DataGridView_Ventes.ThemeStyle.AlternatingRowsStyle.Font = null;
+            DataGridView_Ventes.ThemeStyle.AlternatingRowsStyle.ForeColor = Color.Empty;
+            DataGridView_Ventes.ThemeStyle.AlternatingRowsStyle.SelectionBackColor = Color.Empty;
+            DataGridView_Ventes.ThemeStyle.AlternatingRowsStyle.SelectionForeColor = Color.Empty;
+            DataGridView_Ventes.ThemeStyle.BackColor = Color.WhiteSmoke;
+            DataGridView_Ventes.ThemeStyle.GridColor = Color.FromArgb(231, 229, 255);
+            DataGridView_Ventes.ThemeStyle.HeaderStyle.BackColor = Color.FromArgb(100, 88, 255);
+            DataGridView_Ventes.ThemeStyle.HeaderStyle.BorderStyle = DataGridViewHeaderBorderStyle.None;
+            DataGridView_Ventes.ThemeStyle.HeaderStyle.Font = new Font("Segoe UI", 9F);
+            DataGridView_Ventes.ThemeStyle.HeaderStyle.ForeColor = Color.White;
+            DataGridView_Ventes.ThemeStyle.HeaderStyle.HeaightSizeMode = DataGridViewColumnHeadersHeightSizeMode.EnableResizing;
+            DataGridView_Ventes.ThemeStyle.HeaderStyle.Height = 22;
+            DataGridView_Ventes.ThemeStyle.ReadOnly = false;
+            DataGridView_Ventes.ThemeStyle.RowsStyle.BackColor = Color.White;
+            DataGridView_Ventes.ThemeStyle.RowsStyle.BorderStyle = DataGridViewCellBorderStyle.SingleHorizontal;
+            DataGridView_Ventes.ThemeStyle.RowsStyle.Font = new Font("Segoe UI", 9F);
+            DataGridView_Ventes.ThemeStyle.RowsStyle.ForeColor = Color.FromArgb(71, 69, 94);
+            DataGridView_Ventes.ThemeStyle.RowsStyle.Height = 29;
+            DataGridView_Ventes.ThemeStyle.RowsStyle.SelectionBackColor = Color.FromArgb(231, 229, 255);
+            DataGridView_Ventes.ThemeStyle.RowsStyle.SelectionForeColor = Color.FromArgb(71, 69, 94);
+            DataGridView_Ventes.CellContentClick += ClickOnGrilleVentes;
+            // 
+            // BoutonSupprimerVente
+            // 
+            BoutonSupprimerVente.HeaderText = "";
+            BoutonSupprimerVente.Image = Properties.Resources.Bouton_Supprimer;
+            BoutonSupprimerVente.ImageLayout = DataGridViewImageCellLayout.Zoom;
+            BoutonSupprimerVente.MinimumWidth = 6;
+            BoutonSupprimerVente.Name = "BoutonSupprimerVente";
+            // 
             // Panel_Top
             // 
             Panel_Top.Controls.Add(tableLayoutPanel1);
@@ -339,7 +339,7 @@
             ComboBoxNomPageAchat.Margin = new Padding(8, 4, 8, 4);
             ComboBoxNomPageAchat.Name = "ComboBoxNomPageAchat";
             ComboBoxNomPageAchat.ShadowDecoration.CustomizableEdges = customizableEdges4;
-            ComboBoxNomPageAchat.Size = new Size(120, 33);
+            ComboBoxNomPageAchat.Size = new Size(119, 33);
             ComboBoxNomPageAchat.TabIndex = 4;
             // 
             // ComboBoxNomPageVente
@@ -360,7 +360,7 @@
             ComboBoxNomPageVente.Margin = new Padding(8, 4, 8, 4);
             ComboBoxNomPageVente.Name = "ComboBoxNomPageVente";
             ComboBoxNomPageVente.ShadowDecoration.CustomizableEdges = customizableEdges6;
-            ComboBoxNomPageVente.Size = new Size(120, 33);
+            ComboBoxNomPageVente.Size = new Size(119, 33);
             ComboBoxNomPageVente.TabIndex = 22;
             // 
             // TxtBoxQuantitePageVente
@@ -377,7 +377,7 @@
             TxtBoxQuantitePageVente.FocusedState.BorderColor = Color.FromArgb(94, 148, 255);
             TxtBoxQuantitePageVente.Font = new Font("Segoe UI", 9F);
             TxtBoxQuantitePageVente.HoverState.BorderColor = Color.FromArgb(94, 148, 255);
-            TxtBoxQuantitePageVente.Location = new Point(144, 4);
+            TxtBoxQuantitePageVente.Location = new Point(143, 4);
             TxtBoxQuantitePageVente.Margin = new Padding(8, 4, 8, 4);
             TxtBoxQuantitePageVente.Name = "TxtBoxQuantitePageVente";
             TxtBoxQuantitePageVente.PlaceholderText = "";
@@ -400,7 +400,7 @@
             TxtBoxPricePageVente.FocusedState.BorderColor = Color.FromArgb(94, 148, 255);
             TxtBoxPricePageVente.Font = new Font("Segoe UI", 9F);
             TxtBoxPricePageVente.HoverState.BorderColor = Color.FromArgb(94, 148, 255);
-            TxtBoxPricePageVente.Location = new Point(280, 4);
+            TxtBoxPricePageVente.Location = new Point(279, 4);
             TxtBoxPricePageVente.Margin = new Padding(8, 4, 8, 4);
             TxtBoxPricePageVente.Name = "TxtBoxPricePageVente";
             TxtBoxPricePageVente.PlaceholderText = "";
@@ -423,7 +423,7 @@
             TxtBoxDatePageVente.FocusedState.BorderColor = Color.FromArgb(94, 148, 255);
             TxtBoxDatePageVente.Font = new Font("Segoe UI", 9F);
             TxtBoxDatePageVente.HoverState.BorderColor = Color.FromArgb(94, 148, 255);
-            TxtBoxDatePageVente.Location = new Point(416, 4);
+            TxtBoxDatePageVente.Location = new Point(415, 4);
             TxtBoxDatePageVente.Margin = new Padding(8, 4, 8, 4);
             TxtBoxDatePageVente.Name = "TxtBoxDatePageVente";
             TxtBoxDatePageVente.PlaceholderText = "";
@@ -446,11 +446,11 @@
             BtnVendre.FillColor2 = Color.DarkGoldenrod;
             BtnVendre.Font = new Font("Segoe UI", 9F);
             BtnVendre.ForeColor = Color.WhiteSmoke;
-            BtnVendre.Location = new Point(590, 4);
+            BtnVendre.Location = new Point(589, 4);
             BtnVendre.Margin = new Padding(8, 4, 8, 4);
             BtnVendre.Name = "BtnVendre";
             BtnVendre.ShadowDecoration.CustomizableEdges = customizableEdges14;
-            BtnVendre.Size = new Size(170, 33);
+            BtnVendre.Size = new Size(171, 33);
             BtnVendre.TabIndex = 7;
             BtnVendre.Text = "Vendre";
             BtnVendre.Click += BtnVendre_Click;
@@ -469,7 +469,7 @@
             TxtBoxPricePageAchat.FocusedState.BorderColor = Color.FromArgb(94, 148, 255);
             TxtBoxPricePageAchat.Font = new Font("Segoe UI", 9F);
             TxtBoxPricePageAchat.HoverState.BorderColor = Color.FromArgb(94, 148, 255);
-            TxtBoxPricePageAchat.Location = new Point(280, 45);
+            TxtBoxPricePageAchat.Location = new Point(279, 45);
             TxtBoxPricePageAchat.Margin = new Padding(8, 4, 8, 4);
             TxtBoxPricePageAchat.Name = "TxtBoxPricePageAchat";
             TxtBoxPricePageAchat.PlaceholderText = "";
@@ -492,7 +492,7 @@
             TxtBoxQuantitePageAchat.FocusedState.BorderColor = Color.FromArgb(94, 148, 255);
             TxtBoxQuantitePageAchat.Font = new Font("Segoe UI", 9F);
             TxtBoxQuantitePageAchat.HoverState.BorderColor = Color.FromArgb(94, 148, 255);
-            TxtBoxQuantitePageAchat.Location = new Point(144, 45);
+            TxtBoxQuantitePageAchat.Location = new Point(143, 45);
             TxtBoxQuantitePageAchat.Margin = new Padding(8, 4, 8, 4);
             TxtBoxQuantitePageAchat.Name = "TxtBoxQuantitePageAchat";
             TxtBoxQuantitePageAchat.PlaceholderText = "";
@@ -515,7 +515,7 @@
             TxtBoxDatePageAchat.FocusedState.BorderColor = Color.FromArgb(94, 148, 255);
             TxtBoxDatePageAchat.Font = new Font("Segoe UI", 9F);
             TxtBoxDatePageAchat.HoverState.BorderColor = Color.FromArgb(94, 148, 255);
-            TxtBoxDatePageAchat.Location = new Point(416, 45);
+            TxtBoxDatePageAchat.Location = new Point(415, 45);
             TxtBoxDatePageAchat.Margin = new Padding(8, 4, 8, 4);
             TxtBoxDatePageAchat.Name = "TxtBoxDatePageAchat";
             TxtBoxDatePageAchat.PlaceholderText = "";
@@ -538,11 +538,11 @@
             BtnAchat.FillColor2 = Color.DarkGoldenrod;
             BtnAchat.Font = new Font("Segoe UI", 9F);
             BtnAchat.ForeColor = Color.WhiteSmoke;
-            BtnAchat.Location = new Point(590, 45);
+            BtnAchat.Location = new Point(589, 45);
             BtnAchat.Margin = new Padding(8, 4, 8, 4);
             BtnAchat.Name = "BtnAchat";
             BtnAchat.ShadowDecoration.CustomizableEdges = customizableEdges22;
-            BtnAchat.Size = new Size(170, 34);
+            BtnAchat.Size = new Size(171, 34);
             BtnAchat.TabIndex = 14;
             BtnAchat.Text = "Achat";
             BtnAchat.Click += BtnAcheter_Click;
@@ -579,8 +579,8 @@
             PanelPourLeDataGridView.ResumeLayout(false);
             tableLayoutPanel2.ResumeLayout(false);
             tableLayoutPanel2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)DataGridView_Ventes).EndInit();
             ((System.ComponentModel.ISupportInitialize)DataGridView_Achats).EndInit();
+            ((System.ComponentModel.ISupportInitialize)DataGridView_Ventes).EndInit();
             Panel_Top.ResumeLayout(false);
             tableLayoutPanel1.ResumeLayout(false);
             ResumeLayout(false);

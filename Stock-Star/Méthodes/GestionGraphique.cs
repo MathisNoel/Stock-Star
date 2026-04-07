@@ -115,8 +115,8 @@ namespace Stock_Star.Méthodes
                 ";
                 using (var command = new NpgsqlCommand(SQL, connection))
                 {
-                    object result = command.ExecuteScalar();
-                    return result != DBNull.Value ? Convert.ToSingle(result) : 0f;
+                    object result = command.ExecuteScalar(); //ExecuteScalar() est une méthode de la classe NpgsqlCommand qui exécute la requête SQL et retourne la première colonne de la première ligne du résultat. Dans ce cas, il retourne le chiffre d'affaires total calculé par la requête SQL.
+                    return result != DBNull.Value ? Convert.ToSingle(result) : 0f; //Cette ligne vérifie si le résultat de la requête est différent de DBNull.Value (ce qui signifie qu'il y a une valeur valide), et si c'est le cas, il convertit cette valeur en float. Sinon, il retourne 0f (0 en float) pour éviter les erreurs de conversion.
                 }
             }
         }
@@ -190,15 +190,6 @@ namespace Stock_Star.Méthodes
             return dtTresorerie;
 
         }
-
-
-
-
-
-
-
-
-
 
     }
 }

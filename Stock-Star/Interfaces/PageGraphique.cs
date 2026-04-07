@@ -20,8 +20,8 @@ namespace Stock_Star
         {
             AfficherGraphiqueBenefices();
             AfficherGraphiqueTresorerie();
-            TextBoxBenefice.Text = gestionGraphique.CalculerBeneficeTotal().ToString("C2");
-            TextBoxVariableCA.Text = gestionGraphique.CalculerChiffreAffaire().ToString("C2");
+            TextBoxBenefice.Text = gestionGraphique.CalculerBeneficeTotal().ToString("C2"); // C2 pour formater en monnaie avec 2 décimales
+            TextBoxVariableCA.Text = gestionGraphique.CalculerChiffreAffaire().ToString("C2"); // C2 pour formater en monnaie avec 2 décimales
         }
 
         /*private void AfficherGraphiqueBenefices()
@@ -84,9 +84,9 @@ namespace Stock_Star
                 DateOnly d = (DateOnly)row["Date"];
                 DateTime date = d.ToDateTime(TimeOnly.MinValue);
 
-                decimal benefice = Convert.ToDecimal(row["Benefice"]);
+                decimal benefice = Convert.ToDecimal(row["Benefice"]); //Convert.ToDecimal() est utilisé pour convertir la valeur de bénéfice qui est probablement stockée en tant que type de données décimal dans la base de données, en un type de données decimal utilisable dans le code C#. Cela permet de s'assurer que les calculs et les affichages du bénéfice sont précis et conformes au format monétaire attendu.
 
-                dataset.DataPoints.Add(date.ToString("dd/MM"), (double)benefice);
+                dataset.DataPoints.Add(date.ToString("dd/MM"), (double)benefice); // On ajoute les points de données au dataset, en utilisant la date formatée en "dd/MM" comme label et le bénéfice converti en double comme valeur
             }
 
             GunaGraphiqueBenefice.Datasets.Add(dataset);
@@ -117,7 +117,7 @@ namespace Stock_Star
             foreach (DataRow row in dt.Rows)
             {
                 DateOnly d = (DateOnly)row["Date"];
-                DateTime date = d.ToDateTime(TimeOnly.MinValue);
+                DateTime date = d.ToDateTime(TimeOnly.MinValue); // Convertir DateOnly en DateTime pour pouvoir formater la date en "dd/MM" lors de l'ajout des points de données au dataset. DateOnly ne contient que la partie date, donc on utilise ToDateTime() avec TimeOnly.MinValue pour obtenir un DateTime avec l'heure à 00:00:00.
 
                 decimal treso = Convert.ToDecimal(row["Tresorerie"]);
 

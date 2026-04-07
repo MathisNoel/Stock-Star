@@ -6,7 +6,7 @@ namespace Stock_Star
     {
         // On crée l'objet Gestion Produit
         GestionProduits gestion = new GestionProduits();
-        Form1 _parent;
+        Form1 _parent; //Un parent c'est la page principale, on en a besoin pour pouvoir appeler la page de modification depuis la page stock (pour envoyer les infos du produit à modifier)
 
         public PageStock(Form1 parent)
         {
@@ -86,7 +86,7 @@ namespace Stock_Star
                 return;
             }
 
-            try
+            try                                                                                             //try on essaye d'exécuter le code, catch si il y a une erreur on l'attrape et on  affiche un message box avec l'erreur
             {
                 // On appelle ta méthode de gestion (celle avec la grosse requête SQL simplifiée)
                 // Note : On garde les 0, 0 à la fin si ta méthode attend toujours 6 paramètres,
@@ -140,8 +140,8 @@ namespace Stock_Star
                     string desc = row.Cells["Description"].Value?.ToString() ?? "";
 
                     // On envoie TOUTES les infos à la page de modification
-                    _parent.LoadPage(new PageModification(_parent, nom, cat, emp, desc));
-                }
+                    _parent.LoadPage(new PageModification(_parent, nom, cat, emp, desc));//parent pour pouvoir recharger la page stock après modification
+                }                                                                        //Demande à Form1 de Charger la page de modification et lui passe les infos du produit.
             }
         }
 

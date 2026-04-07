@@ -16,6 +16,8 @@ namespace Stock_Star
         const int WM_NCHITTEST = 0x84;
         const int HTCLIENT = 0x1;
         const int HTCAPTION = 0x2;
+        //ne pas toucher les ligne en haut
+
 
         public Form1()
         {
@@ -32,7 +34,7 @@ namespace Stock_Star
                 // On affiche la page Stock dès l'ouverture
                 LoadPage(pageStock);
             }
-            catch (Exception ex)
+            catch (Exception ex) // En cas d'erreur, on affiche un message box avec l'erreur
             {
                 MessageBox.Show("Erreur au chargement : " + ex.Message);
             }
@@ -43,9 +45,9 @@ namespace Stock_Star
         {
             if (page != null)
             {
-                Panel_Main.Controls.Clear();
-                page.Dock = DockStyle.Fill;
-                Panel_Main.Controls.Add(page);
+                Panel_Main.Controls.Clear(); // On vide le panel avant d'afficher la nouvelle page
+                page.Dock = DockStyle.Fill; // On fait en sorte que la page prenne tout l'espace du panel
+                Panel_Main.Controls.Add(page); // On ajoute la page au panel
             }
         }
 
@@ -86,7 +88,7 @@ namespace Stock_Star
             WindowState = FormWindowState.Minimized;
         }
 
-        // --- FONCTIONS SYSTÈME (DÉPLACEMENT DE LA FENÊTRE) ---
+        // --- FONCTIONS SYSTÈME (DÉPLACEMENT DE LA FENÊTRE) --- // Ne pas toucher les lignes en dessous
 
         protected override void WndProc(ref Message m)
         {
@@ -107,5 +109,9 @@ namespace Stock_Star
                 return cp;
             }
         }
+
+        // --- FONCTIONS SYSTÈME (DÉPLACEMENT DE LA FENÊTRE) --- //
+
+
     }
 }

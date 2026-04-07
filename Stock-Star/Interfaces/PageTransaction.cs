@@ -53,7 +53,7 @@ namespace Stock_Star.Interfaces
         {
             gestion.RemplirNomProduit(cb_produit);
             // On remplit la combo box nom produit avec les différents nom produit qui existent dans la BDD.
-            cb_produit.DisplayMember = "nom_produit";
+            cb_produit.DisplayMember = "nom_produit"; 
             // On séléctionne aucun item (par défaut)
             cb_produit.SelectedIndex = -1;
         }
@@ -93,7 +93,7 @@ namespace Stock_Star.Interfaces
             // 1. Récupération brute des textes
             string nomVente = ComboBoxNomPageVente.Text;
             // Et vérification qu'on a séléctionné quelque chose
-            if (string.IsNullOrEmpty(nomVente) || nomVente == "Nom")
+            if (string.IsNullOrEmpty(nomVente) || nomVente == "Nom") // "Nom" = placeholder de la combo box
             {
                 MessageBox.Show("Veuillez sélectionner un produit valide avant de vendre !");
                 return;
@@ -223,7 +223,7 @@ namespace Stock_Star.Interfaces
         // DataGridView Ventes
         private void ClickOnGrilleVentes(object sender, DataGridViewCellEventArgs e)
         {
-            if (e.RowIndex < 0) return;
+            if (e.RowIndex < 0) return; // On ignore le clic sur l'en-tête (index -1)
 
             // On vérifie si c'est la colonne du bouton supprimer
             if (DataGridView_Ventes.Columns[e.ColumnIndex].Name == "BoutonSupprimerVente")
@@ -240,7 +240,7 @@ namespace Stock_Star.Interfaces
         // DataGridView Achat
         private void ClickOnGrilleAchats(object sender, DataGridViewCellEventArgs e)
         {
-            if (e.RowIndex < 0) return;
+            if (e.RowIndex < 0) return; // On ignore le clic sur l'en-tête (index -1)
 
             // On vérifie si c'est la colonne du bouton supprimer
             if (DataGridView_Achats.Columns[e.ColumnIndex].Name == "BoutonSupprimerAchat")
